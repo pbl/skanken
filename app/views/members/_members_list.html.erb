@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Mobile</th>
+    <th>Email</th>
+    <th colspan="2"></th>
+  </tr>
+  
+   
+  <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td><%= member.mobile %></td>
+      <td><%= member.email %></td>
+      <td><%= link_to 'Show', member_path(member) %></td>
+      <td><%= link_to 'Edit', edit_member_path(member) %></td>
+      <td><%= link_to 'Delete', member_path(member),
+              method: :delete,
+              data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to 'New member', new_member_path, :id => "new_member_button" %></li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-right">
+	      <%= form_tag({:action => 'search', :controller => 'members', :method => 'get'}, {:class => 'navbar-form navbar-left'}) do %>
+	        <div class="form-group">
+	          <%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "form-control" %>
+	        </div>
+	        <%= submit_tag "Submit", :name => nil, :class => "btn btn-default" %> 
+	      <% end %>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+

@@ -1,17 +1,32 @@
-<p>
-  <strong>Name:</strong>
-  <%= @member.name %>
-</p>
+<table class="table table-hover">
+  <tr>
+    <th>Name</th>
+    <th>Date added</th>
+    <th>Mobile</th>
+    <th>Email</th>
+    <th>Person Id</th>
+    <th>Work</th>
+    <th>Term</th>
+    <th>Work Card</th>
+    <th>Comment</th>
+    <th colspan="2"></th>
+  </tr>
+   
+  <tr>
+    <td><%= @member.name %></td>
+    <td><%= @member.dateAdded %></td>
+    <td><%= @member.mobile %></td>
+    <td><%= @member.email %></td>
+    <td><%= @member.personId %></td>
+    <td><%= @member.work %></td>
+    <td><%= @member.term %></td>
+    <td><%= @member.workCard %></td>
+    <td><%= @member.comment %></td>
+    <td><%= link_to 'Edit', edit_member_path(@member) %></td>
+    <td><%= link_to 'Delete', member_path(@member),
+            method: :delete,
+            data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+</table>
 
-<p>
-  <strong>Mobile:</strong>
-  <%= @member.mobile %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= @member.email %>
-</p>
-
-<%= link_to 'Back', members_path %> |
-<%= link_to 'Edit', edit_member_path(@member) %>	
+<%= link_to 'Back', members_path %>

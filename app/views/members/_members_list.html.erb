@@ -3,7 +3,8 @@
     <th>Name</th>
     <th>Mobile</th>
     <th>Email</th>
-    <th colspan="2"></th>
+    <th>Person Id</th>
+    <th colspan="3"></th>
   </tr>
   
    
@@ -12,6 +13,7 @@
       <td><%= member.name %></td>
       <td><%= member.mobile %></td>
       <td><%= member.email %></td>
+      <td><%= member.personId %></td>
       <td><%= link_to 'Show', member_path(member) %></td>
       <td><%= link_to 'Edit', edit_member_path(member) %></td>
       <td><%= link_to 'Delete', member_path(member),

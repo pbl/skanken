@@ -1,131 +1,85 @@
+<div class="page-header">
+  <h1>
+  <%= link_to members_path do %>
+    <button type="button" class="btn btn-default" aria-label="Left Align">
+      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
+    </button> 
+  <% end %>
+  Skanken
+  </h1>
+</div>
+
+<h3>Profile</h3>
+<ul class="list-group">
+  <li class="list-group-item"> <strong>Name: </strong> <%= @member.name %></li>
+  <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
+  <li class="list-group-item"> <strong>Contacted: </strong> <%= @member.contacteds.length %></li>
+  <li class="list-group-item"> <strong>Worked: </strong> <%= @member.jobs.length %></li>
+
+  <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
+  <li class="list-group-item"> <strong>Interested in: </strong> <%= @member.work %></li>
+  <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
+  <li class="list-group-item"> <strong>Person id: </strong> <%= @member.personId %></li>
+  <li class="list-group-item"> <strong>Term: </strong> <%= @member.term %></li>
+  <li class="list-group-item"> <strong>Work card: </strong> <%= @member.workCard %></li>
+  <li class="list-group-item"> <strong>Comment: </strong> <%= @member.comment %></li>
+</ul>
+
+<h3>Contacted</h3>
 <table class="table table-hover">
-  <tr>
-    <th>Name</th>
-    <th>Date added</th>
-    <th>Mobile</th>
-    <th>Email</th>
-    <th>Person Id</th>
-    <th>Work</th>
-    <th>Term</th>
-    <th>Work Card</th>
-    <th>Comment</th>
-    <th>Contacted</th>
-    <th>Worked</th>
-    <th colspan="2"></th>
-  </tr>
-   
-  <tr>
-    <td><%= @member.name %></td>
-    <td><%= @member.dateAdded %></td>
-    <td><%= @member.mobile %></td>
-    <td><%= @member.email %></td>
-    <td><%= @member.personId %></td>
-    <td><%= @member.work %></td>
-    <td><%= @member.term %></td>
-    <td><%= @member.workCard %></td>
-    <td><%= @member.comment %></td>
-    <td><%= @member.contacteds.length %></td>
-    <td><%= @member.jobs.length %></td>
-    <td><%= link_to 'Edit', edit_member_path(@member) %></td>
-    <td><%= link_to 'Delete', member_path(@member),
-            method: :delete,
-            data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Activity</th>
+      <th>Comment</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @member.contacteds.each do |contacted| %>
+      <tr>
+        <td><%= contacted.date %></td>
+        <td><%= contacted.for %></td>
+        <td>
+          <% if contacted.comment %>
+            <%= contacted.comment %>
+          <% end %>
+        </td>
+        <td> <%= link_to 'Delete', [contacted.member, contacted],
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
-<h2>Contacted</h2>
-<% @member.contacteds.each do |contacted| %>
-  <p>
-    <strong>Date:</strong>
-    <%= contacted.date %>
-  </p>
- 
-  <p>
-    <strong>For:</strong>
-    <%= contacted.for %>
-  </p>
 
-  <% if contacted.comment %>
-    <p>
-      <strong>Comment:</strong>
-      <%= contacted.comment %>
-    </p>
-  <% end %>
+<h3>Worked</h3>
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Activity</th>
+      <th>Comment</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @member.jobs.each do |job| %>
+      <tr>
+        <td><%= job.date %></td>
+        <td><%= job.activity %></td>
+        <td>
+          <% if job.comment %>
+            <%= job.comment %>
+          <% end %>
+        </td>
+        <td> <%= link_to 'Delete', [job.member, job],
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <p>
-    <%= link_to 'Delete', [contacted.member, contacted],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-  </p>
 
-<% end %>
-
-
-<h2>Add last contacted:</h2>
-<%= form_for([@member, @member.contacteds.build]) do |f| %>
-  <p>
-    <%= f.label :date %><br>
-    <%= f.date_field :date %>
-  </p>
-  <p>
-    <%= f.label :for %><br>
-    <%= f.text_field :for %>
-  </p>
-  <p>
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<h2>Worked at activities</h2>
-<% @member.jobs.each do |job| %>
-  <p>
-    <strong>Date:</strong>
-    <%= job.date %>
-  </p>
- 
-  <p>
-    <strong>Activity:</strong>
-    <%= job.activity %>
-  </p>
-
-  <% if job.comment %>
-    <p>
-      <strong>Comment:</strong>
-      <%= job.comment %>
-    </p>
-  <% end %>
-
-  <p>
-    <%= link_to 'Delete', [job.member, job],
-               method: :delete,
-               data: { confirm: 'Are you sure?' } %>
-  </p>
-
-<% end %>
-
-<h2>Add a work occasion:</h2>
-<%= form_for([@member, @member.jobs.build]) do |f| %>
-  <p>
-    <%= f.label :date %><br>
-    <%= f.date_field :date %>
-  </p>
-
-  <p>
-    <%= f.label :activity %><br>
-    <%= f.text_field :activity %>
-  </p>
-
-  <p>
-    <%= f.label :comment %><br>
-    <%= f.text_area :comment %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-<% end %>
-
-<%= link_to 'Back', members_path %>

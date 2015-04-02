@@ -14,7 +14,7 @@ class MembersController < ApplicationController
 		unformatTime = Time.local(time.year, time.month, time.day).to_s
 		formattedTime = unformatTime.gsub(/\s+/m, ' ').strip.split(" ")[0]
 
-		workerParams = member_params.merge(:dateAdded => formattedTime, :workCard => "None")
+		workerParams = member_params.merge(:dateAdded => formattedTime, :workCard => "No card")
 		
 		@member = Member.new(workerParams)
 	  @member.save

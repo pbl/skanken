@@ -9,6 +9,8 @@
     <th>Term</th>
     <th>Work Card</th>
     <th>Comment</th>
+    <th>Contacted</th>
+    <th>Worked</th>
     <th colspan="2"></th>
   </tr>
    
@@ -22,11 +24,108 @@
     <td><%= @member.term %></td>
     <td><%= @member.workCard %></td>
     <td><%= @member.comment %></td>
+    <td><%= @member.contacteds.length %></td>
+    <td><%= @member.jobs.length %></td>
     <td><%= link_to 'Edit', edit_member_path(@member) %></td>
     <td><%= link_to 'Delete', member_path(@member),
             method: :delete,
             data: { confirm: 'Are you sure?' } %></td>
   </tr>
 </table>
+
+<h2>Contacted</h2>
+<% @member.contacteds.each do |contacted| %>
+  <p>
+    <strong>Date:</strong>
+    <%= contacted.date %>
+  </p>
+ 
+  <p>
+    <strong>For:</strong>
+    <%= contacted.for %>
+  </p>
+
+  <% if contacted.comment %>
+    <p>
+      <strong>Comment:</strong>
+      <%= contacted.comment %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= link_to 'Delete', [contacted.member, contacted],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  </p>
+
+<% end %>
+
+
+<h2>Add last contacted:</h2>
+<%= form_for([@member, @member.contacteds.build]) do |f| %>
+  <p>
+    <%= f.label :date %><br>
+    <%= f.date_field :date %>
+  </p>
+  <p>
+    <%= f.label :for %><br>
+    <%= f.text_field :for %>
+  </p>
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<h2>Worked at activities</h2>
+<% @member.jobs.each do |job| %>
+  <p>
+    <strong>Date:</strong>
+    <%= job.date %>
+  </p>
+ 
+  <p>
+    <strong>Activity:</strong>
+    <%= job.activity %>
+  </p>
+
+  <% if job.comment %>
+    <p>
+      <strong>Comment:</strong>
+      <%= job.comment %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= link_to 'Delete', [job.member, job],
+               method: :delete,
+               data: { confirm: 'Are you sure?' } %>
+  </p>
+
+<% end %>
+
+<h2>Add a work occasion:</h2>
+<%= form_for([@member, @member.jobs.build]) do |f| %>
+  <p>
+    <%= f.label :date %><br>
+    <%= f.date_field :date %>
+  </p>
+
+  <p>
+    <%= f.label :activity %><br>
+    <%= f.text_field :activity %>
+  </p>
+
+  <p>
+    <%= f.label :comment %><br>
+    <%= f.text_area :comment %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
 
 <%= link_to 'Back', members_path %>

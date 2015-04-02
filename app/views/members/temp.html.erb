@@ -1,0 +1,28 @@
+ <h4>Contacted</h4>
+
+
+<!-- <h4>Worked</h4> -->
+          <tr id="worked<%=member.id %>" style="display:none">
+            <td>
+              <table class="table">
+                <tr>
+                  <th>Date</th>
+                  <th>Activity</th>
+                  <th>Comment</th>
+                  <th colspan="1"></th>
+                </tr>
+                <% member.jobs.each do |job| %>
+                  <tr>
+                    <td><%= job.date %></td>
+                    <td><%= job.activity %></td>
+                    <% if job.comment %>
+                      <td><%= job.comment %></td>
+                    <% end %>
+                    <td> <%= link_to 'Delete', [job.member, job],
+                     method: :delete,
+                     data: { confirm: 'Are you sure?' } %></td>
+                  </tr>
+                <% end %>
+              </table>
+            </td>
+          </tr>

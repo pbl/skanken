@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   get 'welcome/index'
 
-  resources :members
+  resources :members do
+    resources :contacteds
+    resources :jobs
+  end
+
   resources :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

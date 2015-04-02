@@ -8,15 +8,12 @@
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-	      <%= form_tag({:action => 'search', :controller => 'members', :method => 'get'}, {:class => 'navbar-form navbar-left'}) do %>
-	        <div class="form-group">
-	          <%= text_field_tag :search, params[:search], :placeholder => "Search", :class => "form-control" %>
-	        </div>
-	        <%= submit_tag "Submit", :name => nil, :class => "btn btn-default" %> 
-	      <% end %>
+        <input type="text" class="form-control" id="search_worker" placeholder="Filter by name">
 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+
+
 

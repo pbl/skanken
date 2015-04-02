@@ -16,7 +16,19 @@
 //= require_tree .
 
 $( document ).ready(function() {
-    
+
+	// Filter function for workers
+	var $rows = $('#worker_table tbody .member_row');
+	$('#search_worker').keyup(function() {
+    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+	  console.log(val);
+    $rows.show().filter(function() {
+      var text = $(this).find("td:first-child").text().replace(/\s+/g, ' ').toLowerCase();
+      return !~text.indexOf(val);
+	    }).hide();
+	});
+
+
     $('#new_worker_button').on('click', function(e){
 			e.preventDefault();
 			$('#new_worker').css("display", "block");

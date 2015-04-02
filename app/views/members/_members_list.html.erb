@@ -1,4 +1,5 @@
-<table class="table table-hover">
+
+<table class="table table-hover" id="worker_table">
   <thead>
     <tr>
       <th>Name</th>
@@ -11,8 +12,8 @@
   </thead>
   <tbody>
     <% @members.each do |member| %>
-      <tr id="<%=member.id %>">
-        <td class="worker_column"><%= member.name %></td>
+      <tr class="member_row" id="<%=member.id %>">
+        <td class="worker_column" id="member_name"><%= member.name %></td>
         <td class="worker_column"><%= member.mobile %></td>
         <td class="worker_column"><%= member.work %></td>
         <td class="worker_column"><%= member.jobs.length %></td>

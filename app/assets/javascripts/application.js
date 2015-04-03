@@ -27,7 +27,6 @@ $( document ).ready(function() {
       return !~text.indexOf(val);
 	    }).hide();
 	});
-//asdasds	
 
   $('#new_worker_button').on('click', function(e){
 		e.preventDefault();

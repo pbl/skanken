@@ -1,10 +1,8 @@
-
 <table class="table table-hover" id="worker_table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Mobile</th>
-      <th>Interested in</th>
       <th>Worked</th>
       <th>Contacted</th>
       <th colspan="3"></th>
@@ -12,80 +10,134 @@
   </thead>
   <tbody>
     <% @members.each do |member| %>
-      <tr class="member_row" id="<%=member.id %>">
-        <td class="worker_column" id="member_name"><%= member.name %></td>
-        <td class="worker_column"><%= member.mobile %></td>
-        <td class="worker_column"><%= member.work %></td>
-        <td class="worker_column"><%= member.jobs.length %></td>
-        <td class="worker_column"><%= member.contacteds.length %></td>
-        <td><%= link_to 'Show', member_path(member) %></td>
-        <td><%= link_to 'Edit', edit_member_path(member) %></td>
-        <td><%= link_to 'Delete', member_path(member),
-                method: :delete,
-                data: { confirm: 'Are you sure?' } %></td>
+    <div id="add_worked_form<%=member.id%>" style="display:none">
+      <%= form_for([member, member.jobs.build]) do |f| %>
+        <p>
+          <%= f.label :date %><br>
+          <%= f.date_field :date %>
+        </p>
+         <p>
+          <%= f.label :activity %><br>
+          <%= f.text_field :activity %>
+        </p>
+        <p>
+          <%= f.label :comment %><br>
+          <%= f.text_area :comment %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+      <% end %>
+    </div>
+    <div id="add_contacted_form<%=member.id%>" style="display:none">
+      <%= form_for([member, member.contacteds.build]) do |f| %>
+        <p>
+          <%= f.label :date %><br>
+          <%= f.date_field :date %>
+        </p>
+         <p>
+          <%= f.label :for %><br>
+          <%= f.text_field :for %>
+        </p>
+        <p>
+          <%= f.label :comment %><br>
+          <%= f.text_area :comment %>
+        </p>
+        <p>
+          <%= f.submit %>
+        </p>
+      <% end %>
+    </div>
+    <tr>
+      <td id="member_name" data-toggle="collapse" data-target=".<%=member.id%>" class="accordion-toggle"><%= member.name %></td>
+      <td data-toggle="collapse" data-target=".<%=member.id%>" class="accordion-toggle"><%= member.mobile %></td>
+      <td>
+        <%= member.jobs.length %>
+        <a href="#" style="color:black">
+          <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'add_worked_modal', 'worked')" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+      </td>
+      <td><%= member.contacteds.length %> 
+        <a href="#" style="color:black">
+          <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'add_contacted_modal', 'contacted')" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+      </td>
+      <td><%= link_to 'Show', member_path(member) %></td>
+      <td><%= link_to 'Edit', edit_member_path(member) %></td>
+      <td><%= link_to 'Delete', member_path(member),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %></td>
       </tr>
-      <div id="info<%=member.id %>" style="display:none">
-        <ul class="list-group">
-          <li class="list-group-item"> <strong>Date added: </strong> <%= member.dateAdded %></li>
-          <li class="list-group-item"> <strong>Email: </strong> <%= member.email %></li>
-          <li class="list-group-item"> <strong>Person id: </strong> <%= member.personId %></li>
-          <li class="list-group-item"> <strong>Term: </strong> <%= member.term %></li>
-          <li class="list-group-item"> <strong>Work card: </strong> <%= member.workCard %></li>
-          <li class="list-group-item"> <strong>Comment: </strong> <%= member.comment %></li>
-        </ul>
-      </div>
-      <tr id="contacted<%=member.id %>" style="display:none">
-        <td>
-          <table class="table">
-            <thead>
+      <% if member.jobs.length.to_s != 0.to_s %>
+        <tr>
+          <td colspan="6" class="hiddenRow">
+            <div class="accordian-body collapse <%=member.id%>"> 
+              <h3>Worked</h3>
+              <table class="table">
               <tr>
                 <th>Date</th>
-                <th>For</th>
+                <th>Activity</th>
                 <th>Comment</th>
                 <th colspan="1"></th>
               </tr>
-            </thead>
-            <% member.contacteds.each do |contacted| %>
-              <tbody>
-                <tr>
-                  <td><%= contacted.date %></td>
-                  <td><%= contacted.for %></td>
-                  <% if contacted.comment %>
-                    <td><%= contacted.comment %></td>
-                  <% end %>
-                  <td> <%= link_to 'Delete', [contacted.member, contacted],
-                   method: :delete,
-                   data: { confirm: 'Are you sure?' } %></td>
-                </tr>
-              </tbody>
-            <% end %>
-          </table>
-        </td>
-      </tr>
-      <tr id="worked<%=member.id %>" style="display:none">
-        <td colspan="12">
-          <table class="table">
-            <tr>
-              <th>Date</th>
-              <th>Activity</th>
-              <th>Comment</th>
-              <th colspan="1"></th>
-            </tr>
-            <% member.jobs.each do |job| %>
+              <% member.jobs.each do |job| %>
               <tr>
                 <td><%= job.date %></td>
                 <td><%= job.activity %></td>
                 <% if job.comment %>
-                  <td><%= job.comment %></td>
+                <td><%= job.comment %></td>
                 <% end %>
                 <td> <%= link_to 'Delete', [job.member, job],
                  method: :delete,
                  data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-            <% end %>
-          </table>
-        </td>
-      </tr>
+               </tr>
+               <% end %>
+             </table>
+            </div> 
+          </td>
+        </tr>
+      <% end %>
+      <% if member.contacteds.length.to_s != 0.to_s %>
+        <tr>
+          <td colspan="6" class="hiddenRow">
+            <div class="accordian-body collapse <%=member.id%>"> 
+              <h3>Contacted</h3>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>For</th>
+                    <th>Comment</th>
+                    <th colspan="1"></th>
+                  </tr>
+                </thead>
+                <% member.contacteds.each do |contacted| %>
+                <tbody>
+                  <tr>
+                    <td><%= contacted.date %></td>
+                    <td><%= contacted.for %></td>
+                    <% if contacted.comment %>
+                    <td><%= contacted.comment %></td>
+                    <% end %>
+                    <td> <%= link_to 'Delete', [contacted.member, contacted],
+                     method: :delete,
+                     data: { confirm: 'Are you sure?' } %></td>
+                   </tr>
+                 </tbody>
+                 <% end %>
+               </table>
+            </div> 
+          </td>
+        </tr>
+      <% end %>
+      <% if member.jobs.length.to_s == 0.to_s && member.contacteds.length.to_s == 0.to_s %>
+        <tr>
+          <td colspan="6" class="hiddenRow">
+            <div class="accordian-body collapse <%=member.id%>"><p class="lead" style="margin-left:20px">No history</p>
+            </div>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>

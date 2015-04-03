@@ -27,7 +27,7 @@ $( document ).ready(function() {
       return !~text.indexOf(val);
 	    }).hide();
 	});
-
+//asdasds	
 
   $('#new_worker_button').on('click', function(e){
 		e.preventDefault();
@@ -39,12 +39,6 @@ $( document ).ready(function() {
 		$('#new_worker').css("display", "none");
 	});
 });
-
-window.setTimeout(function() {
-  $(".flash").fadeTo(500, 0).slideUp(500, function(){
-      $(this).remove();
-  });
-}, 5000);
 
 function addHTMLToForm(member_id, modal_id, type){
 	var $form = $("#add_" + type + "_form" + member_id).html();

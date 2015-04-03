@@ -29,15 +29,15 @@ $( document ).ready(function() {
 	});
 
 
-    $('#new_worker_button').on('click', function(e){
-			e.preventDefault();
-			$('#new_worker').css("display", "block");
-		});
+  $('#new_worker_button').on('click', function(e){
+		e.preventDefault();
+		$('#new_worker').css("display", "block");
+	});
 
-		$('#cancel_worker_button').on('click', function(e){
-			e.preventDefault();
-			$('#new_worker').css("display", "none");
-		});
+	$('#cancel_worker_button').on('click', function(e){
+		e.preventDefault();
+		$('#new_worker').css("display", "none");
+	});
 });
 
 window.setTimeout(function() {
@@ -47,10 +47,7 @@ window.setTimeout(function() {
 }, 5000);
 
 function addHTMLToForm(member_id, modal_id, type){
-	console.log(member_id)
-	console.log(modal_id)
 	var $form = $("#add_" + type + "_form" + member_id).html();
-	console.log($form)
 	$('#' + modal_id).empty();
 	$('#' + modal_id).append($form);
 }

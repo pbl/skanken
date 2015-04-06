@@ -1,21 +1,24 @@
 class JobsController < ApplicationController
-	def create
+	
+  def create
+    time = Time.new
+    unformatTime = Time.local(time.year, time.month, time.day).to_s
+    formattedTime = unformatTime.gsub(/\s+/m, ' ').strip.split(" ")[0]
+    activity = params[:activity]
+
+    jobParams = job_params.merge(:date => formattedTime, :activity => activity)
+
     @member = Member.find(params[:member_id])
-    @job = @member.jobs.create(job_params)
-    redirect_to member_path(@member)
+    @job = @member.jobs.new(jobParams)
+    @job.save
+    redirect_to members_path
   end
-
-  # def update
-  # end
-
-  # def edit
-  # end
 
   def destroy
   	@member = Member.find(params[:member_id])
     @job = @member.jobs.find(params[:id])
 	  @job.destroy	 
-	  redirect_to member_path(@member)
+	  redirect_to members_path
   end
  
   private

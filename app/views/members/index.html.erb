@@ -6,7 +6,7 @@
         <h4 class="modal-title" id="myModalLabel">Add occasion</h4>
       </div>
       <div class="modal-body">
-      	<div id="add_worked_modal">
+      	<div id="modal_form">
       		
       	</div>
       </div>
@@ -14,22 +14,32 @@
   </div>
 </div>
 
-
-<div class="page-header">
-  <h1>Skanken <small>Worker list</small></h1>
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">New Worker</h4>
+      </div>
+      <div class="modal-body">
+        <div id="new_worker">
+          <%= render :partial => 'members/new' %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
 <header>
   <%= render :partial => 'members/navbar' %>
 </header>
 
-<div id="new_worker" style="display: none;" >
-  <%= render :partial => 'members/new' %>
+<div id="index_options">
+  <%= render :partial => 'members/options' %>
 </div>
 
-</br>
-
-<div id="members">
+<div id="index_members">
   <%= render :partial => 'members/members_list' %>
 </div>
 

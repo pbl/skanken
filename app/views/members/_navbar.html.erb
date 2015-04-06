@@ -1,19 +1,25 @@
+
+<div class="page-header">
+  <h1>Skanken <small>Worker list</small></h1>
+</div>
+
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'New worker', "", :id => "new_worker_button" %></li>
+        <li><%= link_to 'Home', members_path %></li>
+        <li><a href="#" data-toggle="modal" data-target="#myModal">New worker</a></li>
+        <li><%= link_to 'Creators', creators_path %></li>  
+        <li><%= link_to 'Admin', admin_path %></li>  
         <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
       </ul>
       
       <ul class="nav navbar-nav navbar-right">
-        <input type="text" class="form-control" id="search_worker" placeholder="Filter by name">
+
+        
 
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-
-
-

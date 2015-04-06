@@ -17,7 +17,7 @@
   <li class="list-group-item"> <strong>Worked: </strong> <%= @member.jobs.length %></li>
 
   <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
-  <li class="list-group-item"> <strong>Interested in: </strong> <%= @member.work %></li>
+  <li class="list-group-item"> <strong>Interested in: </strong> <%= @member.work.tr('[]\"','') %></li>
   <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
   <li class="list-group-item"> <strong>Person id: </strong> <%= @member.personId %></li>
   <li class="list-group-item"> <strong>Term: </strong> <%= @member.term %></li>
@@ -25,61 +25,15 @@
   <li class="list-group-item"> <strong>Comment: </strong> <%= @member.comment %></li>
 </ul>
 
-<h3>Contacted</h3>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Activity</th>
-      <th>Comment</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @member.contacteds.each do |contacted| %>
-      <tr>
-        <td><%= contacted.date %></td>
-        <td><%= contacted.for %></td>
-        <td>
-          <% if contacted.comment %>
-            <%= contacted.comment %>
-          <% end %>
-        </td>
-        <td> <%= link_to 'Delete', [contacted.member, contacted],
-             method: :delete,
-             data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
+</br>
 
 <h3>Worked</h3>
-<table class="table table-hover">
-  <thead>
-    <tr>
-      <th>Date</th>
-      <th>Activity</th>
-      <th>Comment</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @member.jobs.each do |job| %>
-      <tr>
-        <td><%= job.date %></td>
-        <td><%= job.activity %></td>
-        <td>
-          <% if job.comment %>
-            <%= job.comment %>
-          <% end %>
-        </td>
-        <td> <%= link_to 'Delete', [job.member, job],
-             method: :delete,
-             data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render 'jobs/table' %>
+
+<h3>Contacted</h3>
+<%= render 'contacteds/table' %>
+
+
+
 
 

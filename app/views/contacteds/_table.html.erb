@@ -1,0 +1,26 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Activity</th>
+      <th>Comment</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @member.contacteds.each do |contacted| %>
+      <tr>
+        <td><%= contacted.date %></td>
+        <td><%= contacted.activity %></td>
+        <td>
+          <% if contacted.comment %>
+            <%= contacted.comment %>
+          <% end %>
+        </td>
+        <td> <%= link_to 'Delete', [contacted.member, contacted],
+             method: :delete,
+             data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,1 +1,4 @@
-<p class="lead">Here all the admin functions will be available</p>
+<%= form_tag import_path, multipart: true do %>
+  <%= file_field_tag :file %>
+  <%= submit_tag "Import" %>
+<% end %>

@@ -77,18 +77,16 @@ function sortTable(rowNumber){
     } 
 		rows = null;
   }
-  if(store.length > 1){
-  	var direction = store[0][0] > store[store.length-1][0];
-	  store.sort(function(x,y){
-  		if(direction){
-		    return x[0] - y[0];
-	  	} else{
-	  		return y[0] - x[0];
-	  	}
-	  });
-  }
+	var order_desc = store[0][0] > store[store.length-1][0];
+  store.sort(function(x, y){
+		if(order_desc){
+	    return x[0] - y[0];
+  	} else{
+  		return y[0] - x[0];
+  	}
+  });
 
-  for(var i=0, len=store.length; i<len; i++){
+  for(var i=0; i<store.length; i++){
   	var rows = store[i][1];
   	for(var k=0, len=rows.length; k<len; k++){
   		tbl.appendChild(rows[k]);	

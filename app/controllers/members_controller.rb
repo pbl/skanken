@@ -44,15 +44,16 @@ class MembersController < ApplicationController
 	  redirect_to members_path
 	end
 
-	def search
-	  @members = Member.search(params[:search])
-	  # redirect_to members_path
-	end
-
 	def creators
 	end
 
 	def admin	
+	end
+
+	def import
+		Member.import(params[:file])
+	  # redirect_to root_url, notice: "Products imported."
+		redirect_to admin_path
 	end
 
 	private 

@@ -1,8 +1,3 @@
-<header>
-  <%= render :partial => 'members/navbar' %>
-</header>
-
-
 <%= form_for @member, url: member_path(@member) do |f| %>
 
   <div class="form-group">
@@ -28,81 +23,84 @@
 
   <div class="form-group">
     <label>Want to work at activities</label>
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Club and Bar</h5>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_svartklubben) %>Svartklubben
+          </label>
+        </div>
 
-    <h5>Club and Bar</h5>
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_svartklubben) %>Svartklubben
-      </label>
-    </div>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_heartland) %>Heartland
+          </label>
+        </div>
 
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_heartland) %>Heartland
-      </label>
-    </div>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_foxen) %>Foxen
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_electrified) %>Electrified
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_pub) %>Pub
+          </label>
+        </div>
+      </div>  
+      <div class="col-md-4">  
+        <h5>Cooking and cafe</h5>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_lunch) %>Lunch
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_cafe) %>Cafe
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_cooking_sittning) %>Cooking sittning
+          </label>
+        </div>
+      </div>
+      <div class="col-md-4">  
+        <h5>Others</h5>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_serving_sittning) %>Serving sittning
+          </label>
+        </div>
+        
 
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_foxen) %>Foxen
-      </label>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_electrified) %>Electrified
-      </label>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_pub) %>Pub
-      </label>
-    </div>
-    
-    <h5>Cooking and cafe</h5>
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_lunch) %>Lunch
-      </label>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_cafe) %>Cafe
-      </label>
-    </div>
-    
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_cooking_sittning) %>Cooking sittning
-      </label>
-    </div>
-    
-    <h5>Others</h5>
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_serving_sittning) %>Serving sittning
-      </label>
-    </div>
-    
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_photo) %>Photo
+          </label>
+        </div>
 
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_photo) %>Photo
-      </label>
-    </div>
-
-    <div class="checkbox">
-      <label>
-      <%= check_box_tag(:work_graphic) %>Graphic
-      </label>
-    </div>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_graphic) %>Graphic
+          </label>
+        </div>
+      </div>
+    </div>  
 
   </div>  
   
-  
-
   <div class="form-group">
      <label>Term</label>
     <%= f.text_field :term, :placeholder => "Defaults to vt15", :class => "form-control" %>

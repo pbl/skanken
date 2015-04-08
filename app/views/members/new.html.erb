@@ -1,5 +1,120 @@
-<div id="new">
-  <%= render :partial => 'members/new' %>
-</div>
+<%= form_for :member, url: members_path do |f| %>
 
-<%= link_to 'Back', members_path %>
+  <div class="form-group">
+     <label>Name</label>
+    <%= f.text_field :name, :placeholder => "Enter name", :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+     <label>Mobile</label>
+    <%= f.phone_field :mobile, :placeholder => "Enter mobile number", :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+     <label>Email</label>
+    <%= f.email_field :email, :placeholder => "Enter email", :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+     <label>Person Id</label>
+    <%= f.number_field :personId, :placeholder => "Enter person id", :class => "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <label>Want to work at activities</label>
+    <div class="row">
+      <div class="col-md-4">
+        <h5>Club and Bar</h5>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_svartklubben) %>Svartklubben
+          </label>
+        </div>
+
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_heartland) %>Heartland
+          </label>
+        </div>
+
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_foxen) %>Foxen
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_electrified) %>Electrified
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_pub) %>Pub
+          </label>
+        </div>
+      </div>  
+      <div class="col-md-4">  
+        <h5>Cooking and cafe</h5>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_lunch) %>Lunch
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_cafe) %>Cafe
+          </label>
+        </div>
+        
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_cooking_sittning) %>Cooking sittning
+          </label>
+        </div>
+      </div>
+      <div class="col-md-4">  
+        <h5>Others</h5>
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_serving_sittning) %>Serving sittning
+          </label>
+        </div>
+        
+
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_photo) %>Photo
+          </label>
+        </div>
+
+        <div class="checkbox">
+          <label>
+          <%= check_box_tag(:work_graphic) %>Graphic
+          </label>
+        </div>
+      </div>
+    </div>  
+
+  </div>  
+  
+  
+
+  <div class="form-group">
+     <label>Term</label>
+    <%= f.text_field :term, :placeholder => "Defaults to vt15", :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+     <label>Comment</label>
+    <%= f.text_area :comment, :placeholder => "Enter comment", :class => "form-control" %>
+  </div>
+  
+    
+  <%= f.submit :value => "Save Worker",  :class => "btn btn-default" %>
+  <a href="/" type="button" class="btn btn-default">Close</a>
+
+<% end %>

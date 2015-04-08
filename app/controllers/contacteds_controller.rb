@@ -1,14 +1,9 @@
 class ContactedsController < ApplicationController
 	
   def create
-    time = Time.new
-    unformatTime = Time.local(time.year, time.month, time.day).to_s
-    formattedTime = unformatTime.gsub(/\s+/m, ' ').strip.split(" ")[0]
+    date = date_today
     activity = params[:activity]
-
-    contactedParams = contacted_params.merge(:date => formattedTime, :activity => activity)
-
-
+    contactedParams = contacted_params.merge(:date => date, :activity => activity)
 
     @member = Member.find(params[:member_id])
     @contacted = @member.contacteds.new(contactedParams)

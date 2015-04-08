@@ -1,27 +1,15 @@
-<div class="page-header">
-  <h1>
-  <%= link_to members_path do %>
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-      <span class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>
-    </button> 
-  <% end %>
-  Skanken
-  </h1>
-</div>
-
-<h3>Profile</h3>
+<h3><%= @member.name %></h3>
 <ul class="list-group">
-  <li class="list-group-item"> <strong>Name: </strong> <%= @member.name %></li>
   <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
-  <li class="list-group-item"> <strong>Contacted: </strong> <%= @member.contacteds.length %></li>
-  <li class="list-group-item"> <strong>Worked: </strong> <%= @member.jobs.length %></li>
-
-  <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
   <li class="list-group-item"> <strong>Interested in: </strong> <%= @member.work.tr('[]\"','') %></li>
   <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
+
+  <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
   <li class="list-group-item"> <strong>Person id: </strong> <%= @member.personId %></li>
   <li class="list-group-item"> <strong>Term: </strong> <%= @member.term %></li>
   <li class="list-group-item"> <strong>Work card: </strong> <%= @member.workCard %></li>
+  <li class="list-group-item"> <strong>Contacted: </strong> <%= @member.contacteds.length %></li>
+  <li class="list-group-item"> <strong>Worked: </strong> <%= @member.jobs.length %></li>
   <li class="list-group-item"> <strong>Comment: </strong> <%= @member.comment %></li>
 </ul>
 

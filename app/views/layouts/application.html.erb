@@ -10,16 +10,16 @@
 <body>
 
 	<div class="container">
+		<header>
+		  <%= render :partial => 'members/navbar' %>
+		</header>
+
 		<%= yield %>	
 	</div>
 
 	<!-- Latest compiled JavaScript -->
 	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-	<!--
-	<script scr="/home/philip/development/skanken/app/assets/javascripts/bootstrap.min.js"></script>
-	<script scr="/home/philip/development/skanken/app/assets/javascripts/jquery-1.11.2.min.js"></script>
-	-->
 
 </body>
 </html>

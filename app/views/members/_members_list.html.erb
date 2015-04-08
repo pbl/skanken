@@ -15,15 +15,11 @@
       <td data-toggle="collapse" data-target=".<%=member.id%>" class="accordion-toggle"><%= member.mobile %></td>
       <td>
         <%= member.jobs.length %>
-        <a href="#" style="color:black">
-          <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'worked')" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </a>
+        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'worked')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
       <td>
         <%= member.contacteds.length %>
-        <a href="#" style="color:black">
-          <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'contacted')" class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-        </a>
+        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'contacted')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
       <td><%= link_to 'Show', member_path(member) %></td>
       <td><%= link_to 'Edit', edit_member_path(member) %></td>

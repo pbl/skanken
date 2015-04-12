@@ -1,3 +1,11 @@
+<!-- edit delete knapp -->
+
+<%= link_to 'Edit', edit_member_path(@member) %>
+<%= link_to 'Delete', member_path(@member),
+        method: :delete,
+        data: { confirm: 'Are you sure?' } %>
+
+<!-- kommer ej ihag vad detta e for -->
 <h1>Editing member</h1>
  
 <%= form_for @member, url: member_path(@member) do |f| %>

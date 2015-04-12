@@ -1,4 +1,19 @@
 <h3><%= @member.name %></h3>
+
+<%= link_to edit_member_path(@member) do %>
+<div style="font-size: 1.1em; display:inline-block">
+<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
+</div>
+<% end %>
+
+<%= link_to member_path(@member),
+        method: :delete,
+        data: { confirm: 'Are you sure?' }  do %>
+        <div style="font-size: 1.1em; display:inline-block">
+<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
+        </div>
+<% end %>
+
 <ul class="list-group">
   <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
   <li class="list-group-item"> <strong>Interested in: </strong> <%= @member.work.tr('[]\"','') %></li>

@@ -1,0 +1,53 @@
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#worker_table").DataTable({
+      initComplete: function () {
+        this.api().columns().every( function () {
+          var column = this;
+          var select = $('<select><option value=""></option></select>')
+            .appendTo( $(column.footer()).empty() )
+            .on( 'change', function () {
+              var val = $.fn.dataTable.util.escapeRegex(
+              $(this).val()
+              );
+              column
+                .search( val ? '^'+val+'$' : '', true, false )
+                .draw();
+          });
+          column.data().unique().sort().each( function ( d, j ) {
+            select.append( '<option value="'+d+'">'+d+'</option>' )
+          });
+        });
+      }
+    });
+  });
+</script>
+
+<table class="display" id="worker_table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Worked</th>
+      <th>Contacted</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td><%= member.mobile %></td>
+      <td>
+        <%= member.jobs.length %>
+        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'worked')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
+      </td>
+      <td>
+        <%= member.contacteds.length %>
+        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'contacted')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span> 
+      </td>
+      <td><%= link_to 'Show', member_path(member) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>

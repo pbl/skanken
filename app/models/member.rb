@@ -35,6 +35,7 @@ class Member < ActiveRecord::Base
 
 			  #Vill Jobba,
 			  
+			  
 			  #Email,
 			  new_member.email = row[6]
 			  

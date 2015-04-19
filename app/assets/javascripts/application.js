@@ -18,17 +18,17 @@
 $( document ).ready(function() {
 
 	// Filter function for workers
-	var $rows = $('#worker_table tbody .worker_row');
-	$('#search_worker').keyup(function() {
-    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-  	console.log("clicked value: " + val)
-    $rows.show().filter(function() {
-      var text = $(this).find("td:first-child").text().replace(/\s+/g, ' ').toLowerCase();
-      console.log("rows: " + text)
-      return !~text.indexOf(val);
-    }).hide();
-	});
+	// $('#search_worker').keyup(function() {
+ //    var val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+ //  	console.log("clicked value: " + val)
+ //    $rows.show().filter(function() {
+ //      var text = $(this).find("td:first-child").text().replace(/\s+/g, ' ').toLowerCase();
+ //      console.log("rows: " + text)
+ //      return !~text.indexOf(val);
+ //    }).hide();
+	// });
 
+	var $rows = $('#worker_table tbody .worker_row');
 	$(".options_filter").on('click', function(e){
 		var val = $(this).text().toLowerCase();
 		if(val !== 'show all'){

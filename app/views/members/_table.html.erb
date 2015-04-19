@@ -1,0 +1,89 @@
+<!-- Jquery datatable code -->
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('#worker_table').dataTable();
+  });
+</script>
+
+<table class="display" id="worker_table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mobile</th>
+      <th>Worked</th>
+      <th>Contacted</th>
+      <th>Last contacted</th>
+      <!-- Used for table filtering -->
+      <th style="display:none"></th> 
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+    <%= link_to member_path(member) do %>
+    <tr class="worker_row">
+      <td><%= member.name %></td>
+      <td><%= member.mobile %></td>
+      <td>
+        <%= member.jobs.length %>
+        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'worked')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
+      </td>
+      <td>
+        <%= member.contacteds.length %>
+        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'contacted')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span> 
+      </td>
+      <% if member.contacteds.last.nil? %>
+        <% last_contacted = "Never contacted" %>
+      <% else %>
+        <% last_contacted = member.contacteds.last.date %>
+      <% end %>
+      <td><%= last_contacted %></td>
+
+      <!-- Used for table filtering -->
+      <td id="members_list_work" style="display:none"> <%= member.work %> </td>
+      </tr>
+      <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+  <!-- Adds a form to add a worked and contacted occasion -->
+<% @members.each do |member| %>
+<div id="add_worked_form<%=member.id%>" style="display:none">
+<%= form_for([member, member.jobs.build]) do |f| %>
+
+  <div>   
+    <%= render :partial => 'shared/radio_worker' %>    
+  </div>
+
+  <div class="form-group">
+    <label for="inputCommentContacted">Comment</label>
+    <%= f.text_area :comment, :placeholder => "Optional", :class => "form-control", :id => "inputCommentContacted" %>
+  </div>
+
+  <%= f.submit :value => "Save",  :class => "btn btn-default" %>
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+<% end %>
+</div>
+
+
+<div id="add_contacted_form<%=member.id%>" style="display:none">
+<%= form_for([member, member.contacteds.build]) do |f| %>
+
+  <div>   
+    <%= render :partial => 'shared/radio_worker' %>    
+  </div>
+    
+
+  <div class="form-group">
+    <label for="inputCommentContacted">Comment</label>
+    <%= f.text_area :comment, :placeholder => "Optional", :class => "form-control", :id => "inputCommentContacted" %>
+  </div>
+
+  <%= f.submit :value => "Save",  :class => "btn btn-default" %>
+  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+<% end %>
+</div>
+
+<% end %>

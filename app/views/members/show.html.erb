@@ -16,11 +16,8 @@
 
 <ul class="list-group">
   <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
-  <% if !@member.activities.nil? %>
   <li class="list-group-item"> <strong>Activities: </strong> <%= @member.activities.tr('[]\"','') %></li>
-  <% end%>
   <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
-
   <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
   <li class="list-group-item"> <strong>Person id: </strong> <%= @member.personId %></li>
   <li class="list-group-item"> <strong>Contacted: </strong> <%= @member.contacteds.length %></li>

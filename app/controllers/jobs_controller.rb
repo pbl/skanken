@@ -1,25 +1,24 @@
 class JobsController < ApplicationController
-	
+	 
   def create
     date = date_today
-    activity = params[:activity]
-    jobParams = helper_params(:job).merge(:date => date, :activity => activity)
+    job_params_merged = job_params.merge(:date => date)
 
     @member = Member.find(params[:member_id])
-    @job = @member.jobs.new(jobParams)
+    @job = @member.jobs.new(job_params_merged)
     @job.save
     redirect_to members_path
   end
 
   def destroy
     @member = Member.find(params[:member_id])
-    @contacted = @member.contacteds.find(params[:id])
-    @contacted.destroy   
+    @job = @member.jobs.find(params[:id])
+    @job.destroy   
     redirect_to members_path
   end
 
   private
-    def contacted_params
-      params.require(:contacted).permit(:date, :activity, :comment)
+    def job_params
+      params.require(:job).permit(:date, :activity, :comment)
     end
 end

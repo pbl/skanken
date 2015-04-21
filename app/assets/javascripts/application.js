@@ -37,6 +37,14 @@ function show_worker(show_url){
 	window.open(show_url, "_self");
 }
 
+
+function formActionValue(id, type){
+	console.log("id:" + id)
+	console.log("type:" + type)
+	console.log("form" + $('#modal_form_' + type).find('form'))
+	$('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);	
+}
+
 // function addHTMLToForm(member_id, type){
 // 	var $form = $("#add_" + type + "_form" + member_id).html();
 // 	$('#modal_form').empty();

@@ -2,11 +2,10 @@ class ContactedsController < ApplicationController
 	
   def create
     date = date_today
-    activity = params[:activity]
-    contactedParams = contacted_params.merge(:date => date, :activity => activity)
-
+    contacted_params_merged = contacted_params.merge(:date => date)
+   
     @member = Member.find(params[:member_id])
-    @contacted = @member.contacteds.new(contactedParams)
+    @contacted = @member.contacteds.new(contacted_params_merged)
     @contacted.save
     redirect_to members_path
   end

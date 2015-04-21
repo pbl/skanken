@@ -26,11 +26,11 @@
       <td onclick="show_worker('<%= member_path(member).to_s %>')"><%= member.mobile %></td>
       <td>
         <%= member.jobs.length %>
-        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'worked')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
+        <span data-toggle="modal" data-target=".bs-job-modal-sm" onclick="formActionValue(<%=member.id%>, 'jobs')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
       <td>
         <%= member.contacteds.length %>
-        <span data-toggle="modal" data-target=".bs-example-modal-sm" onclick="addHTMLToForm(<%=member.id%>, 'contacted')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span> 
+        <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span> 
       </td>
       <% if member.contacteds.last.nil? %>
         <% last_contacted = "Never contacted" %>
@@ -46,38 +46,3 @@
     <% end %>
   </tbody>
 </table>
-
-
-  <!-- Adds a form to add a worked and contacted occasion -->
-<% @members.each do |member| %>
-<div id="add_worked_form<%=member.id%>" style="display:none">
-<%= form_for([member, member.jobs.build]) do |f| %>
-
-  <div class="form-group">
-    <label for="inputCommentContacted">Comment</label>
-    <%= f.text_area :comment, :placeholder => "Optional", :class => "form-control", :id => "inputCommentContacted" %>
-  </div>
-
-  <%= f.submit :value => "Save",  :class => "btn btn-default" %>
-  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-<% end %>
-</div>
-
-
-<div id="add_contacted_form<%=member.id%>" style="display:none">
-<%= form_for([member, member.contacteds.build]) do |f| %>
-
-
-  <div class="form-group">
-    <label for="inputCommentContacted">Comment</label>
-    <%= f.text_area :comment, :placeholder => "Optional", :class => "form-control", :id => "inputCommentContacted" %>
-  </div>
-
-  <%= f.submit :value => "Save",  :class => "btn btn-default" %>
-  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
-<% end %>
-</div>
-
-<% end %>

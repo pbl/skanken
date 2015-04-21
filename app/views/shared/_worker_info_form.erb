@@ -1,0 +1,8 @@
+<div id="worker_info_form">
+<%= simple_form_for :contacted  do |f| %>
+  
+  <%= f.input :comment  %>
+  <%= f.input :work, label: "Activities", as: :check_boxes, collection: Member.activities() %>
+
+<% end %>
+</div>

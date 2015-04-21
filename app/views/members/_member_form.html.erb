@@ -1,0 +1,12 @@
+<%= simple_form_for form_for, url: path do |f| %>
+  
+  <%= f.input :name  %>
+  <%= f.input :mobile %>
+  <%= f.input :email %>
+  <%= f.input :personId, label: "Person id" %>
+  <%= f.input :activities, label: "Activities", as: :check_boxes, collection: Member.activities() %>
+  <%= f.input :comment, label: 'Comment', required: false, as: :text %>
+  <%= f.button :submit %>
+  <a type="button" class="btn btn-default" href="/members">Close</button>
+
+<% end %>

@@ -1,4 +1,4 @@
-<h3><%= @member.name %></h3>
+<h3 style="display: inline; margin-"><%= @member.name %></h3>
 
 <%= link_to edit_member_path(@member) do %>
 <div style="font-size: 1.1em; display:inline-block">
@@ -16,13 +16,13 @@
 
 <ul class="list-group">
   <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
-  <li class="list-group-item"> <strong>Interested in: </strong> <%= @member.work.tr('[]\"','') %></li>
+  <% if !@member.activities.nil? %>
+  <li class="list-group-item"> <strong>Activities: </strong> <%= @member.activities.tr('[]\"','') %></li>
+  <% end%>
   <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
 
   <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
   <li class="list-group-item"> <strong>Person id: </strong> <%= @member.personId %></li>
-  <li class="list-group-item"> <strong>Term: </strong> <%= @member.term %></li>
-  <li class="list-group-item"> <strong>Work card: </strong> <%= @member.workCard %></li>
   <li class="list-group-item"> <strong>Contacted: </strong> <%= @member.contacteds.length %></li>
   <li class="list-group-item"> <strong>Worked: </strong> <%= @member.jobs.length %></li>
   <li class="list-group-item"> <strong>Comment: </strong> <%= @member.comment %></li>
@@ -31,10 +31,10 @@
 </br>
 
 <h3>Worked</h3>
-<%= render 'jobs/table' %>
+<%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.jobs}  %>    
 
 <h3>Contacted</h3>
-<%= render 'contacteds/table' %>
+<%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.contacteds}  %>
 
 
 

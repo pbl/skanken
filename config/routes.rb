@@ -26,6 +26,8 @@ Rails.application.routes.draw do
     get 'admin', to: 'members#admin'
     post 'import', to: 'members#import'
 
+    get 'temp', to: 'members#temp'
+
   # Example of named route that can be invoked with purchase_url(id: product.id)
     # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
 

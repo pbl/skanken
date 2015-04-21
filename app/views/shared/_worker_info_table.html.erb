@@ -8,16 +8,16 @@
     </tr>
   </thead>
   <tbody>
-    <% @member.contacteds.each do |contacted| %>
+    <% worker_info.each do |info| %>
       <tr>
-        <td><%= contacted.date %></td>
-        <td><%= contacted.activity %></td>
+        <td><%= info.date %></td>
+        <td><%= info.activity %></td>
         <td>
-          <% if contacted.comment %>
-            <%= contacted.comment %>
+          <% if info.comment %>
+            <%= info.comment %>
           <% end %>
         </td>
-        <td> <%= link_to 'Delete', [contacted.member, contacted],
+        <td> <%= link_to 'Delete', [info.member, info],
              method: :delete,
              data: { confirm: 'Are you sure?' } %></td>
       </tr>

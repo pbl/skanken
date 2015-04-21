@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 
 gem 'devise'
 
+gem 'simple_form'
+
 group :development do
 	gem "better_errors"
 end

@@ -18,13 +18,12 @@
 $( document ).ready(function() {
 	
 	var $rows = $('#worker_table tbody .worker_row');
-	$(".options_filter").on('click', function(e){
+	$(".activities_filter").on('click', function(e){
 		var val = $(this).text().toLowerCase();
 		if(val !== 'show all'){
 			// console.log("clicked value: " + val)
 			$rows.show().filter(function() {
 		    var text = $(this).find("#members_list_work").text().replace(/\s+/g, ' ').toLowerCase();
-		    // console.log("rows: "+ text);
 		    return !~text.indexOf(val);
 	    }).hide();
 		} else{
@@ -38,8 +37,8 @@ function show_worker(show_url){
 	window.open(show_url, "_self");
 }
 
-function addHTMLToForm(member_id, type){
-	var $form = $("#add_" + type + "_form" + member_id).html();
-	$('#modal_form').empty();
-	$('#modal_form').append($form);
-}
+// function addHTMLToForm(member_id, type){
+// 	var $form = $("#add_" + type + "_form" + member_id).html();
+// 	$('#modal_form').empty();
+// 	$('#modal_form').append($form);
+// }

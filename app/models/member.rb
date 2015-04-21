@@ -2,6 +2,22 @@ require 'csv'
 class Member < ActiveRecord::Base
 	has_many :contacteds, dependent: :destroy
 	has_many :jobs, dependent: :destroy
+
+
+
+	ACTIVITES = {
+    svartklubben: "Svartklubben",
+    heartland:    "Heartland",
+    foxen: 				"Foxen",
+  }
+
+  def self.activities
+  	activites_map = Member::ACTIVITES
+    activites_map.to_a.map! { |arr| [arr.first.to_s.humanize, arr.last] }
+  end
+
+
+
 	def self.import(file)
 		# Read the imported csv into variable
 		spreadsheet = CSV.read(file.path)

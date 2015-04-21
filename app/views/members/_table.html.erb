@@ -40,21 +40,18 @@
       <td onclick="show_worker('<%= member_path(member).to_s %>')"><%= last_contacted %></td>
 
       <!-- Used for table filtering -->
-      <td onclick="show_worker('<%= member_path(member).to_s %>')" id="members_list_work" style="display:none"> <%= member.work %> </td>
-      </tr>
-      <% end %>
-      <% end %>
-    </tbody>
-  </table>
+      <td id="members_list_work" style="display:none"> <%= member.activities %> </td>
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+
 
   <!-- Adds a form to add a worked and contacted occasion -->
 <% @members.each do |member| %>
 <div id="add_worked_form<%=member.id%>" style="display:none">
 <%= form_for([member, member.jobs.build]) do |f| %>
-
-  <div>   
-    <%= render :partial => 'shared/radio_worker' %>    
-  </div>
 
   <div class="form-group">
     <label for="inputCommentContacted">Comment</label>
@@ -71,10 +68,6 @@
 <div id="add_contacted_form<%=member.id%>" style="display:none">
 <%= form_for([member, member.contacteds.build]) do |f| %>
 
-  <div>   
-    <%= render :partial => 'shared/radio_worker' %>    
-  </div>
-    
 
   <div class="form-group">
     <label for="inputCommentContacted">Comment</label>

@@ -1,6 +1,5 @@
-
 <%= simple_form_for type do |f| %>
   <%= f.input :activity, label: "Activities", as: :radio_buttons, collection: Member.activities() %>
-  <%= f.input :comment  %>
+  <%= f.input :comment, required: false, as: :text  %>
   <%= f.button :submit  %>
 <% end %>          

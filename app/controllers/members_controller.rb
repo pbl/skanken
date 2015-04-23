@@ -17,8 +17,12 @@ class MembersController < ApplicationController
 		merged_worker_params = worker_params.merge(:dateAdded => date_today, :activities => activities)
 
 		@member = Member.new(merged_worker_params)
-	  @member.save
-	  redirect_to members_path
+
+	  if @member.save
+		  redirect_to members_path
+		else
+			render 'new'
+		end
 	end
 
 	def new

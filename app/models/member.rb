@@ -3,6 +3,7 @@ class Member < ActiveRecord::Base
 	has_many :contacteds, dependent: :destroy
 	has_many :jobs, dependent: :destroy
 
+	validates_presence_of :name, :mobile, :email, :personId, :activities
 
 
 	ACTIVITES = {

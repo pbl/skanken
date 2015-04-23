@@ -39,9 +39,9 @@ function show_worker(show_url){
 
 
 function formActionValue(id, type){
-	console.log("id:" + id)
-	console.log("type:" + type)
-	console.log("form" + $('#modal_form_' + type).find('form'))
+	// console.log("id:" + id)
+	// console.log("type:" + type)
+	// console.log("form" + $('#modal_form_' + type).find('form'))
 	$('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);	
 }
 

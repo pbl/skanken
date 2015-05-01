@@ -1,5 +1,6 @@
 class JobsController < ApplicationController
-	 
+	before_filter :authenticate_user!
+   
   def create
     date = date_today
     job_params_merged = job_params.merge(:date => date)

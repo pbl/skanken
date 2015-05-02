@@ -1,5 +1,9 @@
 	# TODO
 
+## Legal issues
+
+The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this. 
+
 ## Tech/Code
 
 * Writing basic tests
@@ -13,6 +17,10 @@
 * [Contribute page](#contribute-page)
 * [User assocation to a cooperative](#user-assocation-to-a-cooperative)
 * [Cooperative user creation](#cooperative-user-creation)
+* [Modify activities](#modify-activities)
+* [Excel import](#excel-import)
+* [Excel export](#excel-export)
+* [Cooperative members](#cooperative-members)
 
 
 ## Landing page
@@ -30,3 +38,22 @@ Currently a user is a assigned a cooperative id. It would be simpler if a user i
 ## Cooperative user creation
 
 The cooperative admin should be able to add be able to add users to the cooperative. It should be possible to both add regular users and other cooperative admins
+
+## Modify activities
+
+The cooperative admin should be able to edit which activites there is for a worker on the admin page
+
+## Excel import
+
+The cooperative admin should be able to import workers from a excel csv file on the admin page
+
+## Excel export
+
+The cooperative admin should be able to export workers to a excel csv file on the admin page
+
+## Cooperative members
+
+Right now the members aren't linked to a cooperative. Everything that has to with members need to be linked to the right cooperative.
+
+
+

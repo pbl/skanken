@@ -3,6 +3,17 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  def admin?
+  	actor_role = current_user.user_role.to_s
+  	return true unless !(actor_role == '2' || actor_role == '1337')
+  	redirect_to(root_path)
+  end
+
+  def ensure_cooperative
+  	return true unless (current_user.cooperatives_id.nil?)
+  	redirect_to new_cooperative_path
+  end
+
   private 
   	def helper_destroy_method(controller_id)
   		@member = Member.find(params[:member_id])

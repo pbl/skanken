@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
-
 	before_filter :authenticate_user!	
-
+	before_filter :ensure_cooperative
+	before_filter :admin?, only: [:admin, :import]
 
 	def index
     @members = Member.all
@@ -56,7 +56,8 @@ class MembersController < ApplicationController
 	def creators
 	end
 
-	def admin	
+	def admin
+		asd
 	end
 
 	def import

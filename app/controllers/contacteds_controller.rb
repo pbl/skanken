@@ -1,5 +1,6 @@
 class ContactedsController < ApplicationController
-	
+	before_filter :authenticate_user!
+  
   def create
     date = date_today
     contacted_params_merged = contacted_params.merge(:date => date)

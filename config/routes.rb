@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  devise_for :users
+  devise_for :users, controllers: {
+    registrations: "users/registrations"
+  }
+  # devise_for :users
   get 'welcome/index'
 
   resources :members do
@@ -9,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :users
+  resources :cooperatives
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -25,8 +32,6 @@ Rails.application.routes.draw do
 
     get 'admin', to: 'members#admin'
     post 'import', to: 'members#import'
-
-    get 'temp', to: 'members#temp'
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
     # get 'products/:id/purchase' => 'catalog#purchase', as: :purchase

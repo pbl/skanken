@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   end
 
   get 'info/creators'
-  root 'cooperatives#index'
+  root 'members#index'
   get 'admin', to: 'cooperatives#admin'
   post 'import', to: 'cooperatives#import'
 

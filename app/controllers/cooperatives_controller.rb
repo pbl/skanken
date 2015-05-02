@@ -2,17 +2,8 @@ class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :ensure_cooperative, except: [:create]
 
-	def index
-	end
-
-	# def new
-	# 	jhg
-	# 	@cooperative = Cooperative.new
-	# end
-
 	def create
 		@cooperative = Cooperative.new(cooperative_params)
-		# @cooperative.users << current_user
 
 		if @cooperative.save
 			user = User.find(current_user.id)
@@ -31,7 +22,7 @@ class CooperativesController < ApplicationController
 	def update
 		@cooperative = Cooperative.find(params[:id])
 		@cooperative.update(cooperative_params)
-		redirect_to root_path
+		redirect_to cooperative_members_path(@cooperative)
 	end
 
 	def admin

@@ -1,5 +1,9 @@
 # TODO
 
+## Issues
+
+* The "filter by activity" button sometimes stops working
+
 ## Legal issues
 
 The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this. 
@@ -10,6 +14,10 @@ The web page is going to be storing person data. This could be against the PUL l
   - Test controllers
   - Test models
 * Making a license footer
+
+## Minor features
+
+* A website user should be prompted to make a call when clicking a workers phone number on a mobile.
 
 
 ## Features

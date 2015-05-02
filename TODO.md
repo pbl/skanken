@@ -56,7 +56,8 @@ The cooperative admin should be able to edit which activites there is for a work
 
 ## Excel import
 
-The cooperative admin should be able to import workers from a excel csv file on the admin page
+More data validation need to be added. (eg dont import already existing members)
+Format informations about the file need to be added.
 
 ## Excel export
 

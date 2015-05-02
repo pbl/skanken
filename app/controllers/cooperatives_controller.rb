@@ -29,7 +29,7 @@ class CooperativesController < ApplicationController
 	end
 
 	def import
-		Member.import(params[:file])
+		Member.import(params[:file], current_user.cooperatives_id)
 	  # redirect_to root_url, notice: "Products imported."
 		redirect_to admin_path
 	end

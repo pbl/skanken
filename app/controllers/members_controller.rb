@@ -56,7 +56,8 @@ class MembersController < ApplicationController
 	def creators
 	end
 
-	def admin	
+	def admin
+		asd
 	end
 
 	def import

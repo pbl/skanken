@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :cooperative
+  accepts_nested_attributes_for :cooperative
 
   ROLES = {
     no_role:          -1,
@@ -12,10 +13,9 @@ class User < ActiveRecord::Base
     cooperative_admin: 2,
     admin:             1337
   }
-  
   # PUBLIC_REG_ROLES = [:tenant, :cooperative_admin]
 
-  # what is this?? 
+  # what is this??
   validates_inclusion_of :user_role, in: ROLES.values
 
   ROLES.keys.each do |role|

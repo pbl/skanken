@@ -12,7 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @user       = resource
     @user.user_role = User::ROLES[:cooperative_admin]
     @user.save
-  end   
+  end
 
   # POST /resource
   # def create

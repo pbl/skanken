@@ -1,7 +1,3 @@
-<div class="page-header">
-  <h1>Skånken <small>helge vare gösta</small></h1>
-</div>
-
 <nav class="navbar navbar-default">
   <div class="container-fluid">
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -11,8 +7,8 @@
         <!-- <li><a href="#" data-toggle="modal" data-target="#myModal">New worker</a></li> -->
         <li><%= link_to 'New worker', new_member_path %></li>
         <li><%= link_to 'Creators', creators_path %></li>  
-        <li><%= link_to 'Admin', admin_path %></li>  
-        <li><%= link_to 'Temp', temp_path %></li>  
+        <li><%= link_to 'Admin', admin_path %></li> 
+        <li><%= link_to 'Edit cooperative', edit_cooperative_path(Cooperative.find(current_user.cooperatives_id)) %></li>  
         <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
       </ul>
       
@@ -22,3 +18,4 @@
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
+

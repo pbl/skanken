@@ -1,0 +1,7 @@
+<%= simple_form_for @cooperative, url: cooperative_path(@cooperative) do |f| %>
+  
+  <%= f.input :name  %>
+  <%= f.button :submit %>
+  <a type="button" class="btn btn-default" href="/members">Close</button>
+
+<% end %>

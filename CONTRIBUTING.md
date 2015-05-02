@@ -12,7 +12,7 @@ Contributions, feedback and suggestions are very welcome.
 
 1. Commit your changes (`git commit -am 'Add some feature'`)
 2. Push your changes (`git push`)
-3. Create a <a href="https://github.com/pbl/skanken/pulls"> Pull Request </a>
+3. Create a Pull Request from your fork. (`https://github.com/USERNAME/skanken/pulls`)
 
 ## Syncing the fork
 

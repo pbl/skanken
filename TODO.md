@@ -14,10 +14,12 @@ The web page is going to be storing person data. This could be against the PUL l
   - Test controllers
   - Test models
 * Making a license footer
+* Rename "member" to "worker" in model and controller
 
 ## Minor features
 
 * A website user should be prompted to make a call when clicking a workers phone number on a mobile.
+* When editing a worker the activity 
 
 
 ## Features

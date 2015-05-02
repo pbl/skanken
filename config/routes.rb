@@ -7,6 +7,9 @@ Rails.application.routes.draw do
   resources :users
 
   resources :cooperatives do
+    get 'admin', to: 'cooperatives#admin'
+    post 'import', to: 'cooperatives#import'
+    get 'accounts', to: 'cooperatives#accounts'
     resources :members do
       resources :contacteds
       resources :jobs
@@ -15,7 +18,5 @@ Rails.application.routes.draw do
 
   get 'info/creators'
   root 'members#index'
-  get 'admin', to: 'cooperatives#admin'
-  post 'import', to: 'cooperatives#import'
-
+  
 end

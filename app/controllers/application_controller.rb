@@ -3,20 +3,19 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def cooperative_admin?
+  def ensure_cooperative_admin?
   	actor_role = current_user.user_role.to_s
   	return true unless actor_role != '2'
   	redirect_to(root_path)
   end
 
   def ensure_same_cooperative
-    return true unless (current_user.cooperatives_id != Member.find(params[:member_id]).cooperative_id)
+    return true unless (current_user.cooperative_id != Member.find(params[:member_id]).cooperative_id)
   end
 
   def ensure_cooperative
-  	return true unless (current_user.cooperatives_id.nil?)
-    @cooperative = Cooperative.new
-  	render 'new'
+    return true unless (current_user.cooperative_id.nil?)
+    redirect_to new_cooperative_path
   end
 
   private 

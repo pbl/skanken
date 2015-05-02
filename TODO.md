@@ -32,7 +32,6 @@ The web page is going to be storing person data. This could be against the PUL l
 * [Modify activities](#modify-activities)
 * [Excel import](#excel-import)
 * [Excel export](#excel-export)
-* [Cooperative members](#cooperative-members)
 
 
 ## Landing page
@@ -62,7 +61,3 @@ The cooperative admin should be able to import workers from a excel csv file on 
 ## Excel export
 
 The cooperative admin should be able to export workers to a excel csv file on the admin page
-
-## Cooperative members
-
-Right now the members aren't linked to a cooperative. Everything that has to with members need to be linked to the right cooperative.

@@ -7,17 +7,14 @@ class MembersController < ApplicationController
     @members = Member.all
   end
 
-  def temp
-  	@member = Member.find(1)
-  end
-
 	def create
 		date = date_today
 		activities = params["member"]["activities"].to_s
 		merged_worker_params = worker_params.merge(:dateAdded => date_today, :activities => activities)
 
-		@member = Member.new(merged_worker_params)
-
+		@cooperative = Cooperative.find(params[:cooperative_id])
+		@member = @cooperative.members.new(merged_worker_params)
+		asd
 	  if @member.save
 		  redirect_to members_path
 		else
@@ -26,6 +23,7 @@ class MembersController < ApplicationController
 	end
 
 	def new
+		@cooperative = Cooperative.find(current_user.cooperatives_id)
 	end
 
 	def show
@@ -51,19 +49,6 @@ class MembersController < ApplicationController
 	  @member = Member.find(params[:id])
 	  @member.destroy	 
 	  redirect_to members_path
-	end
-
-	def creators
-	end
-
-	def admin
-		asd
-	end
-
-	def import
-		Member.import(params[:file])
-	  # redirect_to root_url, notice: "Products imported."
-		redirect_to admin_path
 	end
 
 	private

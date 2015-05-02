@@ -3,10 +3,10 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to 'Worker list', members_path %></li>
-        <!-- <li><a href="#" data-toggle="modal" data-target="#myModal">New worker</a></li> -->
-        <li><%= link_to 'New worker', new_member_path %></li>
-        <li><%= link_to 'Creators', creators_path %></li>  
+        <% @cooperative = Cooperative.find(current_user.cooperatives_id) %>
+        <li><%= link_to 'Worker list', cooperative_members_path(@cooperative) %></li>
+        <li><%= link_to 'New worker', new_cooperative_member_path(@cooperative) %></li>
+        <li><%= link_to 'Creators', info_creators_path %></li>  
         <li><%= link_to 'Admin', admin_path %></li> 
         <li><%= link_to 'Edit cooperative', edit_cooperative_path(Cooperative.find(current_user.cooperatives_id)) %></li>  
         <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>

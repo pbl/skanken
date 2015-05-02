@@ -1,10 +1,13 @@
 class Cooperative < ActiveRecord::Base
 	has_many :users
 	has_many :members
+	has_many :jobs, through: :members
+	has_many :contacteds, through: :members
 
 	validates_presence_of :name
 
-	def name_cooperative
+	def self.cooperative_id
+		find(current_user.cooperatives_id)
 	end
 
 end

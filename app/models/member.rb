@@ -25,7 +25,7 @@ class Member < ActiveRecord::Base
 		workerList.each do |row|
 			
 		@cooperative = Cooperative.find(cooperative_id)
-		@member = @cooperative.members.new(:name=> row[1],:mobile=>row[4], :email=>row[7], :personId=>row[3], :activities=>row[5] )
+		@member = @cooperative.members.new(:dateAdded=>row['x'].to_s, :name=> (row['Namn'].to_s + " " + row['Efternamn'].to_s) ,:mobile=>row['Telefonnummer'].to_s, :email=>row['Email'].to_s, :personId=>row['Personnummer'].to_s, :activities=>row['Vill Jobba'].to_s)
 		@member.save
 
 		end

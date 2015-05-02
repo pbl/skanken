@@ -6,8 +6,4 @@ class Cooperative < ActiveRecord::Base
 
 	validates_presence_of :name
 
-	def self.cooperative_id
-		find(current_user.cooperatives_id)
-	end
-
 end

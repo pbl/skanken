@@ -3,9 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def admin?
+  def cooperative_admin?
   	actor_role = current_user.user_role.to_s
-  	return true unless (actor_role != '2' || actor_role != '1337')
+  	return true unless actor_role != '2'
   	redirect_to(root_path)
   end
 

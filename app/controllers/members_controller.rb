@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
 	before_filter :authenticate_user!	
 	before_filter :ensure_cooperative
-	before_filter :admin?, only: [:admin, :import]
+	before_filter :cooperative_admin?, only: [:admin, :import]
 
 	def index
 		cooperative_id = params[:cooperative_id]

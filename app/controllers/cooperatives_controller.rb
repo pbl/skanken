@@ -1,5 +1,6 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter :cooperative_admin?
 	before_filter :ensure_cooperative, except: [:create]
 
 	def create
@@ -26,6 +27,7 @@ class CooperativesController < ApplicationController
 	end
 
 	def admin
+		@cooperative = Cooperative.find(params[:id])
 	end
 
 	def import

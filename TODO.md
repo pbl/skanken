@@ -9,6 +9,7 @@ The web page is going to be storing person data. This could be against the PUL l
 * Writing basic tests
   - Test controllers
   - Test models
+* Making a license footer
 
 
 ## Features
@@ -54,6 +55,3 @@ The cooperative admin should be able to export workers to a excel csv file on th
 ## Cooperative members
 
 Right now the members aren't linked to a cooperative. Everything that has to with members need to be linked to the right cooperative.
-
-
-

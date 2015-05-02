@@ -62,7 +62,3 @@ The cooperative admin should be able to import workers from a excel csv file on 
 ## Excel export
 
 The cooperative admin should be able to export workers to a excel csv file on the admin page
-
-## Cooperative members
-
-Right now the members aren't linked to a cooperative. Everything that has to with members need to be linked to the right cooperative.

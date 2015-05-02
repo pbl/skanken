@@ -1,12 +1,14 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter :ensure_cooperative, except: [:create]
 
 	def index
 	end
 
-	def new
-		@cooperative = Cooperative.new
-	end
+	# def new
+	# 	jhg
+	# 	@cooperative = Cooperative.new
+	# end
 
 	def create
 		@cooperative = Cooperative.new(cooperative_params)

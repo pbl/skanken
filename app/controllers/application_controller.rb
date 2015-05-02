@@ -11,7 +11,8 @@ class ApplicationController < ActionController::Base
 
   def ensure_cooperative
   	return true unless (current_user.cooperatives_id.nil?)
-  	redirect_to new_cooperative_path
+    @cooperative = Cooperative.new
+  	render 'new'
   end
 
   private 

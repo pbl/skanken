@@ -8,14 +8,14 @@ class ContactedsController < ApplicationController
     @member = Member.find(params[:member_id])
     @contacted = @member.contacteds.new(contacted_params_merged)
     @contacted.save
-    redirect_to members_path
+    redirect_to cooperative_members_path
   end
 
   def destroy
   	@member = Member.find(params[:member_id])
     @contacted = @member.contacteds.find(params[:id])
 	  @contacted.destroy	 
-	  redirect_to members_path
+	  redirect_to cooperative_members_path
   end
  
   private

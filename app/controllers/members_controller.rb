@@ -4,7 +4,8 @@ class MembersController < ApplicationController
 	before_filter :admin?, only: [:admin, :import]
 
 	def index
-    @members = Member.all
+		@cooperative = Cooperative.find(params[:cooperative_id])
+    @members = @cooperative.members.all
   end
 
 	def create
@@ -14,9 +15,8 @@ class MembersController < ApplicationController
 
 		@cooperative = Cooperative.find(params[:cooperative_id])
 		@member = @cooperative.members.new(merged_worker_params)
-		asd
 	  if @member.save
-		  redirect_to members_path
+		  redirect_to cooperative_members_path
 		else
 			render 'new'
 		end
@@ -27,7 +27,8 @@ class MembersController < ApplicationController
 	end
 
 	def show
-    @member = Member.find(params[:id])
+		@cooperative = Cooperative.find(params[:cooperative_id])
+		@member = @cooperative.members.find(params[:id])
   end
 
   def edit
@@ -42,13 +43,13 @@ class MembersController < ApplicationController
 		merged_worker_params = worker_params.merge(:activities => activities)
 		
 		@member.update(merged_worker_params)
-		redirect_to @member
+		redirect_to cooperative_member_path
 	end
 
 	def destroy
 	  @member = Member.find(params[:id])
 	  @member.destroy	 
-	  redirect_to members_path
+	  redirect_to cooperative_members_path
 	end
 
 	private

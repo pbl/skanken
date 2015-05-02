@@ -20,59 +20,14 @@ class Member < ActiveRecord::Base
 
 
 
-	def self.import(file)
-		# Read the imported csv into variable
-		spreadsheet = CSV.read(file.path)
+	def self.import(file, cooperative_id)
+		workerList = CSV.read(file.path, headers:true) 
+		workerList.each do |row|
+			
+		@cooperative = Cooperative.find(cooperative_id)
+		@member = @cooperative.members.new(:name=> row[1],:mobile=>row[4], :email=>row[7], :personId=>row[3], :activities=>row[5] )
+		@member.save
 
-		index = 0
-
-		# Iterate through all rows
-	  spreadsheet.each do |row|
-	  	if index == 0 
-	  		index += 1
-		  else
-		  	# Create a new member
-		  	new_member = Member.new
-
-			  #x, datum inskriven?
-			  new_member.dateAdded = row[0]
-
-			  #Namn
-			  first_name = row[1]
-			  
-			  #Efternamn
-			  last_name = row[2]
-
-			  new_member.name = first_name + " " + last_name # is this right?
-
-			  #Personnummer,
-			  new_member.personId = row[3]
-
-			  #Telefonnummer,
-			  new_member.mobile = row[4]
-
-			  #Vill Jobba,
-			  
-			  
-			  #Email,
-			  new_member.email = row[6]
-			  
-			  #Termin,
-			  new_member.term = row[7]
-
-			  #Senast kontaktad,
-			  #7
-
-			  #Kommentarer,
-				#8
-
-			  #Jobbarkort
-
-			  # Save to database
-			  new_member.save
-
-			  index += 1
-			end
-	  end
+		end
 	end
 end

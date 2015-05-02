@@ -1,10 +1,11 @@
 class CreateJobs < ActiveRecord::Migration
   def change
     create_table :jobs do |t|
-      t.date :date
-      t.string :type
-      t.text :comment
-      t.references :member, index: true
+    	t.date :date
+    	t.string :activity
+    	t.text :comment
+
+    	t.references :member, index: true
 
       t.timestamps null: false
     end

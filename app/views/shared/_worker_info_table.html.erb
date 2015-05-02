@@ -17,7 +17,7 @@
             <%= info.comment %>
           <% end %>
         </td>
-        <td> <%= link_to 'Delete', [info.member, info],
+        <td> <%= link_to 'Delete', [@cooperative, info.member, info],
              method: :delete,
              data: { confirm: 'Are you sure?' } %></td>
       </tr>

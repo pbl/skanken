@@ -11,50 +11,50 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428122409) do
+ActiveRecord::Schema.define(version: 20150502140458) do
 
   create_table "contacteds", force: :cascade do |t|
     t.date     "date"
     t.string   "activity"
+    t.text     "comment"
     t.integer  "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text     "comment"
   end
 
   add_index "contacteds", ["member_id"], name: "index_contacteds_on_member_id"
 
   create_table "cooperatives", force: :cascade do |t|
+    t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "name"
   end
 
   create_table "jobs", force: :cascade do |t|
     t.date     "date"
+    t.string   "activity"
     t.text     "comment"
     t.integer  "member_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "activity"
   end
 
   add_index "jobs", ["member_id"], name: "index_jobs_on_member_id"
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
     t.string   "mobile"
     t.string   "email"
     t.string   "personId"
     t.string   "activities"
     t.string   "comment"
     t.string   "dateAdded"
-    t.integer  "cooperatives_id"
+    t.integer  "cooperative_id"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
-  add_index "members", ["cooperatives_id"], name: "index_members_on_cooperatives_id"
+  add_index "members", ["cooperative_id"], name: "index_members_on_cooperative_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

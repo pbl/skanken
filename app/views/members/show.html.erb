@@ -1,12 +1,12 @@
 <h3 style="display: inline; margin-"><%= @member.name %></h3>
 
-<%= link_to edit_member_path(@member) do %>
+<%= link_to edit_cooperative_member_path(@member, @cooperative) do %>
 <div style="font-size: 1.1em; display:inline-block">
 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
 </div>
 <% end %>
 
-<%= link_to member_path(@member),
+<%= link_to cooperative_member_path(@member, @cooperative),
         method: :delete,
         data: { confirm: 'Are you sure?' }  do %>
         <div style="font-size: 1.1em; display:inline-block">

@@ -32,7 +32,6 @@ The web page is going to be storing person data. This could be against the PUL l
 * [Modify activities](#modify-activities)
 * [Excel import](#excel-import)
 * [Excel export](#excel-export)
-* [Cooperative members](#cooperative-members)
 
 
 ## Landing page

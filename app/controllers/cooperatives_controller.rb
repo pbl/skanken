@@ -1,9 +1,14 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
+	before_filter :ensure_cooperative, except: [:create]
 
-	def new
-		@cooperative = Cooperative.new
+	def index
 	end
+
+	# def new
+	# 	jhg
+	# 	@cooperative = Cooperative.new
+	# end
 
 	def create
 		@cooperative = Cooperative.new(cooperative_params)
@@ -28,6 +33,16 @@ class CooperativesController < ApplicationController
 		@cooperative.update(cooperative_params)
 		redirect_to root_path
 	end
+
+	def admin
+	end
+
+	def import
+		Member.import(params[:file])
+	  # redirect_to root_url, notice: "Products imported."
+		redirect_to admin_path
+	end
+
 
 	private
     def cooperative_params

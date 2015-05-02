@@ -16,7 +16,7 @@
 
 	<div class="container">
 
-		<% if user_signed_in? %>
+		<% if user_signed_in? && !current_user.cooperatives_id.nil? %>
 		<div class="page-header">
 		  <h1> <%=Cooperative.find(current_user.cooperatives_id).name %> <small>helge vare gösta</small></h1>
 		</div>
@@ -27,6 +27,7 @@
 		<% end %>
 
 		<%= yield %>	
+
 	</div>
 </body>
 </html>

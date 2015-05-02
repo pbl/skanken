@@ -19,11 +19,9 @@
   </thead>
   <tbody>
     <% @members.each do |member| %>
-    <%= link_to member_path(member) do %>
-    
     <tr class="worker_row">
-      <td onclick="show_worker('<%= member_path(member).to_s %>')"><%= member.name %></td>
-      <td onclick="show_worker('<%= member_path(member).to_s %>')"><%= member.mobile %></td>
+      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= member.name %></td>
+      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= member.mobile %></td>
       <td>
         <%= member.jobs.length %>
         <span data-toggle="modal" data-target=".bs-job-modal-sm" onclick="formActionValue(<%=member.id%>, 'jobs')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
@@ -37,12 +35,11 @@
       <% else %>
         <% last_contacted = member.contacteds.last.date %>
       <% end %>
-      <td onclick="show_worker('<%= member_path(member).to_s %>')"><%= last_contacted %></td>
+      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= last_contacted %></td>
 
       <!-- Used for table filtering -->
       <td id="members_list_work" style="display:none"> <%= member.activities %> </td>
     </tr>
-    <% end %>
     <% end %>
   </tbody>
 </table>

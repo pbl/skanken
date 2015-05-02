@@ -4,7 +4,12 @@ class MembersController < ApplicationController
 	before_filter :admin?, only: [:admin, :import]
 
 	def index
-		@cooperative = Cooperative.find(params[:cooperative_id])
+		cooperative_id = params[:cooperative_id]
+		# this is needed since the this method is the website root
+		if cooperative_id.nil?
+			cooperative_id = current_user.cooperatives_id
+		end
+		@cooperative = Cooperative.find(cooperative_id)
     @members = @cooperative.members.all
   end
 

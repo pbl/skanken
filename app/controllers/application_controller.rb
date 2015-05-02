@@ -5,8 +5,12 @@ class ApplicationController < ActionController::Base
 
   def admin?
   	actor_role = current_user.user_role.to_s
-  	return true unless !(actor_role == '2' || actor_role == '1337')
+  	return true unless (actor_role != '2' || actor_role != '1337')
   	redirect_to(root_path)
+  end
+
+  def ensure_same_cooperative
+    return true unless (current_user.cooperatives_id != Member.find(params[:member_id]).cooperative_id)
   end
 
   def ensure_cooperative

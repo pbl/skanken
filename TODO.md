@@ -6,7 +6,7 @@
 
 ## Legal issues
 
-The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this. 
+The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this.
 
 ## Tech/Code
 
@@ -36,11 +36,11 @@ The web page is going to be storing person data. This could be against the PUL l
 
 ## Landing page
 
-Right now the landing page is the standard devise log in page. The landing page need to give new potientiall users a way to get a feeling of what the site is. Like something the facebook page has as a login page. Easy to login and yet a feeling for the page as weel. 
+Right now the landing page is the standard devise log in page. The landing page need to give new potientiall users a way to get a feeling of what the site is. Like something the facebook page has as a login page. Easy to login and yet a feeling for the page as weel.
 
 ## Contribute page
 
-We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to. 
+We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to.
 
 ## User assocation to a cooperative
 

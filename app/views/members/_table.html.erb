@@ -14,7 +14,7 @@
       <th>Contacted</th>
       <th>Last contacted</th>
       <!-- Used for table filtering -->
-      <th style="display:none"></th> 
+      <th style="display:none"></th>
     </tr>
   </thead>
   <tbody>
@@ -28,7 +28,7 @@
       </td>
       <td>
         <%= member.contacteds.length %>
-        <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span> 
+        <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
       <% if member.contacteds.last.nil? %>
         <% last_contacted = "Never contacted" %>

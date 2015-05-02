@@ -1,78 +1,78 @@
 require 'csv'
 class Member < ActiveRecord::Base
-	has_many :contacteds, dependent: :destroy
-	has_many :jobs, dependent: :destroy
-	belongs_to :cooperative
+  has_many :contacteds, dependent: :destroy
+  has_many :jobs, dependent: :destroy
+  belongs_to :cooperative
 
-	validates_presence_of :name, :mobile, :email, :personId, :activities
+  validates_presence_of :name, :mobile, :email, :personId, :activities
 
 
-	ACTIVITES = {
+  ACTIVITES = {
     svartklubben: "Svartklubben",
     heartland:    "Heartland",
-    foxen: 				"Foxen",
+    foxen:         "Foxen",
   }
 
   def self.activities
-  	activites_map = Member::ACTIVITES
+    activites_map = Member::ACTIVITES
     activites_map.to_a.map! { |arr| [arr.first.to_s.humanize, arr.last] }
   end
 
 
 
-	def self.import(file)
-		# Read the imported csv into variable
-		spreadsheet = CSV.read(file.path)
+  def self.import(file)
+    # Read the imported csv into variable
+    spreadsheet = CSV.read(file.path)
 
-		index = 0
+    index = 0
 
-		# Iterate through all rows
-	  spreadsheet.each do |row|
-	  	if index == 0 
-	  		index += 1
-		  else
-		  	# Create a new member
-		  	new_member = Member.new
+    # Iterate through all rows
+    spreadsheet.each do |row|
+      if index == 0
+        index += 1
+      else
+        # Create a new member
+        new_member = Member.new
 
-			  #x, datum inskriven?
-			  new_member.dateAdded = row[0]
+        #x, datum inskriven?
+        new_member.dateAdded = row[0]
 
-			  #Namn
-			  first_name = row[1]
-			  
-			  #Efternamn
-			  last_name = row[2]
+        #Namn
+        first_name = row[1]
 
-			  new_member.name = first_name + " " + last_name # is this right?
+        #Efternamn
+        last_name = row[2]
 
-			  #Personnummer,
-			  new_member.personId = row[3]
+        new_member.name = first_name + " " + last_name # is this right?
 
-			  #Telefonnummer,
-			  new_member.mobile = row[4]
+        #Personnummer,
+        new_member.personId = row[3]
 
-			  #Vill Jobba,
-			  
-			  
-			  #Email,
-			  new_member.email = row[6]
-			  
-			  #Termin,
-			  new_member.term = row[7]
+        #Telefonnummer,
+        new_member.mobile = row[4]
 
-			  #Senast kontaktad,
-			  #7
+        #Vill Jobba,
 
-			  #Kommentarer,
-				#8
 
-			  #Jobbarkort
+        #Email,
+        new_member.email = row[6]
 
-			  # Save to database
-			  new_member.save
+        #Termin,
+        new_member.term = row[7]
 
-			  index += 1
-			end
-	  end
-	end
+        #Senast kontaktad,
+        #7
+
+        #Kommentarer,
+        #8
+
+        #Jobbarkort
+
+        # Save to database
+        new_member.save
+
+        index += 1
+      end
+    end
+  end
 end

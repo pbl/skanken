@@ -27,7 +27,6 @@ The web page is going to be storing person data. This could be against the PUL l
 
 * [Landing page](#landing-page)
 * [Contribute page](#contribute-page)
-* [User assocation to a cooperative](#user-assocation-to-a-cooperative)
 * [Cooperative user creation](#cooperative-user-creation)
 * [Modify activities](#modify-activities)
 * [Excel import](#excel-import)
@@ -41,10 +40,6 @@ Right now the landing page is the standard devise log in page. The landing page 
 ## Contribute page
 
 We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to. 
-
-## User assocation to a cooperative
-
-Currently a user is a assigned a cooperative id. It would be simpler if a user is associated with the cooperative model directly.
 
 ## Cooperative user creation
 

@@ -1,0 +1,33 @@
+<!-- Jquery datatable code -->
+<script type="text/javascript">
+   $(document).ready(function() {
+    $('#accounts').dataTable();
+} );
+</script>        
+
+<table class="display" id="accounts">
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>User role</th>
+      <th>Sign in count</th>
+      <th>Cooperative id</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+    <tr class="worker_row">
+      <td><%= user.email %></td>
+      <td><%= User.role_name(user.user_role) %></td>
+      <td><%= user.sign_in_count %></td>
+      <td><%= user.cooperative_id %></td>
+      <td>
+        <button type="button" class="btn btn-default" aria-label="Left Align">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

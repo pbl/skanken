@@ -1,0 +1,6 @@
+<%= simple_form_for :account, url: cooperative_accounts_path(@cooperative) do |f| %>
+  <%= f.input :email%>
+  <%= f.input :password  %>
+  <%= f.input :user_role, as: :radio_buttons, collection: User.zip_user_roles(:registration) %>
+  <%= f.button :submit  %>
+<% end %>          

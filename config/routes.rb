@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   resources :users
 
   resources :cooperatives do
+    resources :accounts
     get 'admin', to: 'cooperatives#admin'
     post 'import', to: 'cooperatives#import'
     get 'accounts', to: 'cooperatives#accounts'
+    get 'addAccount', to: 'cooperatives#addAccount'
     resources :members do
       resources :contacteds
       resources :jobs

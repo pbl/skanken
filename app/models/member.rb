@@ -8,9 +8,9 @@ class Member < ActiveRecord::Base
 
 
   ACTIVITES = {
-    svartklubben: "Svartklubben",
-    heartland:    "Heartland",
-    foxen:         "Foxen",
+      svartklubben: "Svartklubben",
+      heartland: "Heartland",
+      foxen: "Foxen",
   }
 
   def self.activities

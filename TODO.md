@@ -25,25 +25,14 @@ The web page is going to be storing person data. This could be against the PUL l
 
 ## Features
 
-* [Landing page](#landing-page)
 * [Contribute page](#contribute-page)
-* [Cooperative user creation](#cooperative-user-creation)
 * [Modify activities](#modify-activities)
 * [Excel import](#excel-import)
 * [Excel export](#excel-export)
 
-
-## Landing page
-
-Right now the landing page is the standard devise log in page. The landing page need to give new potientiall users a way to get a feeling of what the site is. Like something the facebook page has as a login page. Easy to login and yet a feeling for the page as weel. 
-
 ## Contribute page
 
 We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to. 
-
-## Cooperative user creation
-
-The cooperative admin should be able to add be able to add users to the cooperative. It should be possible to both add regular users and other cooperative admins
 
 ## Modify activities
 

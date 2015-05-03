@@ -1,13 +1,13 @@
 class MembersController < ApplicationController
+
   before_filter :authenticate_user!
   before_filter :ensure_cooperative
-  before_filter :admin?, only: [:admin, :import]
 
   def index
     cooperative_id = params[:cooperative_id]
     # this is needed since the this method is the website root
     if cooperative_id.nil?
-      cooperative_id = current_user.cooperatives_id
+      cooperative_id = current_user.cooperative_id
     end
     @cooperative = Cooperative.find(cooperative_id)
     @members = @cooperative.members.all
@@ -28,7 +28,7 @@ class MembersController < ApplicationController
   end
 
   def new
-    @cooperative = Cooperative.find(current_user.cooperatives_id)
+    @cooperative = Cooperative.find(current_user.cooperative_id)
   end
 
   def show

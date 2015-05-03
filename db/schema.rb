@@ -69,11 +69,11 @@ ActiveRecord::Schema.define(version: 20150502140458) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "cooperatives_id"
     t.integer  "user_role",              default: -1
+    t.integer  "cooperative_id"
   end
 
-  add_index "users", ["cooperatives_id"], name: "index_users_on_cooperatives_id"
+  add_index "users", ["cooperative_id"], name: "index_users_on_cooperative_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 

@@ -1,20 +1,32 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  belongs_to :cooperative
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
-  belongs_to :cooperative
 
 
   ROLES = {
     no_role:          -1,
-    member:            1,
+    foreman:            1,
     cooperative_admin: 2,
     admin:             1337
   }
+
   validates_inclusion_of :user_role, in: ROLES.values
   # PUBLIC_REG_ROLES = [:tenant, :cooperative_admin]
 
+  def self.role_name role_i
+    name = ''
+    if role_i == 1
+      name = 'Foreman'
+    elsif role_i == 2
+      name = 'Cooperative admin'
+    elsif role_i == -1
+      name = 'No role'
+    end
+    return name      
+  end
 
   ROLES.keys.each do |role|
     scope "#{role}s", -> { where(user_role: ROLES[role]) }

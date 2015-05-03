@@ -33,7 +33,7 @@ class CooperativesController < ApplicationController
   end
 
   def import
-    Member.import(params[:file], current_user.cooperative_id)
+    Member.import(params[:file], current_user.cooperative_id) unless params[:file].nil?
     redirect_to cooperative_admin_path
   end
 

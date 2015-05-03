@@ -1,7 +1,12 @@
 <%= form_tag cooperative_import_path, multipart: true do %>
-  <%= file_field_tag :file %>
-  <%= submit_tag "Import" %>
+    <label for="file">Import workerlist</label>
+    <p>The file need to be in csv format! Currently import only supports files simmilar to Sydkanskas Jobbarlista.</p>
+
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
 <% end %>
+
+
 
 <br>
 <br>

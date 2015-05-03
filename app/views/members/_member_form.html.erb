@@ -1,5 +1,4 @@
 <%= simple_form_for form_for, url: path do |f| %>
-
   <%= f.input :name  %>
   <%= f.input :mobile %>
   <%= f.input :email %>
@@ -8,5 +7,4 @@
   <%= f.input :comment, label: 'Comment', required: false, as: :text %>
   <%= f.button :submit %>
   <a type="button" class="btn btn-default" href=<%=root_path %>>Close</button>
-
 <% end %>

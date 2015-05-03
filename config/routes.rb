@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'accounts/index'
-
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }

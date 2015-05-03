@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   def self.role_name role_i
     name = ''
     if role_i == 1
-      name = 'foreman'
+      name = 'Foreman'
     elsif role_i == 2
       name = 'Cooperative admin'
     elsif role_i == -1

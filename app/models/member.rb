@@ -8,9 +8,9 @@ class Member < ActiveRecord::Base
 
 
   ACTIVITES = {
-    svartklubben: "Svartklubben",
-    heartland:    "Heartland",
-    foxen:         "Foxen",
+      svartklubben: "Svartklubben",
+      heartland: "Heartland",
+      foxen: "Foxen",
   }
 
   def self.activities
@@ -19,20 +19,34 @@ class Member < ActiveRecord::Base
   end
 
 
+  def self.import(file, cooperative_id)
+    workerList = CSV.read(file.path, headers: true)
+    workerList.each do |row|
 
-	def self.import(file, cooperative_id)
-		workerList = CSV.read(file.path, headers:true) 
-		workerList.each do |row|
-			
-		@cooperative = Cooperative.find(cooperative_id)
-		@member = @cooperative.members.new(:dateAdded=>row['x'].to_s, :name=> (row['Namn'].to_s + " " + row['Efternamn'].to_s) ,:mobile=>row['Telefonnummer'].to_s, :email=>row['Email'].to_s, :personId=>row['Personnummer'].to_s, :activities=>row['Vill Jobba'].to_s)
-		@member.save
-		begin  
-			@contacted = @member.contacteds.new(:date =>  Date.parse(row['Senast kontaktad'].to_s), :activity  =>'Unknown', :comment => row['Kommentarer'].to_s)
-			@contacted.save
-		rescue  
-		end  
-		
-		end
-	end
+      @cooperative = Cooperative.find(cooperative_id)
+      @member = @cooperative.members.new(:dateAdded => row['x'].to_s, :name => (row['Namn'].to_s + " " + row['Efternamn'].to_s), :mobile => validate_number(row['Telefonnummer']), :email => row['Email'].to_s, :personId => row['Personnummer'].to_s, :activities => row['Vill Jobba'].to_s)
+
+      @member.save
+      begin
+        @contacted = @member.contacteds.new(:date => Date.parse(row['Senast kontaktad'].to_s), :activity => 'Unknown', :comment => row['Kommentarer'].to_s)
+        @contacted.save
+      rescue
+      end
+
+    end
+  end
+
+  private
+  def self.validate_number(number)
+    @number=number.to_s.strip.delete("-")
+    begin
+      @number=@number.strip
+      @number.prepend("0") if @number.start_with?("7")
+      @number=@number.sub("+46", "0") if @number.start_with?("+46")
+      @number=@number.insert(3, "-")
+    rescue
+    end
+    return @number
+  end
+
 end

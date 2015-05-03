@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
+  
 
   resources :users
 
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
     get 'admin', to: 'cooperatives#admin'
     post 'import', to: 'cooperatives#import'
     get 'accounts', to: 'cooperatives#accounts'
-    get 'addAccount', to: 'cooperatives#addAccount'
     resources :members do
       resources :contacteds
       resources :jobs

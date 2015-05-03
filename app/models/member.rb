@@ -21,8 +21,8 @@ class Member < ActiveRecord::Base
 
   def self.import(file, cooperative_id)
     workerList = CSV.read(file.path, headers: true)
+    @cooperative = Cooperative.find(cooperative_id)
     workerList.each do |row|
-      @cooperative = Cooperative.find(cooperative_id)
       @member = @cooperative.members.new(:dateAdded => row['x'].to_s, :name => (row['Namn'].to_s + " " + row['Efternamn'].to_s), :mobile => validate_number(row['Telefonnummer']), :email => row['Email'].to_s, :personId => row['Personnummer'].to_s, :activities => row['Vill Jobba'].to_s)
       @member.save
       begin

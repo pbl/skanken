@@ -45,7 +45,7 @@ The cooperative admin should be able to edit which activites there is for a work
 
 ## Excel import
 
-More data validation need to be added. (eg dont import already existing members)
+More data validation need to be added. (eg dont import already existing members, should not chrash if no file is chosen)
 Format informations about the file need to be added.
 
 ## Excel export

@@ -10,7 +10,7 @@ class Member < ActiveRecord::Base
   ACTIVITES = {
     svartklubben: "Svartklubben",
     heartland:    "Heartland",
-    foxen:         "Foxen",
+    foxen:         "Foxen"
   }
 
   def self.activities
@@ -20,12 +20,10 @@ class Member < ActiveRecord::Base
 
   def self.import(file, cooperative_id)
     workerList = CSV.read(file.path, headers:true)
-    workerList.each do |row|
-
     @cooperative = Cooperative.find(cooperative_id)
-    @member = @cooperative.members.new(:dateAdded=>row['x'].to_s, :name=> (row['Namn'].to_s + " " + row['Efternamn'].to_s) ,:mobile=>row['Telefonnummer'].to_s, :email=>row['Email'].to_s, :personId=>row['Personnummer'].to_s, :activities=>row['Vill Jobba'].to_s)
-    @member.save
-
+    workerList.each do |row|
+      @member = @cooperative.members.new(:dateAdded=>row['x'].to_s, :name=> (row['Namn'].to_s + " " + row['Efternamn'].to_s) ,:mobile=>row['Telefonnummer'].to_s, :email=>row['Email'].to_s, :personId=>row['Personnummer'].to_s, :activities=>row['Vill Jobba'].to_s)
+      @member.save
     end
   end
 end

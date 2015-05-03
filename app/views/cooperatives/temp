@@ -1,6 +1,0 @@
-<h3>Current activities</h3>
-<ul class="list-group">
-	<% @cooperative.activities.each do |activity| %>
-  <li class="list-group-item"> <strong>Mobile: </strong> <%= activity %></li>
-  <% end %>
-</ul>

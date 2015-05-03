@@ -34,7 +34,7 @@ class CooperativesController < ApplicationController
 
   def import
     Member.import(params[:file], current_user.cooperative_id)
-    redirect_to admin_path
+    redirect_to cooperative_admin_path
   end
 
   private

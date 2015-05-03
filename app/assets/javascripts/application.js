@@ -16,37 +16,37 @@
 //= require_tree .
 
 $( document ).ready(function() {
-	
-	var $rows = $('#worker_table tbody .worker_row');
-	$(".activities_filter").on('click', function(e){
-		var val = $(this).text().toLowerCase();
-		if(val !== 'show all'){
-			// console.log("clicked value: " + val)
-			$rows.show().filter(function() {
-		    var text = $(this).find("#members_list_work").text().replace(/\s+/g, ' ').toLowerCase();
-		    return !~text.indexOf(val);
-	    }).hide();
-		} else{
-			$rows.show();
-		}
-	});
+
+  var $rows = $('#worker_table tbody .worker_row');
+  $(".activities_filter").on('click', function(e){
+    var val = $(this).text().toLowerCase();
+    if(val !== 'show all'){
+      // console.log("clicked value: " + val)
+      $rows.show().filter(function() {
+        var text = $(this).find("#members_list_work").text().replace(/\s+/g, ' ').toLowerCase();
+        return !~text.indexOf(val);
+      }).hide();
+    } else{
+      $rows.show();
+    }
+  });
 
 });
 
 function show_worker(show_url){
-	window.open(show_url, "_self");
+  window.open(show_url, "_self");
 }
 
 
 function formActionValue(id, type){
-	// console.log("id:" + id)
-	// console.log("type:" + type)
-	// console.log("form" + $('#modal_form_' + type).find('form'))
-	$('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);	
+  // console.log("id:" + id)
+  // console.log("type:" + type)
+  // console.log("form" + $('#modal_form_' + type).find('form'))
+  $('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);
 }
 
 // function addHTMLToForm(member_id, type){
-// 	var $form = $("#add_" + type + "_form" + member_id).html();
-// 	$('#modal_form').empty();
-// 	$('#modal_form').append($form);
+//  var $form = $("#add_" + type + "_form" + member_id).html();
+//  $('#modal_form').empty();
+//  $('#modal_form').append($form);
 // }

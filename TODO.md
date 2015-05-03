@@ -6,7 +6,7 @@
 
 ## Legal issues
 
-The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this. 
+The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this.
 
 ## Tech/Code
 
@@ -36,7 +36,7 @@ The web page is going to be storing person data. This could be against the PUL l
 
 ## Contribute page
 
-We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to. 
+We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to.
 
 ## Modify activities
 

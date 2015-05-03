@@ -4,9 +4,9 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def ensure_cooperative_admin?
-  	actor_role = current_user.user_role.to_s
-  	return true unless actor_role != '2'
-  	redirect_to(root_path)
+    actor_role = current_user.user_role.to_s
+    return true unless actor_role != '2'
+    redirect_to(root_path)
   end
 
   def ensure_same_cooperative
@@ -18,11 +18,11 @@ class ApplicationController < ActionController::Base
     redirect_to new_cooperative_path
   end
 
-  private 
-	  def date_today
-	  	time = Time.new
-			unformatTime = Time.local(time.year, time.month, time.day).to_s
-			formattedTime = unformatTime.gsub(/\s+/m, ' ').strip.split(" ")[0]
-			return formattedTime
-	  end
+  private
+    def date_today
+      time = Time.new
+      unformatTime = Time.local(time.year, time.month, time.day).to_s
+      formattedTime = unformatTime.gsub(/\s+/m, ' ').strip.split(" ")[0]
+      return formattedTime
+    end
 end

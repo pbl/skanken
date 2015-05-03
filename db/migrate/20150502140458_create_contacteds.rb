@@ -1,11 +1,11 @@
 class CreateContacteds < ActiveRecord::Migration
   def change
     create_table :contacteds do |t|
-    	t.date :date
-    	t.string :activity
-    	t.text :comment
+      t.date :date
+      t.string :activity
+      t.text :comment
 
-    	t.references :member, index: true
+      t.references :member, index: true
 
       t.timestamps null: false
     end

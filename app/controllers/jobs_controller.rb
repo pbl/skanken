@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
-	before_filter :authenticate_user!
+  before_filter :authenticate_user!
   before_filter :ensure_same_cooperative
-   
+
   def create
     date = date_today
     job_params_merged = job_params.merge(:date => date)
@@ -15,7 +15,7 @@ class JobsController < ApplicationController
   def destroy
     @member = Member.find(params[:member_id])
     @job = @member.jobs.find(params[:id])
-    @job.destroy   
+    @job.destroy
     redirect_to cooperative_member_path
   end
 

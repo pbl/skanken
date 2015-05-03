@@ -9,10 +9,14 @@ class MembersController < ApplicationController
 
 	def create
 		date = date_today
-		activities = params["member"]["activities"].to_s
+
+		activities = params["member"]["activities"]
+		# removes last empty element
+		activities.delete("")
+		activities = activities.join(", ")
 		merged_worker_params = worker_params.merge(:dateAdded => date_today, :activities => activities)
 
-		@cooperative = Cooperative.find(params[:cooperative_id])
+		@cooperative = Cooperative.find(current_user.cooperative_id)
 		@member = @cooperative.members.new(merged_worker_params)
 	  if @member.save
 		  redirect_to cooperative_members_path
@@ -26,7 +30,7 @@ class MembersController < ApplicationController
 	end
 
 	def show
-		@cooperative = Cooperative.find(params[:cooperative_id])
+		@cooperative = Cooperative.find(current_user.cooperative_id)
 		@member = @cooperative.members.find(params[:id])
   end
 

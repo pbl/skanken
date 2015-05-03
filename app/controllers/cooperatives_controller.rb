@@ -24,12 +24,7 @@ class CooperativesController < ApplicationController
 
 	def update
 		@cooperative = Cooperative.find(current_user.cooperative_id)
-
-		current_activities = @cooperative.activities.split(", ")
-		current_activities << params[:cooperative][:activities]
-		format_activities = current_activities.join(", ")
-		merged_params = cooperative_params.merge(:activities => format_activities)
-		@cooperative.update(merged_params)
+		@cooperative.update(cooperative_params)
 		redirect_to edit_cooperative_path(@cooperative)
 	end
 

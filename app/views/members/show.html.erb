@@ -6,7 +6,7 @@
 </div>
 <% end %>
 
-<%= link_to cooperative_member_path(@member, @cooperative),
+<%= link_to cooperative_member_path(@cooperative, @member),
         method: :delete,
         data: { confirm: 'Are you sure?' }  do %>
         <div style="font-size: 1.1em; display:inline-block">
@@ -16,7 +16,7 @@
 
 <ul class="list-group">
   <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
-  <li class="list-group-item"> <strong>Activities: </strong> <%= @member.activities.tr('[]\"','') %></li>
+  <li class="list-group-item"> <strong>Activities: </strong> <%= @member.activities %></li>
   <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
   <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
   <li class="list-group-item"> <strong>Person id: </strong> <%= @member.personId %></li>

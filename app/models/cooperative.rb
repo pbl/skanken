@@ -18,12 +18,7 @@ class Cooperative < ActiveRecord::Base
     end
 
     duplicate = duplicate.sort
-    Hash[*duplicate]
+    activities_map = Hash[*duplicate]
   end
 
 end
-
-# def self.activities
-#   activites_map = Member::ACTIVITES
-#   activites_map.to_a.map! { |arr| [arr.first.to_s.humanize, arr.last] }
-# end

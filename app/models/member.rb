@@ -4,7 +4,7 @@ class Member < ActiveRecord::Base
   has_many :jobs, dependent: :destroy
   belongs_to :cooperative
 
-  validates_presence_of :name, :mobile, :email, :personId, :activities
+  validates_presence_of :name, :mobile
 
 
   ACTIVITES = {

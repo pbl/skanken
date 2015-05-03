@@ -4,7 +4,9 @@
   <%= f.input :mobile %>
   <%= f.input :email %>
   <%= f.input :personId, label: "Person id" %>
-  <%= f.input :activities, label: "Activities", as: :check_boxes, collection: Member.activities() %>
+
+  <%= f.input :activities, label: "Activities", as: :check_boxes, collection: Cooperative.activities(current_user.cooperative_id) %>
+  
   <%= f.input :comment, label: 'Comment', required: false, as: :text %>
   <%= f.button :submit %>
   <a type="button" class="btn btn-default" href=<%=root_path %>>Close</button>

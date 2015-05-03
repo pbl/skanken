@@ -26,4 +26,5 @@ class Member < ActiveRecord::Base
       @member.save
     end
   end
+  
 end

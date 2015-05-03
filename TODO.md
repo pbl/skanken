@@ -25,6 +25,7 @@ The web page is going to be storing person data. This could be against the PUL l
 * A website user should be prompted to make a call when clicking a workers phone number on a mobile.
 * When editing a worker the activities need to be filled in again. That need to be changed so that the activities aren't lost if the user doesn't fill them in again
 * Activity filter in views/members/_activity_filter.html.erb need to be modified to only use the existing ACTIVITIES values in member.rb
+* A cooperative user should only see the links it has rights to visit.
 
 
 ## Features

@@ -15,6 +15,10 @@ The web page is going to be storing person data. This could be against the PUL l
   - Test models
 * Making a license footer
 * Rename "member" to "worker" in model and controller
+* Validation
+  - Client side validation of forms
+  - Server side validation of input data
+  - Validate creation of a account
 
 ## Minor features
 

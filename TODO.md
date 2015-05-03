@@ -19,6 +19,8 @@ The web page is going to be storing person data. This could be against the PUL l
   - Client side validation of forms
   - Server side validation of input data
   - Validate creation of a account
+* Add support to easy show flash messages with feedback to user
+* Security. Make sure that all resources is rightfully secured
 
 ## Minor features
 

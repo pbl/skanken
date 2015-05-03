@@ -2,7 +2,7 @@
 
 ## Issues
 
-* The "filter by activity" button sometimes stops working
+* No current issues
 
 ## Legal issues
 
@@ -33,7 +33,7 @@ The web page is going to be storing person data. This could be against the PUL l
 ## Features
 
 * [Contribute page](#contribute-page)
-* [Modify activities](#modify-activities)
+* [Filter by activity](#filter-by-activity)
 * [Excel import](#excel-import)
 * [Excel export](#excel-export)
 
@@ -41,9 +41,9 @@ The web page is going to be storing person data. This could be against the PUL l
 
 We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to.
 
-## Modify activities
+## Filter by activity
 
-The cooperative admin should be able to edit which activites there is for a worker on the admin page
+In the member table there should be a way to filter by activity. Meaning that you only show workers interested in a specific activity. 
 
 ## Excel import
 

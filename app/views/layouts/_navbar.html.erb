@@ -9,7 +9,8 @@
         <li><%= link_to 'Creators', info_creators_path %></li>  
         <li><%= link_to 'Admin', cooperative_admin_path(@cooperative) %></li> 
         <li><%= link_to 'Edit cooperative', edit_cooperative_path(@cooperative) %></li>  
-        <li><%= link_to 'Accounts', cooperative_accounts_path(@cooperative) %></li>  
+        <li><%= link_to 'Account list', cooperative_accounts_path(@cooperative) %></li>
+        <li><%= link_to 'New account', new_cooperative_account_path(@cooperative) %></li>    
         <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
       </ul>
       

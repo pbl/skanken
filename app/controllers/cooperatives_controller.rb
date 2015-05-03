@@ -32,16 +32,10 @@ class CooperativesController < ApplicationController
 		@cooperative = Cooperative.find(current_user.cooperative_id)
 	end
 
-	def accounts
-		@user = User.all
-		@cooperative = Cooperative.find(current_user.cooperative_id)
-	end
-
 	def import
 		Member.import(params[:file], current_user.cooperative_id)
 		redirect_to admin_path
 	end
-
 
 	private
     def cooperative_params

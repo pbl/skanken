@@ -27,7 +27,12 @@ class Member < ActiveRecord::Base
 		@cooperative = Cooperative.find(cooperative_id)
 		@member = @cooperative.members.new(:dateAdded=>row['x'].to_s, :name=> (row['Namn'].to_s + " " + row['Efternamn'].to_s) ,:mobile=>row['Telefonnummer'].to_s, :email=>row['Email'].to_s, :personId=>row['Personnummer'].to_s, :activities=>row['Vill Jobba'].to_s)
 		@member.save
-
+		begin  
+			@contacted = @member.contacteds.new(:date =>  Date.parse(row['Senast kontaktad'].to_s), :activity  =>'Unknown', :comment => row['Kommentarer'].to_s)
+			@contacted.save
+		rescue  
+		end  
+		
 		end
 	end
 end

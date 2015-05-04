@@ -29,10 +29,15 @@ $( document ).ready(function() {
               var val = $.fn.dataTable.util.escapeRegex(
                 $(this).val()
               );
+              // the standard filter function
+              // column
+              //   .search( val ? '^'+val+'$' : '', true, false )
+              //   .draw();
 
+              // adjusted filter function to fit worker list purpose
               column
-                .search( val ? '^'+val+'$' : '', true, false )
-                .draw();
+              .search( val, true, false )
+              .draw();
             } );
 
           var unique_activities = []
@@ -57,13 +62,11 @@ $( document ).ready(function() {
     }
   } );
 
-
-  function show_worker(show_url){
-    window.open(show_url, "_self");
-  }
-
   function formActionValue(id, type){
     $('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);
   }
 });
 
+function show_worker(show_url){
+  window.open(show_url, "_self");
+}

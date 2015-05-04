@@ -16,37 +16,54 @@
 //= require_tree .
 
 $( document ).ready(function() {
+  // Jquery datatable code
+  $('#worker_table').DataTable( {
+    initComplete: function () {
+      this.api().columns().every( function () {
+        var column = this;
+        // only create a filter for the column activities
+        if($(column.footer())[0].textContent === "Activities"){
+          var select = $('<select><option value=""></option></select>')
+            .appendTo( $(column.footer()).empty() )
+            .on( 'change', function () {
+              var val = $.fn.dataTable.util.escapeRegex(
+                $(this).val()
+              );
 
-  var $rows = $('#worker_table tbody .worker_row');
-  $(".activities_filter").on('click', function(e){
-    var val = $(this).text().toLowerCase();
-    if(val !== 'show all'){
-      // console.log("clicked value: " + val)
-      $rows.show().filter(function() {
-        var text = $(this).find("#members_list_work").text().replace(/\s+/g, ' ').toLowerCase();
-        return !~text.indexOf(val);
-      }).hide();
-    } else{
-      $rows.show();
+              column
+                .search( val ? '^'+val+'$' : '', true, false )
+                .draw();
+            } );
+
+          var unique_activities = []
+          
+          column.data().unique().sort().each( function ( d, j ) {
+            var activities = d.split("\, ")
+            for (var i = 0; i < activities.length; i++) {
+              // see if the activity option is already added
+              if(unique_activities.indexOf(activities[i]) === -1 ){
+                unique_activities.push(activities[i])
+              }
+            }  
+          } );
+          for (var i = 0; i < unique_activities.length; i++) {
+            select.append( '<option value="'+unique_activities[i]+'">'+unique_activities[i]+'</option>' )
+          }
+        } else{
+          // clear away the datatable footer
+          $(column.footer()).empty()
+        }
+      } );
     }
-  });
+  } );
 
+
+  function show_worker(show_url){
+    window.open(show_url, "_self");
+  }
+
+  function formActionValue(id, type){
+    $('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);
+  }
 });
 
-function show_worker(show_url){
-  window.open(show_url, "_self");
-}
-
-
-function formActionValue(id, type){
-  // console.log("id:" + id)
-  // console.log("type:" + type)
-  // console.log("form" + $('#modal_form_' + type).find('form'))
-  $('#modal_form_' + type).find('form').attr('action', 'members/' + id + '/' + type);
-}
-
-// function addHTMLToForm(member_id, type){
-//  var $form = $("#add_" + type + "_form" + member_id).html();
-//  $('#modal_form').empty();
-//  $('#modal_form').append($form);
-// }

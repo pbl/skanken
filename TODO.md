@@ -3,8 +3,8 @@
 ## Issues
 
 * The jquery data table stops working when it is empty. 
-* The jquery data table stops working sometimes. No idea why.. 
-* Can't create a jobs or contacted field
+* The jquery data table stops working sometimes. No idea why.. It might have to do with a field being empty or faulty.  
+* Can't create a jobs or contacteds. When submitting the form something goes wrong
 
 ## Legal issues
 

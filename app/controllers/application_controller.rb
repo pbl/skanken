@@ -3,18 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  def ensure_cooperative_admin?
-    return true unless current_user.user_role != 2
-    flash[:danger] = "You dont have the access rights to this page. Helge vare gösta"
-    redirect_to info_creators_path
+  rescue_from CanCan::AccessDenied do | exception |
+    redirect_to root_url, alert: exception.message
   end
-
-  # def ensure_correct_cooperative
-  #   ad
-  #   return true unless current_user.cooperative_id.to_s != params[:cooperative_id]
-  #   flash[:danger] = "You dont have the access rights to this page. Helge vare gösta"
-  #   redirect_to info_creators_path
-  # end
 
   def ensure_cooperative_created
     return true unless (current_user.cooperative_id.nil?)

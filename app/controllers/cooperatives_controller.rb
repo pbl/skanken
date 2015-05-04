@@ -1,7 +1,5 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :ensure_cooperative_admin?
-	# before_filter :ensure_correct_cooperative
 	before_filter :ensure_cooperative_created, except: [:create, :new]
 
 	def new

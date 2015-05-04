@@ -1,7 +1,5 @@
 class ContactedsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :ensure_same_cooperative
-  # before_filter :ensure_correct_cooperative
 
   def create
     date = date_today

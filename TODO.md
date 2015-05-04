@@ -21,6 +21,7 @@ The web page is going to be storing person data. This could be against the PUL l
   - Validate creation of a account
 * Add support to easy show flash messages with feedback to user
 * Security. Make sure that all resources is rightfully secured
+* There seem to be two different folders for devise views. The devise folder and the user folder. Both of which are used by devise. This need to be refactored to one folder with all devise logic
 
 ## Minor features
 

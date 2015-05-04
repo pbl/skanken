@@ -1,6 +1,7 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
   before_filter :ensure_cooperative_admin?
+  # before_filter :ensure_correct_cooperative
 
   def index
   	@cooperative = Cooperative.find(current_user.cooperative_id)
@@ -29,7 +30,11 @@ class AccountsController < ApplicationController
   def destroy
   	@cooperative = Cooperative.find(current_user.cooperative_id)
   	@user = @cooperative.users.find(params[:id])
-  	@user.destroy
+  	if @user.destroy
+      flash[:success] = "Account was succesfully removed. Helge vare gösta"
+    else
+      flash[:danger] = "Something went wrong. Helge vare gösta"
+    end
   	redirect_to cooperative_accounts_path
   end
 

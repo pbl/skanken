@@ -1,7 +1,12 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :ensure_cooperative_admin?
-	before_filter :ensure_cooperative, except: [:create, :new]
+	# before_filter :ensure_correct_cooperative
+	before_filter :ensure_cooperative_created, except: [:create, :new]
+
+	def new
+		@cooperative = Cooperative.new
+	end
 
 	def create
 		@cooperative = Cooperative.new(cooperative_params)
@@ -9,14 +14,10 @@ class CooperativesController < ApplicationController
 
 		if @cooperative.save
 			flash[:success] = "Welcome to skånken. Helge vare gösta"
-			redirect_to cooperative_members_path
+			redirect_to cooperative_members_path(@cooperative)
 		else
 			render 'new'
 		end
-	end
-
-	def new
-		@cooperative = Cooperative.new
 	end
 
 	def edit
@@ -28,7 +29,7 @@ class CooperativesController < ApplicationController
 		if @cooperative.update(cooperative_params)
 			flash[:success] = "Fields were successfully updated. Helge vare gösta"
 		else
-			flash[:error] = "Something went wrong. Helge vare gösta"
+			flash[:danger] = "Something went wrong. Helge vare gösta"
 		end
 		redirect_to edit_cooperative_path(@cooperative)
 	end
@@ -43,7 +44,7 @@ class CooperativesController < ApplicationController
 			flash[:success] = "File uploaded. Helge vare gösta"
 			redirect_to cooperative_members_path
 		else
-			flash[:error] = "No file or wrong file format. Helge vare gösta"
+			flash[:danger] = "No file or wrong file format. Helge vare gösta"
 			redirect_to cooperative_admin_path
 		end
 	end

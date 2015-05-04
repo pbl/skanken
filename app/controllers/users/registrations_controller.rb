@@ -10,7 +10,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     super
     @user       = resource
-    @user.user_role = User::ROLES[:cooperative_admin]
+    @user.role = :cooperative_admin
     @user.save
   end
 

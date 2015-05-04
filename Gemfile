@@ -4,6 +4,8 @@ gem 'devise'
 
 gem 'simple_form'
 
+gem 'cancancan'
+
 group :development do
   gem "better_errors"
 end

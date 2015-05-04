@@ -5,43 +5,48 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  ROLES = %w[admin cooperative_admin foreman no_role]
 
-  ROLES = {
-    no_role:          -1,
-    foreman:            1,
-    cooperative_admin: 2,
-    admin:             1337
-  }
+  validates_inclusion_of :role, in: ROLES
 
-  validates_inclusion_of :user_role, in: ROLES.values
+  def self.cooperative_roles
+    ROLES - ["admin"] - ["no_role"]
+  end
+
+  def is?( requested_role )
+    self.role == requested_role.to_s
+  end
+
   # PUBLIC_REG_ROLES = [:tenant, :cooperative_admin]
 
-  def self.role_name role_i
-    name = ''
-    if role_i == 1
-      name = 'Foreman'
-    elsif role_i == 2
-      name = 'Cooperative admin'
-    elsif role_i == -1
-      name = 'No role'
-    end
-    return name      
-  end
+  # def self.is? user_role
+  #   if user_role == :admin
+  #     return self.user_role == 1337
+  #   elsif user_role == :cooperative_admin
+  #     return self.user_role == 2
+  #   elsif user_role == :foreman
+  #     return self.user_role == 1
+  #   else
+  #     return self.user_role == -1
+  #   end
+  # end
 
-  ROLES.keys.each do |role|
-    scope "#{role}s", -> { where(user_role: ROLES[role]) }
-  end
+  # def self.role_name role_i
+  #   name = ''
+  #   if role_i == 1
+  #     name = 'Foreman'
+  #   elsif role_i == 2
+  #     name = 'Cooperative admin'
+  #   elsif role_i == -1
+  #     name = 'No role'
+  #   end
+  #   return name      
+  # end
 
-  ROLES.keys.each do |role|
-    define_method("#{role}?") do
-      self[:user_role].eql?(ROLES[role])
-    end
-  end
-
-  def self.zip_user_roles(only = :all)
-    user_roles = User::ROLES
-    user_roles = user_roles.reject { |e| e == :no_role ||  e == :admin } if only == :registration
-    user_roles.to_a.map! { |arr| [arr.first.to_s.humanize, arr.last] }
-  end
+  # def self.zip_user_roles(only = :all)
+  #   user_roles = User::ROLES
+  #   user_roles = user_roles.reject { |e| e == :no_role ||  e == :admin } if only == :registration
+  #   user_roles.to_a.map! { |arr| [arr.first.to_s.humanize, arr.last] }
+  # end
 
 end

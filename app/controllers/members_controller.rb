@@ -1,7 +1,6 @@
 class MembersController < ApplicationController
-	before_filter :authenticate_user!	
+	before_filter :authenticate_user!
 	before_filter :ensure_cooperative_created
-	# before_filter :ensure_correct_cooperative
 
 	def index
 		@cooperative = Cooperative.find(current_user.cooperative_id)

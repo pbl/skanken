@@ -1,7 +1,5 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :ensure_cooperative_admin?
-  # before_filter :ensure_correct_cooperative
 
   def index
   	@cooperative = Cooperative.find(current_user.cooperative_id)
@@ -18,7 +16,7 @@ class AccountsController < ApplicationController
     password = params[:account][:password]
     merge_params = account_params.merge(:password_confirmation => password)  
   	@user = User.new(:email => params[:account][:email], :password => params[:account][:password], :password_confirmation => params[:account][:password])
-  	@user.user_role = params[:account][:user_role].to_i
+  	@user.role = params[:account][:role]
     if @cooperative.users << @user
       flash[:success] = "The user with an email: #{email} and password: #{password} has been created. Helge vare gösta"
     else

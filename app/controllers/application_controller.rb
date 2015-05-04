@@ -4,16 +4,19 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def ensure_cooperative_admin?
-    actor_role = current_user.user_role.to_s
-    return true unless actor_role != '2'
-    redirect_to(root_path)
+    return true unless current_user.user_role != 2
+    flash[:danger] = "You dont have the access rights to this page. Helge vare gösta"
+    redirect_to info_creators_path
   end
 
-  def ensure_same_cooperative
-    return true unless (current_user.cooperative_id != Member.find(params[:member_id]).cooperative_id)
-  end
+  # def ensure_correct_cooperative
+  #   ad
+  #   return true unless current_user.cooperative_id.to_s != params[:cooperative_id]
+  #   flash[:danger] = "You dont have the access rights to this page. Helge vare gösta"
+  #   redirect_to info_creators_path
+  # end
 
-  def ensure_cooperative
+  def ensure_cooperative_created
     return true unless (current_user.cooperative_id.nil?)
     redirect_to new_cooperative_path
   end

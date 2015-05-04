@@ -4,20 +4,7 @@ class Member < ActiveRecord::Base
   has_many :jobs, dependent: :destroy
   belongs_to :cooperative
 
-  validates_presence_of :name, :mobile
-
-
-  ACTIVITES = {
-      svartklubben: "Svartklubben",
-      heartland: "Heartland",
-      foxen: "Foxen",
-  }
-
-  def self.activities
-    activites_map = Member::ACTIVITES
-    activites_map.to_a.map! { |arr| [arr.first.to_s.humanize, arr.last] }
-  end
-
+  validates_presence_of :name, :mobile, :activities
 
   def self.import(file, cooperative_id)
     workerList = CSV.read(file.path, headers: true)

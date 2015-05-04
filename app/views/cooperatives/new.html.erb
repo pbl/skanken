@@ -1,4 +1,6 @@
+<p class="lead"> You can edit this later </p>
 <%= simple_form_for @cooperative do |f| %>
-  <%= f.input :name, label: "Name your cooperative (you can change the name later)" %>
+  <%= f.input :name, label: "Name your cooperative" %>
+  <%= f.input :activities, label: "Edit activity", hint: "All activities should be seperated by a comma and space. Example: Lunch, Club, Pub" %>
   <%= f.button :submit %>
 <% end %>

@@ -2,7 +2,7 @@
 
 ## Issues
 
-* Flash messages aren't sometimes shown as bootstrap alerts. It is then shown as regular div text
+* Can't create a jobs or contacted field
 
 ## Legal issues
 
@@ -30,6 +30,7 @@ The web page is going to be storing person data. This could be against the PUL l
 * When editing a worker the activities need to be filled in again. That need to be changed so that the activities aren't lost if the user doesn't fill them in again
 * A cooperative user should only see the links it has rights to visit.
 * Make landing page responsive (mobile friendly)
+* The jquery data table looks wierd when it is empty
 
 
 ## Features

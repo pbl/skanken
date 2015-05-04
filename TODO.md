@@ -2,6 +2,8 @@
 
 ## Issues
 
+* The jquery data table stops working when it is empty. 
+* The jquery data table stops working sometimes. No idea why.. 
 * Can't create a jobs or contacted field
 
 ## Legal issues
@@ -19,7 +21,6 @@ The web page is going to be storing person data. This could be against the PUL l
   - Client side validation of forms
   - Server side validation of input data
   - Validate creation of a account
-* Add support to easy show flash messages with feedback to user
 * Security. Make sure that all resources is rightfully secured
 * There seem to be two different folders for devise views. The devise folder and the user folder. Both of which are used by devise. This need to be refactored to one folder with all devise logic
 * Make sure the webiste is mobile friendly
@@ -30,7 +31,6 @@ The web page is going to be storing person data. This could be against the PUL l
 * When editing a worker the activities need to be filled in again. That need to be changed so that the activities aren't lost if the user doesn't fill them in again
 * A cooperative user should only see the links it has rights to visit.
 * Make landing page responsive (mobile friendly)
-* The jquery data table looks wierd when it is empty
 
 
 ## Features

@@ -26,24 +26,18 @@ The web page is going to be storing person data. This could be against the PUL l
 
 * A website user should be prompted to make a call when clicking a workers phone number on a mobile.
 * When editing a worker the activities need to be filled in again. That need to be changed so that the activities aren't lost if the user doesn't fill them in again
-* Activity filter in views/members/_activity_filter.html.erb need to be modified to only use the existing ACTIVITIES values in member.rb
 * A cooperative user should only see the links it has rights to visit.
 
 
 ## Features
 
 * [Contribute page](#contribute-page)
-* [Filter by activity](#filter-by-activity)
 * [Excel import](#excel-import)
 * [Excel export](#excel-export)
 
 ## Contribute page
 
 We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to.
-
-## Filter by activity
-
-In the member table there should be a way to filter by activity. Meaning that you only show workers interested in a specific activity. 
 
 ## Excel import
 

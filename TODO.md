@@ -2,7 +2,7 @@
 
 ## Issues
 
-* No current issues
+* Flash messages aren't sometimes shown as bootstrap alerts. It is then shown as regular div text
 
 ## Legal issues
 

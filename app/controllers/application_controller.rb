@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def ensure_cooperative_admin?
-    actor_role = current_user.user_role.to_s
-    return true unless actor_role != '2'
+    return true unless current_user.user_role != 2
     redirect_to(root_path)
   end
 

@@ -13,11 +13,15 @@ class AccountsController < ApplicationController
   
   def create 
   	@cooperative = Cooperative.find(current_user.cooperative_id)
-  	if !params[:account][:email].empty? && !params[:account][:password].empty? && !params[:account][:user_role].empty?
-	  	@user = User.new(:email => params[:account][:email], :password => params[:account][:password], :password_confirmation => params[:account][:password])
-	  	@user.user_role = params[:account][:user_role].to_i
-	  	@cooperative.users << @user
-	  	@cooperative.save
+    email = params[:account][:email]
+    password = params[:account][:password]
+    merge_params = account_params.merge(:password_confirmation => password)  
+  	@user = User.new(:email => params[:account][:email], :password => params[:account][:password], :password_confirmation => params[:account][:password])
+  	@user.user_role = params[:account][:user_role].to_i
+    if @cooperative.users << @user
+      flash[:success] = "The user with an email: #{email} and password: #{password} has been created. Helge vare gösta"
+    else
+      flash[:danger] = "The email adress might already be in use or a form field wasn't filled in. Helge vare gösta"
 	  end
   	redirect_to new_cooperative_account_path(@cooperative)
   end
@@ -28,5 +32,10 @@ class AccountsController < ApplicationController
   	@user.destroy
   	redirect_to cooperative_accounts_path
   end
+
+  private
+    def account_params
+      params.require(:account).permit(:email, :password)
+    end
 
 end

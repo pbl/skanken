@@ -9,11 +9,7 @@ class MembersController < ApplicationController
 
 	def create
 		date = date_today
-
-		activities = params["member"]["activities"]
-		# removes last empty element
-		activities.delete("")
-		activities = activities.join(", ")
+		activities = parse_activities params["member"]["activities"]
 		merged_worker_params = worker_params.merge(:dateAdded => date_today, :activities => activities)
 
 		@cooperative = Cooperative.find(current_user.cooperative_id)
@@ -43,12 +39,18 @@ class MembersController < ApplicationController
 
 	def update
 		@member = Member.find(params[:id])
+		activities = parse_activities params["member"]["activities"]
 		
-		activities = params["member"]["activities"].to_s
 		merged_worker_params = worker_params.merge(:activities => activities)
 		
-		@member.update(merged_worker_params)
-		redirect_to cooperative_member_path
+		if @member.update(merged_worker_params)
+	  	flash[:success] = "#{params[:member][:name]} was successfully updated. Helge vare gösta"
+		  redirect_to cooperative_members_path
+		else
+			flash[:danger] = "Name, mobile and activities field must be filled in. Helge vare gösta"
+			@cooperative = Cooperative.find(current_user.cooperative_id)
+			redirect_to edit_cooperative_member_path
+		end
 	end
 
 	def destroy
@@ -56,6 +58,14 @@ class MembersController < ApplicationController
 	  @member.destroy	 
 	  redirect_to cooperative_members_path
 	end
+
+	private 
+		def parse_activities activities_param
+			activities = activities_param
+			# removes last empty element
+			activities.delete("")
+			activities.join(", ")
+		end
 
 	private
 	  def worker_params

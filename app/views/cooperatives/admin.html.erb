@@ -9,6 +9,6 @@
 
 <br>
 <br>
-<br>
 
-<a class="btn btn-danger" href=<%= cooperative_clear_path %> role="button">Delete all workers</a>
+<h3>Delete all workers in the worker list</h3>
+<%= link_to 'Delete all workers', cooperative_clear_path, :class => 'btn btn-danger', data: {confirm: "Are you sure? This will delete all worker data"} %>

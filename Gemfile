@@ -6,10 +6,6 @@ gem 'simple_form'
 
 gem 'cancancan'
 
-group :development do
-  gem "better_errors"
-end
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use sqlite3 as the database for Active Record
@@ -45,10 +41,14 @@ gem 'tzinfo-data'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   # gem 'debugger'
-
+  gem "better_errors"
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
 

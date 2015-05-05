@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :ensure_cooperative_created
+	before_filter :ensure_cooperative_created, required: false
 
 	def index
 		@cooperative = Cooperative.find(current_user.cooperative_id)
@@ -19,8 +19,10 @@ class MembersController < ApplicationController
 		@cooperative = Cooperative.find(current_user.cooperative_id)
 		@member = @cooperative.members.new(merged_worker_params)
 	  if @member.save
+	  	flash[:success] = "#{params[:member][:name]} was successfully created. Helge vare gösta"
 		  redirect_to cooperative_members_path
 		else
+			flash[:danger] = "Name, mobile and activities field must be filled in. Helge vare gösta"
 			render 'new'
 		end
 	end

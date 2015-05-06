@@ -6,9 +6,6 @@ The web page is going to be storing person data. This could be against the PUL l
 
 ## Tech/Code
 
-* Writing basic tests
-  - Test controllers
-  - Test models
 * Making a license footer
 * Rename "member" to "worker" in model and controller
 * There seem to be two different folders for devise views. The devise folder and the user folder. Both of which are used by devise. This need to be refactored to one folder with all devise logic
@@ -25,17 +22,11 @@ The web page is going to be storing person data. This could be against the PUL l
 ## Features
 
 * [Contribute page](#contribute-page)
-* [Excel import](#excel-import)
 * [Excel export](#excel-export)
 
 ## Contribute page
 
 We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to.
-
-## Excel import
-
-More data validation need to be added. (eg dont import already existing members, should not chrash if no file is chosen)
-Format informations about the file need to be added.
 
 ## Excel export
 

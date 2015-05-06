@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150504214538) do
+ActiveRecord::Schema.define(version: 20150503155250) do
 
   create_table "contacteds", force: :cascade do |t|
     t.date     "date"
@@ -70,12 +70,14 @@ ActiveRecord::Schema.define(version: 20150504214538) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "role",                   default: "no_role"
     t.integer  "cooperative_id"
+    t.integer  "member_id"
+    t.string   "role",                   default: "no_role"
   end
 
   add_index "users", ["cooperative_id"], name: "index_users_on_cooperative_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["member_id"], name: "index_users_on_member_id"
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end

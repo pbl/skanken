@@ -22,12 +22,7 @@ The web page is going to be storing person data. This could be against the PUL l
 ## Features
 
 * [Contribute page](#contribute-page)
-* [Excel export](#excel-export)
 
 ## Contribute page
 
 We need something that mentions the fact that it is OSS and provide a link to the GitHub repo. This could be a perfect page for students in Lund looking for a simple open source project to contribute to.
-
-## Excel export
-
-The cooperative admin should be able to export workers to a excel csv file on the admin page

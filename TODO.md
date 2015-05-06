@@ -1,11 +1,5 @@
 # TODO
 
-## Issues
-
-* The jquery data table sometimes stops working when it is empty. 
-* The jquery data table sometimes stops working. No idea why.. It might have to do with a field being empty or faulty.  
-* Can't create a jobs or contacteds. When submitting the form something goes wrong
-
 ## Legal issues
 
 The web page is going to be storing person data. This could be against the PUL law in sweden. We need a person with insight to provide knowledge in this.
@@ -17,10 +11,6 @@ The web page is going to be storing person data. This could be against the PUL l
   - Test models
 * Making a license footer
 * Rename "member" to "worker" in model and controller
-* Validation
-  - Client side validation of forms
-  - Server side validation of input data
-  - Validate creation of a account
 * There seem to be two different folders for devise views. The devise folder and the user folder. Both of which are used by devise. This need to be refactored to one folder with all devise logic
 * Make sure the webiste is mobile friendly
 * Locking the gems version down.

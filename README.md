@@ -31,3 +31,4 @@ rails server
 * Ruby on Rails 4.2
 * Twitter Bootstrap 3
 * jQuery 1.10
+* 

@@ -7,7 +7,7 @@ Skanken is a worker list webapplication. It is basicly a table containing the in
 
 Looking for a feature to implement?
 
-* In the [ISSUES](issues) file, you can find features and other things that needs to be implemented.
+* On the [issues](/issues) page, you can find features and other things that needs to be implemented.
 * 
 * In [contributing](CONTRIBUTING.md) for a guide of how to submit your contributions.
 

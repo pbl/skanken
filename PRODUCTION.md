@@ -22,7 +22,11 @@
 
 ## Rerun the the db setup
 
+Development:
 ```rake db:drop db:create db:migrate ```
+
+Production:
+rake db:create db:migrate RAILS_ENV="production" 
 
 ## Comment
 

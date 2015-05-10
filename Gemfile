@@ -40,10 +40,10 @@ gem 'tzinfo-data'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'pg'
 
-group :production do
-  gem 'pg'
-end
+# Foreigner is used so that add_foreign_key can be used in the db for postgresql
+# gem 'foreigner'
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
@@ -53,6 +53,5 @@ group :development, :test do
   gem 'web-console', '~> 2.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
-  gem 'sqlite3'
 end
 

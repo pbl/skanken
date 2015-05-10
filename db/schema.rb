@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150503155250) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contacteds", force: :cascade do |t|
     t.date     "date"
     t.string   "activity"
@@ -22,7 +25,7 @@ ActiveRecord::Schema.define(version: 20150503155250) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "contacteds", ["member_id"], name: "index_contacteds_on_member_id"
+  add_index "contacteds", ["member_id"], name: "index_contacteds_on_member_id", using: :btree
 
   create_table "cooperatives", force: :cascade do |t|
     t.string   "name"
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20150503155250) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "jobs", ["member_id"], name: "index_jobs_on_member_id"
+  add_index "jobs", ["member_id"], name: "index_jobs_on_member_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
@@ -55,7 +58,7 @@ ActiveRecord::Schema.define(version: 20150503155250) do
     t.datetime "updated_at",     null: false
   end
 
-  add_index "members", ["cooperative_id"], name: "index_members_on_cooperative_id"
+  add_index "members", ["cooperative_id"], name: "index_members_on_cooperative_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
@@ -71,13 +74,15 @@ ActiveRecord::Schema.define(version: 20150503155250) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "cooperative_id"
-    t.integer  "member_id"
     t.string   "role",                   default: "no_role"
   end
 
-  add_index "users", ["cooperative_id"], name: "index_users_on_cooperative_id"
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["member_id"], name: "index_users_on_member_id"
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["cooperative_id"], name: "index_users_on_cooperative_id", using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "contacteds", "members"
+  add_foreign_key "jobs", "members"
+  add_foreign_key "members", "cooperatives"
+  add_foreign_key "users", "cooperatives"
 end

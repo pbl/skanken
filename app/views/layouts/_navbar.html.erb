@@ -6,7 +6,7 @@
         <% @cooperative = Cooperative.find(current_user.cooperative_id) %>
         <li><%= link_to 'Worker list', cooperative_members_path(@cooperative) %></li>
         <li><%= link_to 'Add worker', new_cooperative_member_path(@cooperative) %></li>
-        <li><%= link_to 'Creators', info_creators_path %></li>
+        <li><%= link_to 'Contribute to this project', info_creators_path %></li>
         <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
       </ul>
       <% if can? :manage, Cooperative %>

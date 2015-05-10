@@ -25,8 +25,11 @@
 Development:
 ```rake db:drop db:create db:migrate ```
 
-Production:
-rake db:create db:migrate RAILS_ENV="production" 
+Production rails:
+```rake db:create db:migrate RAILS_ENV="production"```
+
+Production heroku:
+```heroku rund db:create db:migrate```
 
 ## Comment
 

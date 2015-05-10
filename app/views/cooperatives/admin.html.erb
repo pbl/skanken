@@ -1,11 +1,10 @@
-<%= form_tag cooperative_import_path, multipart: true do %>
-    <h3>Import workerlist from excel</h3		>
-    <p>The file need to be in csv format! Currently import only supports files simmilar to Sydskånskas Jobbarlista. The import may take a few seconds <strong> when the import has started wait until it is done </strong></p>
+<h3>Import workerlist from excel</h3		>
+<p>The file need to be in csv format! Currently import only supports files simmilar to Sydskånskas Jobbarlista. The import may take a few seconds <strong> when the import has started wait until it is done </strong></p>
 
+<%= form_tag cooperative_import_path, multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import" %>
 <% end %>
-
 
 <br>
 <br>

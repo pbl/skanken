@@ -14,21 +14,8 @@
  *= require_self
  */
 
- .hiddenRow {
-    padding: 0 !important;
-}
-
 .clickable{
   cursor: pointer;
   cursor: hand!important;
 }
 
-#members_list_contacted{
-  cursor: pointer;
-  cursor: hand!important;
-}
-
-#members_list_worked{
-  cursor: pointer;
-  cursor: hand!important;
-}

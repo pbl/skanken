@@ -7,7 +7,8 @@ Skanken is a worker list webapplication. It is basicly a table containing the in
 
 Looking for a feature to implement?
 
-* In the [TODO](TODO.md) file, you can find features and other things that needs to be implemented.
+* On the issues page, you can find features and other things that needs to be implemented.
+* In [postgresql](POSTGRESQL.md) you can see how to set up the database
 * In [contributing](CONTRIBUTING.md) for a guide of how to submit your contributions.
 
 ## Devloping
@@ -20,6 +21,17 @@ bundle exec rake db:create db:migrate
 ```
 
 Start the with rails available locally on http://localhost:3000.
+
+## To test the code in production
+
+To run the code in production in rails you need to set ENV["SECRET_KEY_BASE"]
+
+* Open the terminal
+* cd to the skanken folder
+* Run ```$ rake secret ```
+* Copy the output
+* Open ```~/.bashrc in a text editor```
+* Append the line ```export SECRET_KEY_BASE="Paste the output from rake secret here"```
 
 ```
 rails server

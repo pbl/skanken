@@ -31,10 +31,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       # t.datetime :locked_at
       t.timestamps
       t.references :cooperative, index: true
-      t.references :member, index: true
     end
-
-    add_foreign_key :users, :cooperative
 
     add_index :users, :email,                unique: true
     add_index :users, :reset_password_token, unique: true

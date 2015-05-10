@@ -42,9 +42,6 @@ gem 'tzinfo-data'
 # gem 'capistrano-rails', group: :development
 gem 'pg'
 
-# Foreigner is used so that add_foreign_key can be used in the db for postgresql
-# gem 'foreigner'
-
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   # gem 'debugger'

@@ -34,7 +34,9 @@ Production heroku:
 ## Comment
 
 You might have to add this to config/database.yml: 
+```
 username: myapp
 password: password1
+```
 
 But I didn't think that is because i choice the same username for postgresql as my unix login name. It looks kind of insecure to keep that in a open file

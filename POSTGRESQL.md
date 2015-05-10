@@ -7,9 +7,9 @@
 * Set password by running
 * ```\password postgres```
 * And then set your password when prompted
-* Create a postgresql user, when prompted
-* Createuser by running and select the user to be a superuser
+* Create a user by running
 * ```createuser --interactive the_user_name```
+*  Select y when prompted if the user should be a superuser
 
 ## Rerun the the db setup
 

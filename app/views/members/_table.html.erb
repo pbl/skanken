@@ -2,6 +2,7 @@
 
 // Jquery datatable code
   $('#worker_table').DataTable( {
+      stateSave: true,
       initComplete: function () {
         jquery_data_table(this)
     }
@@ -16,22 +17,22 @@
     </tr>
     <tr>
       <th>Name</th>
-      <th>Activities</th>
       <th>Mobile</th>
       <th>Worked</th>
       <th>Contacted</th>
       <th>Last contacted</th>
+      <th>Activities</th>
       <th>Profile</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
       <th>Name</th>
-      <th>Activities</th>
       <th>Mobile</th>
       <th>Worked</th>
       <th>Contacted</th>
       <th>Last contacted</th>
+      <th>Activities</th>
       <th>Profile</th>
     </tr>
   </tfoot>
@@ -39,7 +40,6 @@
     <% @members.each do |member| %>
     <tr>
       <td><%= member.name %></td>
-      <td id="table-activity-column"><%= member.activities %> </td>
       <td><%= member.mobile %></td>
       <td>
         <%= member.jobs.length %>
@@ -55,6 +55,7 @@
         <% last_contacted = member.contacteds.last.date %>
       <% end %>
       <td><%= last_contacted %></td>
+      <td id="table-activity-column"><%= member.activities %> </td>
       <td>
         <%= link_to cooperative_member_path(@cooperative, member) do %>
         <button type="button" class="btn btn-default btn-default">

@@ -1,77 +1,46 @@
 <script text="text/javascript">
 
-$('#worker_table').DataTable( {
-  initComplete: function () {
-    this.api().columns().every( function () {
-      var column = this;
-      // only create a filter for the column activities
-      if($(column.footer())[0].textContent === "Activities"){
-        var select = $('<select><option value=""></option></select>')
-          .appendTo( $(column.footer()).empty() )
-          .on( 'change', function () {
-            var val = $.fn.dataTable.util.escapeRegex(
-              $(this).val()
-            );
-            // the standard filter function
-            // column
-            //   .search( val ? '^'+val+'$' : '', true, false )
-            //   .draw();
-
-            // adjusted filter function to fit worker list purpose
-            column
-            .search( val, true, false )
-            .draw();
-          } );
-
-        var unique_activities = []
-        
-        column.data().unique().sort().each( function ( d, j ) {
-          var activities = d.split("\, ")
-          for (var i = 0; i < activities.length; i++) {
-            // see if the activity option is already added
-            if(unique_activities.indexOf(activities[i]) === -1 ){
-              unique_activities.push(activities[i])
-            }
-          }  
-        } );
-        for (var i = 0; i < unique_activities.length; i++) {
-          select.append( '<option value="'+unique_activities[i]+'">'+unique_activities[i]+'</option>' )
-        }
-      } else{
-        // clear away the datatable footer
-        $(column.footer()).empty()
-      }
-    } );
-  }
-} );
+// Jquery datatable code
+  $('#worker_table').DataTable( {
+      initComplete: function () {
+        jquery_data_table(this)
+    }
+  } );
 
 </script>
-<table class="display" id="worker_table">
+<table class="display responsive no-wrap" id="worker_table" width="100%">
   <thead>
     <tr>
+      <th colspan="1" id="activities-filter-header">Activities filter</th>
+      <th colspan="6"></th>
+    </tr>
+    <tr>
       <th>Name</th>
+      <th>Activities</th>
       <th>Mobile</th>
       <th>Worked</th>
       <th>Contacted</th>
       <th>Last contacted</th>
-      <th>Activities</th>
+      <th>Profile</th>
     </tr>
   </thead>
   <tfoot>
     <tr>
       <th>Name</th>
+      <th>Activities</th>
       <th>Mobile</th>
       <th>Worked</th>
       <th>Contacted</th>
       <th>Last contacted</th>
-      <th>Activities</th>
+      <th>Profile</th>
     </tr>
   </tfoot>
   <tbody>
     <% @members.each do |member| %>
-    <tr class="worker_row">
-      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= member.name %></td>
-      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= member.mobile %></td>
+    <tr>
+      <td><%= member.name %></td>
+      <td id="table-activity-column"><%= member.activities %> </td>
+      <td><%= member.mobile %></td>
       <td>
         <%= member.jobs.length %>
         <span data-toggle="modal" data-target=".bs-job-modal-sm" onclick="formActionValue(<%=member.id%>, 'jobs')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
@@ -85,8 +54,14 @@ $('#worker_table').DataTable( {
       <% else %>
         <% last_contacted = member.contacteds.last.date %>
       <% end %>
-      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= last_contacted %></td>
-      <td onclick="show_worker('<%= cooperative_member_path(@cooperative, member) %>')"><%= member.activities %> </td>
+      <td><%= last_contacted %></td>
+      <td>
+        <%= link_to cooperative_member_path(@cooperative, member) do %>
+        <button type="button" class="btn btn-default btn-default">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
+        </button>
+        <% end %>
+      </td>
     </tr>
     <% end %>
   </tbody>

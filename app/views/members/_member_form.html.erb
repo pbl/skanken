@@ -2,8 +2,8 @@
   <%= f.input :name  %>
   <%= f.input :mobile %>
   <%= f.input :email, required: false %>
-  <%= f.input :personId, label: "Person id", required: false %>
-  <%= f.input :activities, label: "Activities", as: :check_boxes, collection: Cooperative.activities(current_user.cooperative_id) %>
+  <%= f.input :personId, label: "Date of birth", required: false %>
+  <%= f.input :activities, label: "Interested in working with", as: :check_boxes, collection: Cooperative.activities(current_user.cooperative_id) %>
   <%= f.input :comment, label: 'Comment', required: false, as: :text %>
   <%= f.button :submit %>
 <% end %>

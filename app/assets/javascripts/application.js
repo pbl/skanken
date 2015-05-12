@@ -31,9 +31,12 @@ function jquery_data_table(that){
   self.api().columns().every( function () {
     var column = this;
     // only create a filter for the column activities
-    if($(column.footer())[0].textContent === "Activities"){
-      var select = $('<select><option value=""></option></select>')
-        .appendTo( $($("#activities-filter-header")).empty() )
+    if($(column.footer())[0].id === "activities-footer"){
+      var select = $('<select><option value="">Filter</option></select>')
+        .css("margin-left", "10px")
+        .css("float", "right")
+        // .appendTo( $("#activities-filter-header").empty() )
+        .insertBefore( $("#worker_table_filter") )
         .on( 'change', function () {
           var val = $.fn.dataTable.util.escapeRegex(
             $(this).val()

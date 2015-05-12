@@ -1,5 +1,1 @@
-<%= simple_form_for @cooperative, url: cooperative_path(@cooperative) do |f| %>
-  <%= f.input :name  %>
-  <%= f.input :activities, label: "Activities", hint: "All activities should be seperated by a comma and space. Example: Lunch, Club, Pub" %>
-  <%= f.button :submit %>
-<% end %>
+<%= render :partial => 'cooperatives/form', locals: {cooperative: @cooperative, url: cooperative_path(@cooperative)} %>

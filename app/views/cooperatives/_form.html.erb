@@ -1,0 +1,5 @@
+<%= simple_form_for cooperative, url: url do |f| %>
+  <%= f.input :name  %>
+  <%= f.input :activities, label: "Work activities", hint: "All work activities should be seperated by a comma and space. Example: Lunch, Club, Pub" %>
+  <%= f.button :submit %>
+<% end %>

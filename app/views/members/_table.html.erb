@@ -19,7 +19,7 @@
       <th>Worked</th>
       <th>Contacted</th>
       <th>Last contacted</th>
-      <th>Interested in working with</th>
+      <th style="display: none">Interested in working with</th>
       <th>Profile</th>
     </tr>
   </thead>
@@ -31,7 +31,7 @@
       <th>Worked</th>
       <th>Contacted</th>
       <th>Last contacted</th>
-      <th id="activities-footer">Interested in working with</th>
+      <th id="activities-footer" style="display: none">Interested in working with</th>
       <th>Profile</th>
     </tr>
   </tfoot>
@@ -54,7 +54,7 @@
         <% last_contacted = member.contacteds.last.date %>
       <% end %>
       <td><%= last_contacted %></td>
-      <td id="table-activity-column"><%= member.activities %> </td>
+      <td id="table-activity-column" style="display: none"><%= member.activities %> </td>
       <td>
         <%= link_to cooperative_member_path(@cooperative, member) do %>
         <button type="button" class="btn btn-default btn-default">

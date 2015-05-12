@@ -1,7 +1,7 @@
 # Skanken
 
 ## Overview
-Skanken is a worker list webapplication. It is basicly a table containing the information about the workers. Made to simplify the contact between a nations foreman and the nations workers.
+Skanken is a worker list webapplication. It is basicly a table containing the information about the workers. Made to simplify the contact between a nations foreman and the nations workers. Skanken is open source and licensed under the MIT license.
 
 ## Contribute
 

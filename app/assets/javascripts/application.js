@@ -32,7 +32,7 @@ function jquery_data_table(that){
     var column = this;
     // only create a filter for the column activities
     if($(column.footer())[0].id === "activities-footer"){
-      var select = $('<select><option value="">Filter</option></select>')
+      var select = $('<select><option value="">Work with filter</option></select>')
         .css("margin-left", "10px")
         .css("float", "right")
         // .appendTo( $("#activities-filter-header").empty() )

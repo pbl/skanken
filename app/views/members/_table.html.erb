@@ -11,7 +11,6 @@
 
 </script>
 
-
 <table class="display responsive no-wrap" id="worker_table" width="100%">
   <thead>
     
@@ -41,18 +40,14 @@
     <% @members.each do |member| %>
     <tr>
       <td><%= member.name %></td>
-      <% if session[:mobile_param].nil? %>
-        <td><%= member.mobile %></td>
-      <% else %>
-        <td>
-          <a href="tel:<%= member.mobile %>">
-            <button type="button" class="btn btn-default" aria-label="Left Align">
-              <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
-              <%= member.mobile %>
-            </button>
-          </a>
-        </td>
-      <% end %>
+      <td>
+        <a href="tel:<%= member.mobile %>">
+          <button type="button" class="btn btn-default" aria-label="Left Align">
+            <span class="glyphicon glyphicon-earphone" aria-hidden="true"></span>
+            <%= member.mobile %>
+          </button>
+        </a>
+      </td>
       <td>
         <%= member.jobs.length %>
         <span data-toggle="modal" data-target=".bs-job-modal-sm" onclick="formActionValue(<%=member.id%>, 'jobs')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>

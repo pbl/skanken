@@ -33,9 +33,14 @@ To run the code in production in rails you need to set ENV["SECRET_KEY_BASE"]
 * Open ```~/.bashrc in a text editor```
 * Append the line ```export SECRET_KEY_BASE="Paste the output from rake secret here"```
 
+Migrate the database:
+```rake db:create db:migrate RAILS_ENV="production"```
+
 ```
 rails server
 ```
+
+
 
 ## Tech
 

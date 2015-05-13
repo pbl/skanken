@@ -1,7 +1,7 @@
 # Skanken
 
 ## Overview
-Skanken is a worker list webapplication. It is basicly a table containing the information about the workers. Made to simplify the contact between a nations foreman and the nations workers.
+Skanken is a worker list webapplication. It is basicly a table containing the information about the workers. Made to simplify the contact between a nations foreman and the nations workers. Skanken is open source and licensed under the MIT license.
 
 ## Contribute
 
@@ -33,9 +33,14 @@ To run the code in production in rails you need to set ENV["SECRET_KEY_BASE"]
 * Open ```~/.bashrc in a text editor```
 * Append the line ```export SECRET_KEY_BASE="Paste the output from rake secret here"```
 
+Migrate the database:
+```rake db:create db:migrate RAILS_ENV="production"```
+
 ```
 rails server
 ```
+
+
 
 ## Tech
 

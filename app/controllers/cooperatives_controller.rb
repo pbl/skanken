@@ -24,7 +24,6 @@ class CooperativesController < ApplicationController
 
 	def update
 		@cooperative = Cooperative.find(current_user.cooperative_id)
-		asd
 		if @cooperative.update(cooperative_params)
 			flash[:success] = "Fields were successfully updated. Helge vare gösta"
 		else

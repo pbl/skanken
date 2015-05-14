@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503155250) do
+ActiveRecord::Schema.define(version: 20150514174048) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,8 +54,11 @@ ActiveRecord::Schema.define(version: 20150503155250) do
     t.string   "comment"
     t.string   "dateAdded"
     t.integer  "cooperative_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.integer  "nbr_jobs",       default: 0
+    t.integer  "nbr_contacteds", default: 0
+    t.string   "last_contacted", default: "Never contacted"
   end
 
   add_index "members", ["cooperative_id"], name: "index_members_on_cooperative_id", using: :btree

@@ -8,6 +8,8 @@ class JobsController < ApplicationController
     @member = Member.find(params[:member_id])
     @job = @member.jobs.new(job_params_merged)
     @job.save
+    @member.nbr_jobs = @member.jobs.length
+    @member.save
     redirect_to cooperative_members_path
   end
 
@@ -15,7 +17,10 @@ class JobsController < ApplicationController
     @member = Member.find(params[:member_id])
     @job = @member.jobs.find(params[:id])
     @job.destroy
-    redirect_to cooperative_member_path
+    @member.nbr_jobs = @member.jobs.length
+    @member.save
+    @cooperative = Cooperative.find(current_user.cooperative_id)
+    redirect_to cooperative_member_path(@cooperative, @member)
   end
 
   private

@@ -1,6 +1,6 @@
 <script text="text/javascript">
-  $( document ).ready(function() {
   // Jquery datatable code
+  $( document ).ready(function() {
     $('#worker_table').DataTable( {
         initComplete: function () {
           jquery_data_table(this)
@@ -48,19 +48,14 @@
         </a>
       </td>
       <td>
-        <%= member.jobs.length %>
+        <%= member.nbr_jobs %>
         <span data-toggle="modal" data-target=".bs-job-modal-sm" onclick="formActionValue(<%=member.id%>, 'jobs')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
       <td>
-        <%= member.contacteds.length %>
+        <%= member.nbr_contacteds %>
         <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
-      <% if member.contacteds.last.nil? %>
-        <% last_contacted = "Never contacted" %>
-      <% else %>
-        <% last_contacted = member.contacteds.last.date %>
-      <% end %>
-      <td><%= last_contacted %></td>
+      <td><%= member.last_contacted %></td>
       <td id="table-activity-column" style="display: none"><%= member.activities %> </td>
       <td>
         <%= link_to cooperative_member_path(@cooperative, member) do %>

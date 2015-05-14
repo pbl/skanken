@@ -16,15 +16,8 @@
 //= require_tree .
 
 $( document ).ready(function() {
-  // Jquery datatable code
-  $('#worker_table').DataTable( {
-    initComplete: function () {
-      jquery_data_table(this)
-    }
-  } );
-
 });
-// 
+
 function jquery_data_table(that){
   var self = that;
   self.api().columns().every( function () {

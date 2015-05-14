@@ -1,12 +1,12 @@
 <script text="text/javascript">
-
-// Jquery datatable code
-  $('#worker_table').DataTable( {
-      initComplete: function () {
-        console.log("html file")
-        jquery_data_table(this)
-    }
-  } );
+  $( document ).ready(function() {
+  // Jquery datatable code
+    $('#worker_table').DataTable( {
+        initComplete: function () {
+          jquery_data_table(this)
+      }
+    } );
+  });
 
 </script>
 

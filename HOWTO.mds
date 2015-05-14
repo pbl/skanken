@@ -1,0 +1,14 @@
+#How to document
+
+## Push to heroku
+Push new code:
+```
+git push heroku master
+```
+If a migration which has been added: 
+```
+heroku run rake db:migrate
+```
+
+## How to create an admin for testing in development
+```user=User.create!(:email=>'admin@admin.com',:password=>'password', :role=>'admin')```

@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  social_security_number: MyString
+  personId: MyString
+  cooperative_id:
 
 two:
   name: MyString
-  social_security_number: MyString
+  personId: MyString
+  cooperative_id:

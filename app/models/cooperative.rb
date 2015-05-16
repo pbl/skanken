@@ -6,19 +6,8 @@ class Cooperative < ActiveRecord::Base
 
   validates_presence_of :name, :activities
 
-  def self.activities cooperative_id
+  def self.activities(cooperative_id)
   	activities = Cooperative.find(cooperative_id).activities.split("\, ")
-    
-    # duplicating each value to be able to make it into a hash
-    duplicate = Array.new
-
-    activities.each do |activity|
-      duplicate << activity
-      duplicate << activity
-    end
-
-    duplicate = duplicate.sort
-    activities_map = Hash[*duplicate]
+    activities_map = Hash[*activities.zip(activities).flatten]
   end
-
 end

@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   ROLES = %w[admin cooperative_admin foreman no_role]
-
   validates_inclusion_of :role, in: ROLES
+
 
   def self.cooperative_roles
     ROLES - ["admin"] - ["no_role"]

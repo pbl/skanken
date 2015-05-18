@@ -2,12 +2,12 @@
 
 one:
   date: 2015-03-31
-  type:
+  activity: MyString
   comment: MyText
   member_id:
 
 two:
   date: 2015-03-31
-  type:
+  activity: MyString
   comment: MyText
   member_id:

@@ -1,4 +1,4 @@
 class InfoController < ApplicationController
-  def creators
+  def about
   end
 end

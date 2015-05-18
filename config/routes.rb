@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'info/creators'
+  get 'info/about'
   root 'members#index'
   
 end

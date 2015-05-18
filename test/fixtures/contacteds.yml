@@ -2,10 +2,10 @@
 
 one:
   date: 2015-03-31
-  for: MyString
+  activity: MyString
   member_id:
 
 two:
   date: 2015-03-31
-  for: MyString
+  activity: MyString
   member_id:

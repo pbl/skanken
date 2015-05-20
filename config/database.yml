@@ -21,7 +21,6 @@ test:
   <<: *default
   # database: db/test.sqlite3
   database: my_database_test
-  username: postgres
 
 production:
   <<: *default

@@ -1,0 +1,50 @@
+/home/philip/.rvm/rubies/ruby-2.0.0-p643/bin/ruby -r ./siteconf20150521-3663-rvhftj.rb extconf.rb 
+checking for rb_method_entry_t.called_id in method.h... yes
+checking for vm_core.h... yes
+checking for iseq.h... yes
+checking for insns.inc... yes
+checking for insns_info.inc... yes
+checking for eval_intern.h... yes
+checking for struct iseq_line_info_entry in vm_core.h,iseq.h... yes
+checking for if rb_iseq_compile_with_option was added an argument filepath... yes
+creating Makefile
+
+make "DESTDIR=" clean
+
+make "DESTDIR="
+compiling breakpoint.c
+compiling ruby_debug.c
+ruby_debug.c:178:2: warning: #warning "ruby 2.0.0-p0 GET_THREAD is a function." [-Wcpp]
+ #warning "ruby 2.0.0-p0 GET_THREAD is a function."
+  ^
+ruby_debug.c: In function ‘save_call_frame’:
+ruby_debug.c:508:31: warning: operation on ‘debug_context->frames’ may be undefined [-Wsequence-point]
+         debug_context->frames = REALLOC_N(debug_context->frames, debug_frame_t, debug_context->stack_len);
+                               ^
+ruby_debug.c: In function ‘context_frame_id’:
+ruby_debug.c:1792:8: warning: unused variable ‘id’ [-Wunused-variable]
+     ID id;
+        ^
+ruby_debug.c: In function ‘context_jump’:
+ruby_debug.c:2444:53: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             if ((cfp->pc - cfp->iseq->iseq_encoded) >= (cfp->iseq->iseq_size - 1))
+                                                     ^
+ruby_debug.c:2463:27: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+             for (i = 0; i < cfp->iseq->line_info_size; i++)
+                           ^
+In file included from ruby_debug.c:9:0:
+ruby_debug.c: At top level:
+/home/philip/.rvm/src/ruby-2.0.0-p643/insns_info.inc:695:1: warning: ‘insn_name’ defined but not used [-Wunused-function]
+ insn_name(VALUE insn)
+ ^
+/home/philip/.rvm/src/ruby-2.0.0-p643/insns_info.inc:701:1: warning: ‘insn_op_types’ defined but not used [-Wunused-function]
+ insn_op_types(VALUE insn)
+ ^
+/home/philip/.rvm/src/ruby-2.0.0-p643/insns_info.inc:707:1: warning: ‘insn_op_type’ defined but not used [-Wunused-function]
+ insn_op_type(VALUE insn, long pos)
+ ^
+linking shared-object ruby_debug.so
+
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 ruby_debug.so ./.gem.20150521-3663-1w2j8bn
+installing default ruby_debug libraries

@@ -21,6 +21,7 @@ test:
   <<: *default
   # database: db/test.sqlite3
   database: my_database_test
+  username: philip
 
 production:
   <<: *default

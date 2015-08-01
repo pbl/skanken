@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 # Auth
 gem 'devise'
 gem 'i18n-tasks'
+gem 'kaminari'
 # Gem for forms on the web application
 gem 'simple_form'
 # Simplifiy the user role access managemnet

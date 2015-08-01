@@ -1,10 +1,11 @@
 class MembersController < ApplicationController
-	before_filter :authenticate_user!
-	before_filter :ensure_cooperative_created
+	prepend_before_filter :authenticate_user!
+	before_filter :ensure_access_members
+	before_action :set_cooperative, only: [:index]
 
 	def index
-		@cooperative = Cooperative.find(current_user.cooperative_id)
-    @members = @cooperative.members.all
+		page = params[:page].nil? ? 1 : params[:page]
+    @members = @cooperative.members.page(page)
   end
 
 	def create
@@ -40,9 +41,9 @@ class MembersController < ApplicationController
 	def update
 		@member = Member.find(params[:id])
 		activities = parse_activities params["member"]["activities"]
-		
+
 		merged_worker_params = worker_params.merge(:activities => activities)
-		
+
 		if @member.update(merged_worker_params)
 	  	flash[:success] = "#{params[:member][:name]} was successfully updated. Helge vare gösta"
 		  redirect_to cooperative_members_path
@@ -55,20 +56,24 @@ class MembersController < ApplicationController
 
 	def destroy
 	  @member = Member.find(params[:id])
-	  @member.destroy	 
+	  @member.destroy
 	  redirect_to cooperative_members_path
 	end
 
-	private 
-		def parse_activities activities_param
-			activities = activities_param
-			# removes last empty element
-			activities.delete("")
-			activities.join(", ")
-		end
-
 	private
-	  def worker_params
-	    params.require(:member).permit(:name, :mobile, :email, :personId, :activities, :comment, :dateAdded)
-	  end
+
+	def set_cooperative
+		@cooperative = Cooperative.find(current_user.cooperative_id)
+	end
+
+	def parse_activities activities_param
+		activities = activities_param
+		# removes last empty element
+		activities.delete("")
+		activities.join(", ")
+	end
+
+  def worker_params
+    params.require(:member).permit(:name, :mobile, :email, :personId, :activities, :comment, :dateAdded)
+  end
 end

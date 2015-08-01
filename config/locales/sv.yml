@@ -15,3 +15,19 @@ sv:
     info: Tryck här för att skapa en helt ny lista med volänterer.
     existing_info: Om du vill registrera dig för en redan existerande volänterlist kontakta den ansvariga för föreningssidan så att hen kan skapa ett användarkonto till dig. Logga in om du redan har ett konto.
     button: Skapa en helt ny volentärlista
+
+  helpers:
+    page_entries_info:
+      more_pages:
+        display_entries: Visar %{entry_name} <b>%{first} - %{last}</b> av <b>%{total}</b> totalt
+      one_page:
+        display_entries:
+          one: Visar <b>%{count}<b> %{entry_name}
+          other: Visar <b>alla ,%{count}</b> %{entry_name}
+  views:
+    pagination:
+      first: Första
+      last: Sista
+      next: Nästa &rsaquo;
+      previous: "&lsaquo; Föregående"
+      truncate: "&hellip;"

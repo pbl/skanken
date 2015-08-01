@@ -1,1 +1,4 @@
-<%= render :partial => 'cooperatives/form', locals: {cooperative: @cooperative, url: cooperative_path(@cooperative)} %>
+<%= simple_form_for @cooperative do |f| %>
+  <%= f.input :name, label: t('cooperative.name') %>
+  <%= f.button :submit, t('cooperative.update') %>
+<% end %>

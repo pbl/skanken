@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
 
   def self.cooperative_roles
-    ROLES - ["admin"] - ["no_role"]
+    ROLES - ['admin'] - ['no_role']
   end
 
   def is?( requested_role )

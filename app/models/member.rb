@@ -5,11 +5,7 @@ class Member < ActiveRecord::Base
   has_many :activities, through: :member_activities
   belongs_to :cooperative
 
-  validates_presence_of :name, :mobile, :activities
-
-  # def activities
-  #   Member.all
-  # end
+  validates_presence_of :name, :mobile
 
   def self.import(file, cooperative_id)
     workerList = CSV.read(file.path, headers: true)

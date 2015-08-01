@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150801170605) do
+ActiveRecord::Schema.define(version: 20150801180145) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,9 +38,8 @@ ActiveRecord::Schema.define(version: 20150801170605) do
 
   create_table "cooperatives", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.string   "activities", default: ""
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "jobs", force: :cascade do |t|
@@ -69,7 +68,6 @@ ActiveRecord::Schema.define(version: 20150801170605) do
     t.string   "mobile"
     t.string   "email"
     t.string   "personId"
-    t.string   "activities"
     t.string   "comment"
     t.string   "dateAdded"
     t.integer  "cooperative_id"

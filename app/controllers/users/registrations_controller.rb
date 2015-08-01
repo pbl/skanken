@@ -12,7 +12,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     super
     @user      = resource
     @user.role = :cooperative_admin
-    @user.save
+    @cooperative = Cooperative.create(name: t('cooperative.start_name'))
+    @cooperative.users << @user
+    flash[:info] = t('cooperative.created')
   end
 
   # POST /resource
@@ -65,4 +67,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  protected
+
+  def after_sign_up_path_for(resource)
+    root_path
+  end
 end

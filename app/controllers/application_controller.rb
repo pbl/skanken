@@ -7,6 +7,11 @@ class ApplicationController < ActionController::Base
     @cooperative = Cooperative.find(current_user.cooperative_id)
   end
 
+  def ensure_cooperative_admin
+    return true unless !current_user.is?(:cooperative_admin)
+    render nothing: true, status: 401
+  end
+
   def user_start_page
     return true unless user_signed_in?
     redirect_to cooperative_members_path(Cooperative.find(current_user.cooperative_id))

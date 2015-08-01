@@ -21,7 +21,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'info/about'
+  get 'pages/about'
   root 'pages#start'
 
 end

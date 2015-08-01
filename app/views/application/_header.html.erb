@@ -8,10 +8,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <% if current_user.try(:cooperative).try(:name).nil? %>
-        <%= link_to t('header.website_name'), root_path, html_options = {class: 'navbar-brand'} %>
-      <% else %>
+      <% @cooperative = Cooperative.find_by_id(current_user.try(:cooperative_id)) %>
+      <% if user_signed_in? %>
         <%= link_to current_user.cooperative.name, cooperative_members_path(@cooperative), html_options = {class: 'navbar-brand'} %>
+      <% else %>
+        <%= link_to t('header.website_name'), root_path, html_options = {class: 'navbar-brand'} %>
       <% end %>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,7 +33,7 @@
         <% end %>
       </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to t('header.about'), info_about_path %></li>
+          <li><%= link_to t('header.about'), pages_about_path %></li>
           <li><%= render 'devise/menu/login_items' %></li>
         </ul>
     </div><!-- /.navbar-collapse -->

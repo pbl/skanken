@@ -1,6 +1,5 @@
 <table class="display responsive no-wrap" id="worker_table" width="100%">
   <thead>
-    
     <tr>
       <th>Name</th>
       <th>Mobile</th>
@@ -90,7 +89,6 @@
               } );
 
             var unique_activities = []
-            
             column.data().unique().sort().each( function ( d, j ) {
               var activities = d.split("\, ")
               for (var i = 0; i < activities.length; i++) {
@@ -98,13 +96,12 @@
                 if(unique_activities.indexOf(activities[i]) === -1 ){
                   unique_activities.push(activities[i])
                 }
-              }  
+              }
             } );
             for (var i = 0; i < unique_activities.length; i++) {
               select.append( '<option value="'+unique_activities[i]+'">'+unique_activities[i]+'</option>' )
             }
-            
-          } 
+          }
           $(column.footer()).empty()
         } );
       }

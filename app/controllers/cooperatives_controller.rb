@@ -1,39 +1,36 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
-	before_filter :ensure_cooperative_created, except: [:create, :new]
+	before_filter :ensure_cooperative_admin
+	before_filter :set_cooperative, only: [:edit, :update, :admin, :update, :clear]
 
-	def new
-		@cooperative = Cooperative.new
-	end
+	# def new
+	# 	@cooperative = Cooperative.new
+	# end
 
-	def create
-		@cooperative = Cooperative.new(cooperative_params)
-		@cooperative.users << current_user
+	# def create
+	# 	@cooperative = Cooperative.new(cooperative_params)
+	# 	@cooperative.users << current_user
 
-		if @cooperative.save
-			flash[:success] = "Welcome to skånken. Helge vare gösta"
-			redirect_to cooperative_members_path(@cooperative)
-		else
-			render 'new'
-		end
-	end
+	# 	if @cooperative.save
+	# 		flash[:success] = "Welcome to skånken. Helge vare gösta"
+	# 		redirect_to cooperative_members_path(@cooperative)
+	# 	else
+	# 		render 'new'
+	# 	end
+	# end
 
 	def edit
-		@cooperative = Cooperative.find(current_user.cooperative_id)
 	end
 
 	def update
-		@cooperative = Cooperative.find(current_user.cooperative_id)
 		if @cooperative.update(cooperative_params)
-			flash[:success] = "Fields were successfully updated. Helge vare gösta"
+			redirect_to root_path
 		else
-			flash[:danger] = "Something went wrong. Helge vare gösta"
+			render nothing: true, status: 401
 		end
-		redirect_to edit_cooperative_path(@cooperative)
 	end
 
 	def admin
-		@cooperative = Cooperative.find(current_user.cooperative_id)
 	end
 
 	def import
@@ -48,7 +45,6 @@ class CooperativesController < ApplicationController
 	end
 
 	def clear
-		@cooperative = Cooperative.find(current_user.cooperative_id)
 		@cooperative.members.delete_all
 		flash[:success] = "All workers deleted. Helge vare gösta"
 		redirect_to cooperative_members_path
@@ -56,6 +52,6 @@ class CooperativesController < ApplicationController
 
 	private
 		def cooperative_params
-			params.require(:cooperative).permit(:name, :activities)
+			params.require(:cooperative).permit(:name)
 		end
 end

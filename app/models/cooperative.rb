@@ -5,7 +5,7 @@ class Cooperative < ActiveRecord::Base
   has_many :members
   has_many :activities
 
-  validates_presence_of :name, :activities
+  validates_presence_of :name
 
   def self.activities(cooperative_id)
   	activities = Cooperative.find(cooperative_id).activities.split("\, ")

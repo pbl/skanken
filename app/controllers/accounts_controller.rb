@@ -1,6 +1,5 @@
 class AccountsController < ApplicationController
   before_filter :authenticate_user!
-  before_filter :ensure_cooperative_created
 
   def index
   	@cooperative = current_user.cooperative
@@ -10,8 +9,8 @@ class AccountsController < ApplicationController
   def new
   	@cooperative = Cooperative.find(current_user.cooperative_id)
   end
-  
-  def create 
+
+  def create
   	@cooperative = Cooperative.find(current_user.cooperative_id)
     email = params[:account][:email]
     password = params[:account][:password]

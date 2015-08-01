@@ -1,5 +1,10 @@
 
 sv:
+  cooperative:
+    start_name: Ditt föreningsnamn
+    created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".
+    name: Föreningsnamn
+    update: Updatera
   header:
     website_name: Skånken
     about: Om oss

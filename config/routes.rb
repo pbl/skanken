@@ -23,7 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get 'activity', to: 'table#activity'
+  get 'choose', to: 'table#choose'
   get 'pages/about'
   root 'pages#start'
 

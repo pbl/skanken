@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     redirect_to new_cooperative_path
   end
 
+  def user_start_page
+    return true unless user_signed_in?
+    redirect_to cooperative_members_path(Cooperative.find(current_user.cooperative_id))
+  end
+
   private
     def date_today
       time = Time.new

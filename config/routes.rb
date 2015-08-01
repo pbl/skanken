@@ -22,6 +22,6 @@ Rails.application.routes.draw do
   end
 
   get 'info/about'
-  root 'members#index'
+  root 'pages#start'
 
 end

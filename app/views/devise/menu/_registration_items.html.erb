@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+  <%= link_to(t('devise.links.edit_registration'), edit_user_registration_path) %>
+<% else %>
+  <%= link_to(t('devise.links.register'), new_user_registration_path)  %>
+<% end %>

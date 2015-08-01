@@ -1,0 +1,13 @@
+class AddActivitiesModel < ActiveRecord::Migration
+  def change
+    remove_column :cooperatives, :activities
+    remove_column :members, :activities
+
+    create_table :activites do |t|
+      t.string :name
+      t.references :cooperative, index: true
+      t.timestamps null: false
+    end
+    add_foreign_key :activities, :cooperatives
+  end
+end

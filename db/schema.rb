@@ -11,10 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150514174048) do
+ActiveRecord::Schema.define(version: 20150801170605) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "activities", force: :cascade do |t|
+    t.integer  "cooperative_id"
+    t.string   "name"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  add_index "activities", ["cooperative_id"], name: "index_activities_on_cooperative_id", using: :btree
 
   create_table "contacteds", force: :cascade do |t|
     t.date     "date"
@@ -44,6 +53,16 @@ ActiveRecord::Schema.define(version: 20150514174048) do
   end
 
   add_index "jobs", ["member_id"], name: "index_jobs_on_member_id", using: :btree
+
+  create_table "member_activities", force: :cascade do |t|
+    t.integer  "activity_id"
+    t.integer  "member_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "member_activities", ["activity_id"], name: "index_member_activities_on_activity_id", using: :btree
+  add_index "member_activities", ["member_id"], name: "index_member_activities_on_member_id", using: :btree
 
   create_table "members", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +103,7 @@ ActiveRecord::Schema.define(version: 20150514174048) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  add_foreign_key "activities", "cooperatives"
   add_foreign_key "contacteds", "members"
   add_foreign_key "jobs", "members"
   add_foreign_key "members", "cooperatives"

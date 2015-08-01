@@ -1,5 +1,6 @@
 class MembersController < ApplicationController
-	prepend_before_filter :authenticate_user!, :ensure_access_members
+	prepend_before_filter :authenticate_user!
+	before_filter :ensure_access_members
 	before_action :set_cooperative, only: [:index]
 
 	def index

@@ -6,7 +6,7 @@ class MemberTest < ActiveSupport::TestCase
 	  member = Member.new
 	  member.mobile = "A number"
 	  member.activities = "A activity"
-	  assert member.save
+	  assert_not member.save
 	end
 
 	test "should not save member without mobile" do

@@ -17,17 +17,10 @@
 </head>
 <body>
 
+<header>
+  <%= render :partial => 'header' %>
+</header>
   <div class="container">
-
-    <% if user_signed_in? && !current_user.cooperative_id.nil? %>
-    <div class="page-header">
-      <h1> <%=Cooperative.find(current_user.cooperative_id).name %> <small>helge vare gösta</small></h1>
-    </div>
-    <header>
-      <%= render :partial => 'shared/navbar' %>
-    </header>
-    <% end %>
-    
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>

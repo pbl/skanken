@@ -21,14 +21,14 @@ class CooperativeTest < ActiveSupport::TestCase
 	end
 
 	test "activities hash should be formated with same key as value" do
-		cooperative = cooperatives(:cooperative)
+		cooperative = cooperatives(:one)
 		hash = Cooperative.activities(cooperative.id)
 	  assert_equal hash["Lunch"], "Lunch"
 	  assert_equal hash["Svartklubben"], "Svartklubben"
 	end
 
 	test "activities hash should have the right size" do
-		cooperative = cooperatives(:cooperative)
+		cooperative = cooperatives(:one)
 		hash = Cooperative.activities(cooperative.id)
 	  assert hash.size == 2
 	end

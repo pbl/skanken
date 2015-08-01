@@ -1,23 +1,7 @@
 class CooperativesController < ApplicationController
 	before_filter :authenticate_user!
 	before_filter :ensure_cooperative_admin
-	before_filter :set_cooperative, only: [:edit, :update, :admin, :update, :clear]
-
-	# def new
-	# 	@cooperative = Cooperative.new
-	# end
-
-	# def create
-	# 	@cooperative = Cooperative.new(cooperative_params)
-	# 	@cooperative.users << current_user
-
-	# 	if @cooperative.save
-	# 		flash[:success] = "Welcome to skånken. Helge vare gösta"
-	# 		redirect_to cooperative_members_path(@cooperative)
-	# 	else
-	# 		render 'new'
-	# 	end
-	# end
+	before_action :set_cooperative, only: [:edit, :update, :admin, :update, :clear]
 
 	def edit
 	end
@@ -51,7 +35,7 @@ class CooperativesController < ApplicationController
 	end
 
 	private
-		def cooperative_params
-			params.require(:cooperative).permit(:name)
-		end
+	def cooperative_params
+		params.require(:cooperative).permit(:name)
+	end
 end

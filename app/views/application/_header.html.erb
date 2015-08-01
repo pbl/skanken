@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+  <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if current_user.try(:cooperative).try(:name).nil? %>
+        <%= link_to t('header.website_name'), root_path, html_options = {class: 'navbar-brand'} %>
+      <% else %>
+        <%= link_to current_user.cooperative.name, cooperative_members_path(@cooperative), html_options = {class: 'navbar-brand'} %>
+      <% end %>
+    </div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if user_signed_in? %>
+        <ul class="nav navbar-nav">
+          <li><%= link_to t('header.new_member'), new_cooperative_member_path(@cooperative) %></li>
+          <li><%= link_to t('header.about'), info_about_path %></li>
+          <li><%= link_to 'Sign out', destroy_user_session_path, :method=>'delete' %></li>
+        </ul>
+        <% if current_user.is?(:cooperative_admin) %>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown<">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= t('header.admin') %><span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                <li><%= link_to t('header.accounts'), cooperative_accounts_path(@cooperative) %></li>
+                <li><%= link_to t('header.new_account'), new_cooperative_account_path(@cooperative) %></li>
+                <li><%= link_to t('header.edit_cooperative'), edit_cooperative_path(@cooperative) %></li>
+                <li><%= link_to t('header.manage_members'), cooperative_admin_path(@cooperative) %></li>
+              </ul>
+            </li>
+          </ul>
+        <% end %>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

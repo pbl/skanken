@@ -7,9 +7,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  # creates a new user and a new cooperative at the same time
   def create
     super
-    @user       = resource
+    @user      = resource
     @user.role = :cooperative_admin
     @user.save
   end

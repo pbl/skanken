@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
-# Auth 
+# Auth
 gem 'devise'
+gem 'i18n-tasks'
 # Gem for forms on the web application
 gem 'simple_form'
 # Simplifiy the user role access managemnet
@@ -28,11 +29,11 @@ gem 'pg'
 # Not sure if this gem is needed
 gem "figaro"
 # For heroku deployment
-gem 'rails_12factor', group: :production 
+gem 'rails_12factor', group: :production
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+  gem 'byebug'
   # A pretty and awesome error page
   gem "better_errors"
   # Access an IRB console on exception pages or by using <%= console %> in views
@@ -43,4 +44,4 @@ group :development, :test do
   gem 'rake'
 end
 # For heroku deployment
-ruby "2.0.0"
+ruby "2.2.2"

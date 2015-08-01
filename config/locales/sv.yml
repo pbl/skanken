@@ -9,3 +9,9 @@ sv:
     new_account: Ny användare
     edit_cooperative: Inställningar
     manage_members: Hantera volontärlistan
+
+  welcome:
+    header: Skapa en ny lista med volentärer
+    info: Tryck här för att skapa en helt ny lista med volänterer.
+    existing_info: Om du vill registrera dig för en redan existerande volänterlist kontakta den ansvariga för föreningssidan så att hen kan skapa ett användarkonto till dig. Logga in om du redan har ett konto.
+    button: Skapa en helt ny volentärlista

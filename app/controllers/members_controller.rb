@@ -1,7 +1,5 @@
 class MembersController < ApplicationController
-	# prepend_before_filter :authenticate_user!
 	before_filter :authenticate_user!
-	# before_filter :ensure_access_members
 	before_action :set_cooperative, only: [:index]
 
 	def index
@@ -63,9 +61,9 @@ class MembersController < ApplicationController
 
 	private
 
-	def choose_category
-
-	end
+	def set_cooperative
+		@cooperative = Cooperative.find(current_user.cooperative_id)
+ 	end
 
 	def parse_activities activities_param
 		activities = activities_param

@@ -7,9 +7,13 @@ class ApplicationController < ActionController::Base
   #   redirect_to root_url, alert: exception.message
   # end
 
-  def ensure_access_members
-    return true unless (!current_user.cooperative_id.to_s.eql?(params[:cooperative_id]))
-    render nothing: true, status: 401
+  # def ensure_access_members
+  #   return true unless (!current_user.cooperative_id.to_s.eql?(params[:cooperative_id]))
+  #   render nothing: true, status: 401
+  # end
+
+  def set_cooperative
+    @cooperative = Cooperative.find(current_user.cooperative_id)
   end
 
   def user_start_page

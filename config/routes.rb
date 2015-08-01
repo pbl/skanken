@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :activities
+
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
@@ -21,6 +23,7 @@ Rails.application.routes.draw do
     end
   end
 
+  get 'activity', to: 'table#activity'
   get 'pages/about'
   root 'pages#start'
 

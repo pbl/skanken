@@ -15,6 +15,7 @@ sv:
     confirm_destroy: Är du säker?
     back: tillbaka
     create: Skapa aktivitet
+    no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
   header:
     website_name: Skånken
     about: Om oss
@@ -24,6 +25,7 @@ sv:
     new_account: Ny användare
     edit_cooperative: Inställningar
     manage_members: Hantera volontärlistan
+  member:
 
   welcome:
     header: Skapa en ny lista med volentärer

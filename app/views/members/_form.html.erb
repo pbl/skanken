@@ -1,0 +1,9 @@
+<%= simple_form_for(@member) do |f| %>
+  <%= f.input :name  %>
+  <%= f.input :mobile %>
+  <%= f.input :email, required: false %>
+  <%= f.input :personId, label: "Date of birth", required: false %>
+  <%= f.input :activities, required: true, label: "Interested in working with", as: :check_boxes, collection: @activities %>
+  <%= f.input :comment, label: 'Comment', required: false, as: :text %>
+  <%= f.button :submit %>
+<% end %>

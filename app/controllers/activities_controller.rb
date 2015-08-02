@@ -1,7 +1,7 @@
 class ActivitiesController < ApplicationController
-  before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!
   before_filter :ensure_cooperative_admin
-  before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_filter :set_activity, only: [:show, :edit, :update, :destroy]
   before_action :set_cooperative
 
   # GET /activities
@@ -69,11 +69,11 @@ class ActivitiesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find(params[:id])
+      @activity = Activity.find_by(id: params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:cooperative_id, :name)
+      params.require(:activity).permit(:name)
     end
 end

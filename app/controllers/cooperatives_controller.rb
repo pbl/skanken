@@ -1,5 +1,5 @@
 class CooperativesController < ApplicationController
-	before_filter :authenticate_user!
+	prepend_before_filter :authenticate_user!
 	before_filter :ensure_cooperative_admin
 	before_action :set_cooperative, only: [:edit, :update, :admin, :update, :clear]
 

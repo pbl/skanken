@@ -2,3 +2,28 @@
   <%= f.input :name, label: t('cooperative.name') %>
   <%= f.button :submit, t('cooperative.update') %>
 <% end %>
+
+<h1><%= t('activities.header') %></h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th><%= t('activities.name') %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @activities.each do |activity| %>
+      <tr>
+        <td><%= activity.name %></td>
+        <td><%= link_to t('activities.edit'), edit_activity_path(activity) %></td>
+        <td><%= link_to t('activities.destroy'), activity, method: :delete, data: { confirm: t('activities.confirm_destroy') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('activities.new'), new_activity_path, input_html = {class: 'btn btn-default'} %>

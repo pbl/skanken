@@ -2,11 +2,10 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.association :cooperative %>
-    <%= f.input :name %>
+    <%= f.input :name, label: t('activities.name') %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, t('activities.create') %>
   </div>
 <% end %>

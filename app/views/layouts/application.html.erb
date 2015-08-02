@@ -17,16 +17,16 @@
 </head>
 <body>
 
-<header>
-  <%= render :partial => 'header' %>
-</header>
+  <header>
+    <%= render :partial => 'header' %>
+  </header>
   <div class="container">
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-
-    <%= yield %>
-
+    <div class='col-md-8 col-md-offset-2'>
+      <%= yield %>
+    </div>
   </div>
 </body>
 </html>

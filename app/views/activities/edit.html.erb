@@ -1,6 +1,5 @@
-<h1>Editing Activity</h1>
+<h1><%= t('activities.edit') %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @activity %> |
-<%= link_to 'Back', activities_path %>
+<%= link_to t('activities.back'), edit_cooperative_path(@cooperative) %>

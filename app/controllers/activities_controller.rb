@@ -1,16 +1,19 @@
 class ActivitiesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :ensure_cooperative_admin
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
+  before_action :set_cooperative
 
   # GET /activities
   # GET /activities.json
-  def index
-    @activities = Activity.all
-  end
+  # def index
+  #   @activities = Activity.all
+  # end
 
   # GET /activities/1
   # GET /activities/1.json
-  def show
-  end
+  # def show
+  # end
 
   # GET /activities/new
   def new
@@ -24,11 +27,13 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    @activity = Activity.new(activity_params)
-
+    ap = activity_params
+    ap[:name] = ap[:name].try(:downcase)
+    ap = ap.merge(cooperative_id: @cooperative.id)
+    @activity = Activity.new(ap)
     respond_to do |format|
       if @activity.save
-        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+        format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully created.' }
         format.json { render :show, status: :created, location: @activity }
       else
         format.html { render :new }
@@ -42,7 +47,7 @@ class ActivitiesController < ApplicationController
   def update
     respond_to do |format|
       if @activity.update(activity_params)
-        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
+        format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully updated.' }
         format.json { render :show, status: :ok, location: @activity }
       else
         format.html { render :edit }
@@ -56,7 +61,7 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity.destroy
     respond_to do |format|
-      format.html { redirect_to activities_url, notice: 'Activity was successfully destroyed.' }
+      format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

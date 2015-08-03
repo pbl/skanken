@@ -70,6 +70,8 @@ class ActivitiesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
       @activity = Activity.find_by(id: params[:id])
+      return true unless @activity.nil?
+      render nothing: true, status: 401
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

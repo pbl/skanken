@@ -11,11 +11,6 @@ class MembersController < ApplicationController
 	def create
 		get_activities
 		@member = @cooperative.members.new(member_params)
-		# @activities_param.each do |activity|
-		# 	@member.activities << activity
-		# end
-		# asd
-		# @member.activities = @activities_param
 	  if !@activities_param.empty? && @member.save
 	  	@member.activities = @activities_param
 		  redirect_to member_path(@member)
@@ -28,7 +23,6 @@ class MembersController < ApplicationController
 	end
 
 	def new
-		# @activities = @cooperative.activities
 		@member = @cooperative.members.new
 	end
 

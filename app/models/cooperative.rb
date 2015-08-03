@@ -7,9 +7,4 @@ class Cooperative < ActiveRecord::Base
 
   validates_presence_of :name
 
-  def self.activities(cooperative_id)
-  	activities = Cooperative.find(cooperative_id).activities.split("\, ")
-    activities_map = Hash[*activities.zip(activities).flatten]
-    # asd
-  end
 end

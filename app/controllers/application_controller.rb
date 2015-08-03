@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def user_start_page
     return true unless user_signed_in?
-    redirect_to cooperative_members_path(Cooperative.find(current_user.cooperative_id))
+    redirect_to members_path(Cooperative.find(current_user.cooperative_id))
   end
 
   private

@@ -1,6 +1,7 @@
 class MembersController < ApplicationController
-	before_filter :authenticate_user!
-	before_action :set_cooperative, only: [:index]
+	prepend_before_filter :authenticate_user!, :get_activities, only: [:create]
+	before_action :set_cooperative, only: [:index, :new, :create]
+	before_action :set_cooperative_activities, only: [:new, :create]
 
 	def index
 		page = params[:page].nil? ? 1 : params[:page]
@@ -8,23 +9,21 @@ class MembersController < ApplicationController
   end
 
 	def create
-		date = date_today
-		activities = parse_activities params["member"]["activities"]
-		merged_worker_params = worker_params.merge(:dateAdded => date_today, :activities => activities)
-
-		@cooperative = Cooperative.find(current_user.cooperative_id)
-		@member = @cooperative.members.new(merged_worker_params)
-	  if @member.save
-	  	flash[:success] = "#{params[:member][:name]} was successfully created. Helge vare gösta"
-		  redirect_to cooperative_members_path
+		get_activities
+		@member = @cooperative.members.new(member_params)
+	  if !@activities_param.empty? && @member.save
+	  	@member.activities = @activities_param
+		  redirect_to member_path(@member)
 		else
-			flash[:danger] = "Name, mobile and activities field must be filled in. Helge vare gösta"
+			if @activities_param.empty?
+				@member.errors.add :activities, t('form.error_no_activity')
+			end
 			render 'new'
 		end
 	end
 
 	def new
-		@cooperative = Cooperative.find(current_user.cooperative_id)
+		@member = @cooperative.members.new
 	end
 
 	def show
@@ -61,6 +60,23 @@ class MembersController < ApplicationController
 
 	private
 
+	def set_cooperative_activities
+		@activities = Cooperative.find(current_user.cooperative_id).activities
+	end
+
+	def get_activities
+		activities_id = params[:member].try(:[], 'activities')
+		activities_id = activities_id.nil? ? [] : activities_id
+		activities_id = activities_id.reject {|id| id.empty?}
+		@activities_param = Array.new
+		activities_id.each do |id|
+			@activities_param << Activity.find_by_id(id)
+		end
+		bad_params = @activities_param.any? {|activity| !activity.is_a?(ActiveRecord::Base) && current_user.cooperative_id == activity.cooperative_id}
+		return true unless bad_params
+		render nothing: true, status: 401
+	end
+
 	def set_cooperative
 		@cooperative = Cooperative.find(current_user.cooperative_id)
  	end
@@ -72,7 +88,7 @@ class MembersController < ApplicationController
 		activities.join(", ")
 	end
 
-  def worker_params
-    params.require(:member).permit(:name, :mobile, :email, :personId, :activities, :comment, :dateAdded)
+  def member_params
+    params.require(:member).permit(:name, :mobile, :email, :date_of_birth, :comment)
   end
 end

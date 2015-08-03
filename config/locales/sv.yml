@@ -1,5 +1,14 @@
 
 sv:
+  form:
+    name: Namn
+    mobile: Mobil
+    email: Epost
+    date_of_birth: Personnummer
+    activities: Aktiviteter
+    comment: Kommentar
+    create: Ny volentär
+    error_no_activity: En volentär måste ha minst en aktivitet
   cooperative:
     start_name: Ditt föreningsnamn
     created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".
@@ -15,6 +24,7 @@ sv:
     confirm_destroy: Är du säker?
     back: tillbaka
     create: Skapa aktivitet
+    no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
   header:
     website_name: Skånken
     about: Om oss
@@ -24,6 +34,17 @@ sv:
     new_account: Ny användare
     edit_cooperative: Inställningar
     manage_members: Hantera volontärlistan
+  member:
+
+  activerecord:
+    errors:
+      models:
+        member:
+          attributes:
+            name:
+              blank: Måste anges
+            mobile:
+              blank: Måste anges
 
   welcome:
     header: Skapa en ny lista med volentärer

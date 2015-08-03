@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :cooperative
   has_many :activities, through: :user_activities
+  has_many :user_activities
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :activities
 
   devise_for :users, controllers: {
     registrations: "users/registrations"
   }
 
 
+  resources :activities
   resources :users
 
   resources :cooperatives do
@@ -17,10 +17,10 @@ Rails.application.routes.draw do
     get 'accounts', to: 'cooperatives#accounts'
     get 'clear', to: 'cooperatives#clear'
 
-    resources :members do
-      resources :contacteds
-      resources :jobs
-    end
+  end
+  resources :members do
+    resources :contacteds
+    resources :jobs
   end
 
   get 'choose', to: 'table#choose'

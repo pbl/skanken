@@ -1,5 +1,8 @@
 
 sv:
+  table:
+    choose:
+      header: Vilken aktivitet vill du har volentärer för?
   form:
     name: Namn
     mobile: Mobil
@@ -34,8 +37,6 @@ sv:
     new_account: Ny användare
     edit_cooperative: Inställningar
     manage_members: Hantera volontärlistan
-  member:
-
   activerecord:
     errors:
       models:

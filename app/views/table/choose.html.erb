@@ -1,1 +1,5 @@
-<p>asdasd</p>
+<h2> <%= t('table.choose.header') %></h2>
+<% @activities.each do |activity| %>
+  <%= link_to activity.name, create_path(choose: { activity_id: activity.id}), class: 'btn btn-default' %>
+<% end %>
+

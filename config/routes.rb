@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :activities
   resources :users
 
+  # resources :tables
+
   resources :cooperatives do
     resources :accounts
 
@@ -24,6 +26,7 @@ Rails.application.routes.draw do
   end
 
   get 'choose', to: 'table#choose'
+  get 'create', to: 'table#create'
   get 'pages/about'
   root 'pages#start'
 

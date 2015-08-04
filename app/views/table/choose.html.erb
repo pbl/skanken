@@ -1,1 +1,4 @@
-<p>asdasd</p>
+<% @activities.each do |activity| %>
+  <%= link_to activity.name, create_path, activity_id: activity.id, class: 'btn btn-primary' %>
+<% end %>
+

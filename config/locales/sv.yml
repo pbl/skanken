@@ -1,27 +1,41 @@
 
 sv:
   table:
-    header: Visar volentärer för aktiviteten %{activity}
+    header: "Visar volentärer för aktiviteten: %{activity}"
     choose:
       header: Vilken aktivitet vill du har volentärer för?
-      link: 'Byt aktivitet'
+      link: Byt aktivitet
     search:
       button: Sök
       description: Sök volentär
   form:
+    activities_hint: "%{name} nuvarande aktiviteter är"
     name: Namn
     mobile: Mobil
     email: Epost
-    date_of_birth: Personnummer
+    date_of_birth: Födelsedagsdatum
     activities: Aktiviteter
     comment: Kommentar
     create: Ny volentär
+    update: Updatera volentär
     error_no_activity: En volentär måste ha minst en aktivitet
   cooperative:
     start_name: Ditt föreningsnamn
     created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".
     name: Föreningsnamn
     update: Updatera
+  member:
+    edit: Editera
+    delete: Ta bort
+    created_at: Tillagd den
+    contacted: Kontaktad
+    job: Arbetat
+    times: gånger
+    date: Datum
+    activity: Aktivitet
+    confirm_destroy: Är du säker?
+    profile: Profil
+    last_contacted: Senast kontaktad
   activities:
     header: Volentär aktiviteter
     member_count_header: Antalet volentärer

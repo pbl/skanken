@@ -1,9 +1,9 @@
 <table class="table table-hover">
   <thead>
     <tr>
-      <th>Date</th>
-      <th>Activity</th>
-      <th>Comment</th>
+      <th><%= t('member.date') %></th>
+      <th><%= t('member.activity') %></th>
+      <th><%= t('form.comment') %></th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
         </td>
         <td> <%= link_to 'Delete', [@cooperative, info.member, info],
              method: :delete,
-             data: { confirm: 'Are you sure?' } %></td>
+             data: { confirm: t('member.confirm_destroy') } %></td>
       </tr>
     <% end %>
   </tbody>

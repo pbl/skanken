@@ -10,7 +10,7 @@
       </button>
       <% @cooperative = Cooperative.find_by_id(current_user.try(:cooperative_id)) %>
       <% if user_signed_in? %>
-        <%= link_to current_user.cooperative.name, choose_path, html_options = {class: 'navbar-brand'} %>
+        <%= link_to current_user.cooperative.name, table_table_path, html_options = {class: 'navbar-brand'} %>
       <% else %>
         <%= link_to t('header.website_name'), root_path, html_options = {class: 'navbar-brand'} %>
       <% end %>

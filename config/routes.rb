@@ -25,8 +25,14 @@ Rails.application.routes.draw do
     resources :jobs
   end
 
-  get 'choose', to: 'table#choose'
-  get 'create', to: 'table#create'
+  namespace :table do
+    get 'choose'
+    get 'create'
+    get 'table'
+  end
+  # get 'choose', to: 'table#choose'
+  # get 'create', to: 'table#create'
+
   get 'pages/about'
   root 'pages#start'
 

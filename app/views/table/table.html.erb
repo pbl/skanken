@@ -1,0 +1,8 @@
+<h2>
+<%= t('table.header', activity: current_user.activities.first.name) %>
+</h2>
+<br>
+<%= link_to t('table.choose.link'), table_choose_path, input_html = {class: 'pull-right btn btn-warning'} %>
+<%= render 'table/form' %>
+
+<%= render :partial => 'members/table' %>

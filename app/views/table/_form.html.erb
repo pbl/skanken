@@ -1,0 +1,11 @@
+<%= simple_form_for(@search_form, url: table_table_path, method: :get, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :query, label: t('table.search.description'), wrapper: :horizontal_input_group do %>
+      <%= f.input_field :query, class: 'form-control', onfocus: "initSearch(this, '#{{ search_presenter: { query: '' } }.to_param}')" %>
+      <span  class="input-group-btn">
+        <button class="btn btn-default" type="submit"><%= t('table.search.button') %></button>
+      </span>
+    <% end %>
+  </div>
+<% end %>

@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
 
   def user_start_page
     return true unless user_signed_in?
-    redirect_to members_path
+    redirect_to table_table_path
   end
 
   private

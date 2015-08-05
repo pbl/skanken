@@ -22,7 +22,7 @@ class CooperativesController < ApplicationController
 		if !params[:file].nil? && params[:file].original_filename.end_with?(".csv")
 			Member.import(params[:file], current_user.cooperative_id)
 			flash[:success] = "File uploaded. Helge vare gösta"
-			redirect_to cooperative_members_path
+			redirect_to table_table_path
 		else
 			flash[:danger] = "No file or wrong file format. Helge vare gösta"
 			redirect_to cooperative_admin_path
@@ -32,7 +32,7 @@ class CooperativesController < ApplicationController
 	def clear
 		@cooperative.members.delete_all
 		flash[:success] = "All workers deleted. Helge vare gösta"
-		redirect_to cooperative_members_path
+		redirect_to table_table_path
 	end
 
 	private

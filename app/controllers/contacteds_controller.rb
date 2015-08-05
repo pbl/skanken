@@ -10,7 +10,7 @@ class ContactedsController < ApplicationController
     @member.nbr_contacteds = @member.contacteds.length
     @member.last_contacted = @member.contacteds.last.date
     @member.save
-    redirect_to cooperative_members_path
+    redirect_to table_table_path
   end
 
   def destroy
@@ -20,7 +20,7 @@ class ContactedsController < ApplicationController
     @member.nbr_contacteds = @member.contacteds.length
     if @member.contacteds.length == 0
       @member.last_contacted = "Never contacted"
-    else 
+    else
       @member.last_contacted = @member.contacteds.last.date
     end
     @member.save

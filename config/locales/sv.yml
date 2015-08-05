@@ -1,8 +1,13 @@
 
 sv:
   table:
+    header: Visar volentärer för aktiviteten %{activity}
     choose:
       header: Vilken aktivitet vill du har volentärer för?
+      link: 'Byt aktivitet'
+    search:
+      button: Sök
+      description: Sök volentär
   form:
     name: Namn
     mobile: Mobil

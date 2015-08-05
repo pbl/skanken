@@ -1,7 +1,7 @@
 class MembersController < ApplicationController
 	prepend_before_filter :authenticate_user!
 	before_filter :set_member, only: [:show, :edit, :update, :destroy]
-	before_action :get_activities, only: [:create, :update]
+	before_filter :get_activities_from_param, only: [:create, :update]
 	before_action :set_cooperative, only: [:new, :create]
 	before_action :set_cooperative_activities, only: [:new, :create, :edit, :update]
 
@@ -60,7 +60,7 @@ class MembersController < ApplicationController
 		@activities = current_user.cooperative.activities
 	end
 
-	def get_activities
+	def get_activities_from_param
 		activities_id = params[:member].try(:[], 'activities')
 		activities_id = activities_id.nil? ? [] : activities_id
 		activities_id = activities_id.reject {|id| id.empty?}

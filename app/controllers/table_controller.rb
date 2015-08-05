@@ -22,10 +22,6 @@ class TableController < ApplicationController
     query = @search_form.query || ''
     search = Search.new(@cooperative, @activity)
     @members = search.search(page: page, query: query)
-    # asd
-    # asd
-    # @members = @cooperative.members.page(page)
-    # @search_form = SearchPresenter.new(params)
   end
 
   private

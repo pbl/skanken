@@ -1,39 +1,34 @@
 <h3 style="display: inline; margin-"><%= @member.name %></h3>
 
-<%= link_to edit_cooperative_member_path(@cooperative, @member) do %>
+<%= link_to edit_member_path(@member) do %>
 <div style="font-size: 1.1em; display:inline-block">
-<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>Edit
+<span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= t('member.edit') %>
 </div>
 <% end %>
 
-<%= link_to cooperative_member_path(@cooperative, @member),
+<%= link_to member_path(@member),
         method: :delete,
-        data: { confirm: 'Are you sure?' }  do %>
+        data: { confirm: t('member.confirm_destroy') }  do %>
         <div style="font-size: 1.1em; display:inline-block">
-<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>Delete
+<span class="glyphicon glyphicon-trash" aria-hidden="true"></span><%= t('member.delete') %>
         </div>
 <% end %>
 
 <ul class="list-group">
-  <li class="list-group-item"> <strong>Mobile: </strong> <%= @member.mobile %></li>
-  <li class="list-group-item"> <strong>Interested in working with: </strong> <%= @member.activities %></li>
-  <li class="list-group-item"> <strong>Email: </strong> <%= @member.email %></li>
-  <li class="list-group-item"> <strong>Date added: </strong> <%= @member.dateAdded %></li>
-  <li class="list-group-item"> <strong>Date of birth: </strong> <%= @member.personId %></li>
-  <li class="list-group-item"> <strong>Contacted: </strong> <%= @member.contacteds.length %></li>
-  <li class="list-group-item"> <strong>Worked: </strong> <%= @member.jobs.length %></li>
-  <li class="list-group-item"> <strong>Comment: </strong> <%= @member.comment %></li>
+  <li class="list-group-item"> <strong><%= t('form.mobile') %>: </strong> <%= @member.mobile %></li>
+  <li class="list-group-item"> <strong><%= t('form.activities') %>: </strong> <%= member_activities %></li>
+  <li class="list-group-item"> <strong><%= t('form.email') %>: </strong> <%= @member.email %></li>
+  <li class="list-group-item"> <strong><%= t('form.created_at') %>: </strong> <%= format_date %></li>
+  <li class="list-group-item"> <strong><%= t('form.date_of_birth') %>: </strong> <%= @member.date_of_birth %></li>
+  <li class="list-group-item"> <strong><%= t('member.contacted') %>: </strong> <%= @member.contacteds.length %> <%= t('member.times') %></li>
+  <li class="list-group-item"> <strong><%= t('member.job') %>: </strong> <%= @member.jobs.length %> <%= t('member.times') %></li>
+  <li class="list-group-item"> <strong><%= t('form.comment') %>: </strong> <%= @member.comment %></li>
 </ul>
 
 </br>
 
-<h3>Worked</h3>
-<%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.jobs}  %>
-
-<h3>Contacted</h3>
+<h3><%= t('member.contacted') %></h3>
 <%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.contacteds}  %>
 
-
-
-
-
+<h3><%= t('member.job') %></h3>
+<%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.jobs}  %>

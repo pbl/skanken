@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def set_cooperative
-    @cooperative = Cooperative.find(current_user.cooperative_id)
+    @cooperative = current_user.cooperative
   end
 
   def ensure_cooperative_admin

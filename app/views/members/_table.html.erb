@@ -1,13 +1,12 @@
 <table class=" table table-bordered display responsive no-wrap" id="worker_table" width="100%">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Mobile</th>
-      <th>Worked</th>
-      <th>Contacted</th>
-      <th>Last contacted</th>
-      <th style="display: none">Interested in working with</th>
-      <th>Profile</th>
+      <th><%= t('form.name') %></th>
+      <th><%= t('form.mobile') %></th>
+      <th><%= t('member.job') %></th>
+      <th><%= t('member.contacted') %></th>
+      <th><%= t('member.last_contacted') %></th>
+      <th><%= t('member.profile') %></th>
     </tr>
   </thead>
   <tbody>
@@ -35,7 +34,7 @@
       <td>
         <%= link_to member_path(member) do %>
         <button type="button" class="btn btn-default btn-default">
-          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> Profile
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= t('member.profile') %>
         </button>
         <% end %>
       </td>

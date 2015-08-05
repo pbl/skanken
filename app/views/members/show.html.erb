@@ -18,7 +18,7 @@
   <li class="list-group-item"> <strong><%= t('form.mobile') %>: </strong> <%= @member.mobile %></li>
   <li class="list-group-item"> <strong><%= t('form.activities') %>: </strong> <%= member_activities %></li>
   <li class="list-group-item"> <strong><%= t('form.email') %>: </strong> <%= @member.email %></li>
-  <li class="list-group-item"> <strong><%= t('form.created_at') %>: </strong> <%= format_date %></li>
+  <li class="list-group-item"> <strong><%= t('member.created_at') %>: </strong> <%= format_date(@member) %></li>
   <li class="list-group-item"> <strong><%= t('form.date_of_birth') %>: </strong> <%= @member.date_of_birth %></li>
   <li class="list-group-item"> <strong><%= t('member.contacted') %>: </strong> <%= @member.contacteds.length %> <%= t('member.times') %></li>
   <li class="list-group-item"> <strong><%= t('member.job') %>: </strong> <%= @member.jobs.length %> <%= t('member.times') %></li>

@@ -7,7 +7,7 @@ class Member < ActiveRecord::Base
   belongs_to :cooperative
 
   validates_presence_of :name, :mobile
-  scope :has_name, -> (name) { where('lower(name) like ?', "%#{name.try(:downcase)}%")}
+  scope :has_name, -> (name) { where('lower(name) like :search', search: "%#{name.try(:downcase)}%")}
 
   # def self.import(file, cooperative_id)
   #   workerList = CSV.read(file.path, headers: true)

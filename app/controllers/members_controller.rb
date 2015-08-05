@@ -1,12 +1,14 @@
 class MembersController < ApplicationController
 	prepend_before_filter :authenticate_user!, :get_activities, only: [:create]
-	before_action :set_cooperative, only: [:index, :new, :create]
+	before_action :set_cooperative, only: [:new, :create]
 	before_action :set_cooperative_activities, only: [:new, :create]
 
-	def index
-		page = params[:page].nil? ? 1 : params[:page]
-    @members = @cooperative.members.page(page)
-  end
+	# not used
+	# def index
+	# 	page = params[:page].nil? ? 1 : params[:page]
+ #    @members = @cooperative.members.page(page)
+ #    @search_form = SearchPresenter.new(params)
+ #  end
 
 	def create
 		get_activities
@@ -44,7 +46,7 @@ class MembersController < ApplicationController
 
 		if @member.update(merged_worker_params)
 	  	flash[:success] = "#{params[:member][:name]} was successfully updated. Helge vare gösta"
-		  redirect_to cooperative_members_path
+		  redirect_to table_table_path
 		else
 			flash[:danger] = "Name, mobile and activities field must be filled in. Helge vare gösta"
 			@cooperative = Cooperative.find(current_user.cooperative_id)
@@ -55,7 +57,7 @@ class MembersController < ApplicationController
 	def destroy
 	  @member = Member.find(params[:id])
 	  @member.destroy
-	  redirect_to cooperative_members_path
+		redirect_to table_table_path
 	end
 
 	private

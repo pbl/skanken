@@ -10,7 +10,7 @@ class JobsController < ApplicationController
     @job.save
     @member.nbr_jobs = @member.jobs.length
     @member.save
-    redirect_to cooperative_members_path
+    redirect_to table_table_path
   end
 
   def destroy

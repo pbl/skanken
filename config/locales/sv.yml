@@ -3,6 +3,9 @@ sv:
   table:
     choose:
       header: Vilken aktivitet vill du har volentärer för?
+    search:
+      button: Sök
+      description: Sök volentär
   form:
     name: Namn
     mobile: Mobil

@@ -36,6 +36,7 @@ sv:
     confirm_destroy: Är du säker?
     profile: Profil
     last_contacted: Senast kontaktad
+    not_contacted: Har aldrig kontaktats
   activities:
     header: Volentär aktiviteter
     member_count_header: Antalet volentärer

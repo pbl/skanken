@@ -1,16 +1,19 @@
 class ContactedsController < ApplicationController
-  before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!
+  before_filter :set_member, only: [:add]
 
-  def create
-    date = date_today
-    contacted_params_merged = contacted_params.merge(:date => date)
-    @member = Member.find(params[:member_id])
-    @contacted = @member.contacteds.new(contacted_params_merged)
-    @contacted.save
-    @member.nbr_contacteds = @member.contacteds.length
-    @member.last_contacted = @member.contacteds.last.date
-    @member.save
-    redirect_to table_table_path
+  def add
+    activity = current_user.activities.try(:first).try(:name)
+    if !activity.nil?
+      @contacted = @member.contacteds.create(activity: activity)
+      @member.nbr_contacteds = @member.contacteds.size
+      @member.last_contacted = Time.now.strftime("%d %b. %Y")
+      @member.save
+      redirect_to table_table_path
+    else
+      render nothing: true, status: 401
+    end
+
   end
 
   def destroy
@@ -29,6 +32,13 @@ class ContactedsController < ApplicationController
   end
 
   private
+
+    def set_member
+      @member = Member.find_by_id(params[:member_id])
+      return true unless @member.nil?
+      render nothing: true, status: 401
+    end
+
     def contacted_params
       params.require(:contacted).permit(:date, :activity, :comment)
     end

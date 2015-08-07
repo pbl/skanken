@@ -11,3 +11,8 @@ class AddActivitiesModel < ActiveRecord::Migration
     add_foreign_key :activities, :cooperatives
   end
 end
+
+<td>
+        <%= member.nbr_contacteds %>
+        <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
+      </td>

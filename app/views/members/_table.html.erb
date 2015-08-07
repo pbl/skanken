@@ -27,10 +27,11 @@
       </td>
       <td>
         <%= member.nbr_contacteds %>
-        <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
+        <%= link_to member_add_path(member) do %>
+          <span class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
+        <% end %>
       </td>
-      <td><%= member.last_contacted %></td>
-      <td id="table-activity-column" style="display: none"><%= member.activities %> </td>
+      <td><%= format_date(member.last_contacted) %></td>
       <td>
         <%= link_to member_path(member) do %>
         <button type="button" class="btn btn-default btn-default">

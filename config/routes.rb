@@ -21,9 +21,12 @@ Rails.application.routes.draw do
 
   end
   resources :members do
-    resources :contacteds
     resources :jobs
+    resources :contacteds do
+    end
+    get 'add', to: 'contacteds#add'
   end
+
 
   namespace :table do
     get 'choose'

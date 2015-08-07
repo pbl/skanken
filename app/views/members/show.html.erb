@@ -28,7 +28,7 @@
 </br>
 
 <h3><%= t('member.contacted') %></h3>
-<%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.contacteds}  %>
+<%= render :partial => 'shared/contacted_table', locals: {contacteds: @member.contacteds}  %>
 
 <h3><%= t('member.job') %></h3>
 <%= render :partial => 'shared/worker_info_table', locals: {worker_info: @member.jobs}  %>

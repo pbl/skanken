@@ -1,5 +1,8 @@
 
 sv:
+  common:
+    delete: Ta bort
+    confirm_destroy: Är du säker?
   table:
     header: "Visar volentärer för aktiviteten: %{activity}"
     choose:

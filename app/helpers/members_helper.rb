@@ -5,8 +5,9 @@ module MembersHelper
     activity_names.join(', ')
   end
 
-  def format_date member
-    member.created_at.strftime("%d %b. %Y")
+  def format_date date
+    return t('member.not_contacted') unless !date.nil?
+    date.strftime("%d %b. %Y")
   end
 
   def activities_hint

@@ -1,35 +1,44 @@
 class ContactedsController < ApplicationController
-  before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!, :set_member, only: [:add, :destroy]
+  before_filter :set_contacted, only: [:destroy]
 
-  def create
-    date = date_today
-    contacted_params_merged = contacted_params.merge(:date => date)
-    @member = Member.find(params[:member_id])
-    @contacted = @member.contacteds.new(contacted_params_merged)
-    @contacted.save
-    @member.nbr_contacteds = @member.contacteds.length
-    @member.last_contacted = @member.contacteds.last.date
-    @member.save
-    redirect_to table_table_path
+  def add
+    activity = current_user.activities.try(:first).try(:name)
+    if !activity.nil?
+      @contacted = @member.contacteds.create(activity: activity)
+      update_member
+      redirect_to table_table_path
+    else
+      render nothing: true, status: 401
+    end
+
   end
 
   def destroy
-    @member = Member.find(params[:member_id])
-    @contacted = @member.contacteds.find(params[:id])
     @contacted.destroy
-    @member.nbr_contacteds = @member.contacteds.length
-    if @member.contacteds.length == 0
-      @member.last_contacted = "Never contacted"
-    else
-      @member.last_contacted = @member.contacteds.last.date
-    end
-    @member.save
-    @cooperative = Cooperative.find(current_user.cooperative_id)
-    redirect_to cooperative_member_path(@cooperative, @member)
+    update_member
+    redirect_to member_path(@member)
   end
 
   private
-    def contacted_params
-      params.require(:contacted).permit(:date, :activity, :comment)
-    end
+
+  def update_member
+    @member.nbr_contacteds = @member.contacteds.size
+    last_contacted = @member.contacteds.last
+    last_contacted = last_contacted.nil? ? nil : last_contacted.created_at
+    @member.last_contacted = last_contacted
+    @member.save
+  end
+
+  def set_contacted
+    @contacted = @member.contacteds.find_by_id(params[:id])
+    return true unless @contacted.nil?
+    render nothing: true, status: 401
+  end
+
+  def set_member
+    @member = Member.find_by_id(params[:member_id])
+    return true unless @member.nil?
+    render nothing: true, status: 401
+  end
 end

@@ -7,7 +7,6 @@ class TableController < ApplicationController
   def choose
     @activities = @cooperative.activities
     @activated = @activities.reject {|activity| !activity.activated}
-    @deactivated = @activities.reject {|activity| activity.activated}
     @user = current_user
   end
 

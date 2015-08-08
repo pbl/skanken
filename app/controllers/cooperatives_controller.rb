@@ -4,7 +4,7 @@ class CooperativesController < ApplicationController
 	before_action :set_cooperative, only: [:edit, :update, :admin, :update, :clear]
 
 	def edit
-		@activities = @cooperative.activities
+		@activities = @cooperative.activities.order(activated: :desc)
 	end
 
 	def update

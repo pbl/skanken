@@ -1,8 +1,7 @@
 class ActivitiesController < ApplicationController
-  prepend_before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!, :set_cooperative
   before_filter :ensure_cooperative_admin
-  before_filter :set_activity, only: [:show, :edit, :update, :destroy]
-  before_action :set_cooperative
+  before_filter :set_activity, only: [:show, :edit, :update, :deactivate]
 
   # GET /activities
   # GET /activities.json
@@ -56,20 +55,27 @@ class ActivitiesController < ApplicationController
     end
   end
 
+  def deactivate
+    @activity.activated = @activity.activated ? false : true
+    @activity.save
+    redirect_to edit_cooperative_path(@cooperative)
+  end
+
   # DELETE /activities/1
   # DELETE /activities/1.json
-  def destroy
-    @activity.destroy
-    respond_to do |format|
-      format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  # def destroy
+  #   @activity.destroy
+  #   respond_to do |format|
+  #     format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully destroyed.' }
+  #     format.json { head :no_content }
+  #   end
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_activity
-      @activity = Activity.find_by(id: params[:id])
+      id = params[:id] || params[:activity_id]
+      @activity = @cooperative.activities.find_by_id(id)
       return true unless @activity.nil?
       render nothing: true, status: 401
     end

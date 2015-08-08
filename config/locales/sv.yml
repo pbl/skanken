@@ -52,11 +52,13 @@ sv:
     new: Ny aktivitet
     name: Namn
     edit: Editera
-    destroy: Ta bort
-    confirm_destroy: Är du säker?
+    deactivate: Deaktivera
+    activate: Aktivera
+    confirm_deactivation: Är du säker?
     back: tillbaka
     create: Skapa aktivitet
     no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
+    activated: Aktiverad
   header:
     website_name: Skånken
     about: Om oss

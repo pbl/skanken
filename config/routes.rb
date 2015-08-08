@@ -6,12 +6,10 @@ Rails.application.routes.draw do
   }
 
 
-  resources :activities
-  resources :users
+  resources :activities, except: [:index, :show]
+  # resources :users
 
-  # resources :tables
-
-  resources :cooperatives do
+  resources :cooperatives, only: [:edit, :update] do
     resources :accounts
 
     get 'admin', to: 'cooperatives#admin'
@@ -20,10 +18,9 @@ Rails.application.routes.draw do
     get 'clear', to: 'cooperatives#clear'
 
   end
-  resources :members do
-    resources :jobs
-    resources :contacteds do
-    end
+  resources :members, except: [:index] do
+    resources :jobs, only: [:create, :destroy]
+    resources :contacteds, only: [:destroy]
     get 'add', to: 'contacteds#add'
   end
 

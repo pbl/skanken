@@ -9,16 +9,18 @@
   <thead>
     <tr>
       <th><%= t('activities.name') %></th>
+      <th><%= t('activities.activated') %></th>
       <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @activities.each do |activity| %>
-      <tr>
+      <tr class='<%= activated_row_class(activity.activated) %>'>
         <td><%= activity.name %></td>
+        <td><%= activity.activated %></td>
         <td><%= link_to t('activities.edit'), edit_activity_path(activity) %></td>
-        <td><%= link_to t('activities.destroy'), activity, method: :delete, data: { confirm: t('activities.confirm_destroy') } %></td>
+        <td><%= link_to deactivate_link(activity.activated), activity_deactivate_path(activity) %></td>
       </tr>
     <% end %>
   </tbody>

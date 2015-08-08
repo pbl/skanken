@@ -6,4 +6,11 @@ class Activity < ActiveRecord::Base
   has_many :user_activities
   has_many :jobs
   validates_presence_of :name, :cooperative_id
+
+  def get_activated(activities)
+    activities.reject! {|activity| activity.activated}
+  end
+
+  def get_deactivated(activities)
+  end
 end

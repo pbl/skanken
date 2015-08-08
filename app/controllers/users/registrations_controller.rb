@@ -15,7 +15,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @cooperative = Cooperative.create(name: t('cooperative.start_name'))
     @cooperative.users << @user
     flash[:info] = t('cooperative.created')
-    redirect_to edit_cooperative_path(@cooperative)
   end
 
   # POST /resource

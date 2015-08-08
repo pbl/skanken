@@ -15,6 +15,6 @@
 //= require turbolinks
 //= require_tree .
 
-function formActionValue(id){
-  $('#modal_form_jobs').find('form').attr('action', '/members/' + id + '/jobs');
+function formActionValue(member_id){
+  $('#modal_form_jobs').find('form').attr('action', '/members/' + member_id + '/jobs');
 }

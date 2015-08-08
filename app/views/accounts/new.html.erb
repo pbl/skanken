@@ -1,7 +1,8 @@
+<h1><%= t('accounts.new') %></h1>
 <%= simple_form_for :account, url: cooperative_accounts_path(@cooperative) do |f| %>
-  <%= f.input :email%>
-  <%= f.input :password  %>
-  <%= f.input :role, as: :radio_buttons, collection: User.cooperative_roles, label: 'User role', hint: 'A cooperative_admin has the same rights to edit the cooperative as you. A foreman can view and add workers.' %>
-  <%= f.button :submit  %>
-<% end %>          
-
+  <%= f.error_notification %>
+  <%= f.input :email, required: true, autofocus: true, label: t('devise.forms.email') %>
+  <%= f.input :password, required: true, hint: t('devise.forms.password_hint', length: 8), label: t('devise.forms.password') %>
+  <%= f.input :role, as: :radio_buttons, collection: User.cooperative_roles, label_method: ->(role){ format_user_roles(role) }, label: t('accounts.role'), hint: t('accounts.role_hint') %>
+  <%= f.button :submit, t('accounts.create')  %>
+<% end %>

@@ -1,20 +1,17 @@
 class AccountsController < ApplicationController
-  before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!, :set_cooperative
 
   def index
-  	@cooperative = current_user.cooperative
-		@users = @cooperative.users.all
+		@users = @cooperative.users
   end
 
   def new
-  	@cooperative = Cooperative.find(current_user.cooperative_id)
   end
 
   def create
-  	@cooperative = Cooperative.find(current_user.cooperative_id)
     email = params[:account][:email]
     password = params[:account][:password]
-    merge_params = account_params.merge(:password_confirmation => password)  
+    merge_params = account_params.merge(:password_confirmation => password)
   	@user = User.new(:email => params[:account][:email], :password => params[:account][:password], :password_confirmation => params[:account][:password])
   	@user.role = params[:account][:role]
     if @cooperative.users << @user
@@ -26,7 +23,6 @@ class AccountsController < ApplicationController
   end
 
   def destroy
-  	@cooperative = Cooperative.find(current_user.cooperative_id)
   	@user = @cooperative.users.find(params[:id])
   	if @user.destroy
       flash[:success] = "Account was succesfully removed. Helge vare gösta"

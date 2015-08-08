@@ -3,6 +3,13 @@ sv:
   common:
     delete: Ta bort
     confirm_destroy: Är du säker?
+  accounts:
+    new: Nytt användarkonto
+    role: Anvädartyp
+    role_hint: En administratör har tillgång till administratörssidorn. Annars har en förman och en administratör samma rättighter.
+    cooperative_admin: Adminstratör
+    foreman: Förman
+    create: Skapa användare
   job:
     form:
       header: Arbetat

@@ -1,8 +1,7 @@
 class MembersController < ApplicationController
-	prepend_before_filter :authenticate_user!
+	prepend_before_filter :authenticate_user!, :set_cooperative
 	before_filter :set_member, only: [:show, :edit, :update, :destroy]
 	before_filter :get_activities_from_param, only: [:create, :update]
-	before_action :set_cooperative, only: [:new, :create]
 	before_action :set_cooperative_activities, only: [:new, :create, :edit, :update]
 
 	def create
@@ -50,14 +49,13 @@ class MembersController < ApplicationController
 	private
 
 	def set_member
-		cooperative = current_user.cooperative
-		@member = cooperative.members.find_by_id(params[:id])
+		@member = @cooperative.members.find_by_id(params[:id])
 		return true unless @member.nil?
 		render nothing: true, status: 401
 	end
 
 	def set_cooperative_activities
-		@activities = current_user.cooperative.activities
+		@activities = @cooperative.activities
 	end
 
 	def get_activities_from_param
@@ -66,22 +64,11 @@ class MembersController < ApplicationController
 		activities_id = activities_id.reject {|id| id.empty?}
 		@member_activities = Array.new
 		activities_id.each do |id|
-			@member_activities << Activity.find_by_id(id)
+			@member_activities << @cooperative.activities.find_by_id(id)
 		end
 		bad_params = @member_activities.any? {|activity| !activity.is_a?(ActiveRecord::Base) && current_user.cooperative_id == activity.cooperative_id}
 		return true unless bad_params
 		render nothing: true, status: 401
-	end
-
-	def set_cooperative
-		@cooperative = Cooperative.find(current_user.cooperative_id)
- 	end
-
-	def parse_activities activities_param
-		activities = activities_param
-		# removes last empty element
-		activities.delete("")
-		activities.join(", ")
 	end
 
   def member_params

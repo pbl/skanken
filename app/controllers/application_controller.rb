@@ -17,11 +17,10 @@ class ApplicationController < ActionController::Base
     redirect_to table_table_path
   end
 
-  private
-  def date_today
-    time = Time.new
-    unformatTime = Time.local(time.year, time.month, time.day).to_s
-    formattedTime = unformatTime.gsub(/\s+/m, ' ').strip.split(" ")[0]
-    return formattedTime
+  def set_member
+    @member = current_user.cooperative.members.find_by_id(params[:member_id])
+    return true unless @member.nil?
+    render nothing: true, status: 401
   end
+
 end

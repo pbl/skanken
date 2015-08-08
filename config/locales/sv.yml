@@ -3,6 +3,12 @@ sv:
   common:
     delete: Ta bort
     confirm_destroy: Är du säker?
+  job:
+    form:
+      header: Arbetat
+      comment: Kommentar
+      hint: ingen annan än du kommer att kunna se den här kommentaren
+      submit: Skapa
   table:
     header: "Visar volentärer för aktiviteten: %{activity}"
     choose:

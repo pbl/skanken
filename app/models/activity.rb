@@ -4,5 +4,6 @@ class Activity < ActiveRecord::Base
   has_many :member_activities
   has_many :users, through: :user_activities
   has_many :user_activities
+  has_many :jobs
   validates_presence_of :name, :cooperative_id
 end

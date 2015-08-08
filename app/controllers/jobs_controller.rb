@@ -1,30 +1,46 @@
 class JobsController < ApplicationController
-  before_filter :authenticate_user!
+  prepend_before_filter :authenticate_user!, :set_member
+  before_filter :ensure_user_has_activity, only: [:create]
+  before_filter :set_job, only: [:destroy]
 
   def create
-    date = date_today
-    job_params_merged = job_params.merge(:date => date)
-
-    @member = Member.find(params[:member_id])
-    @job = @member.jobs.new(job_params_merged)
-    @job.save
-    @member.nbr_jobs = @member.jobs.length
-    @member.save
-    redirect_to table_table_path
+    job = @member.jobs.new(job_params)
+    if job.save
+      current_user.jobs << job
+      @activity.jobs << job
+      update_member
+      redirect_to table_table_path
+    else
+      render nothing: true, status: 401
+    end
   end
 
   def destroy
-    @member = Member.find(params[:member_id])
-    @job = @member.jobs.find(params[:id])
     @job.destroy
-    @member.nbr_jobs = @member.jobs.length
-    @member.save
-    @cooperative = Cooperative.find(current_user.cooperative_id)
-    redirect_to cooperative_member_path(@cooperative, @member)
+    update_member
+    redirect_to member_path(@member)
   end
 
   private
-    def job_params
-      params.require(:job).permit(:date, :activity, :comment)
-    end
+
+  def set_job
+    @job = @member.jobs.find_by_id(params[:id])
+    return true unless @job.nil?
+    render nothing: true, status: 401
+  end
+
+  def update_member
+    @member.nbr_jobs = @member.jobs.size
+    @member.save
+  end
+
+  def ensure_user_has_activity
+    @activity = current_user.activities.first
+    return true unless @activity.nil?
+    render nothing: true, status: 401
+  end
+
+  def job_params
+    params.require(:job).permit(:comment)
+  end
 end

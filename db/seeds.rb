@@ -53,7 +53,7 @@ class FakerCreator
       activities = []
       nbr_activities = rand(3)+1
       (1..nbr_activities).each do
-        activity_id = rand(cooperative.activities.count)+1
+        activity_id = rand(cooperative.activities.count)
         activities << cooperative.activities[activity_id]
       end
       activities.uniq!

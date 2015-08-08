@@ -4,11 +4,10 @@ class CreateMembers < ActiveRecord::Migration
       t.string :name
       t.string :mobile
       t.string :email
-      t.string :personId
       t.string :activities
       t.string :comment
-      t.string :dateAdded
-
+      t.string :date_of_birth
+      t.datetime :last_contacted
       t.references :cooperative, index: true
 
       t.timestamps null: false

@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   belongs_to :cooperative
   has_many :activities, through: :user_activities
   has_many :user_activities
+  has_many :jobs
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 

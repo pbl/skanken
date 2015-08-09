@@ -1,0 +1,20 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <th><%= t('member.date') %></th>
+      <th><%= t('member.activity') %></th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% statistics.each do |stat| %>
+      <tr>
+        <td><%= date(stat.created_at) %></td>
+        <td><%= format_statistics_info(stat.activity) %></td>
+        <td> <%= link_to t('common.delete'), [stat.member, stat],
+             method: :delete,
+             data: { confirm: t('common.confirm_destroy') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

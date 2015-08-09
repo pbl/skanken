@@ -1,11 +1,12 @@
 class Users::RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
+  before_filter :no_access
 
   # GET /resource/sign_up
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # creates a new user and a new cooperative at the same time
   def create
@@ -16,11 +17,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
     @cooperative.users << @user
     flash[:info] = t('cooperative.created')
   end
-
-  # POST /resource
-  # def create
-  #   super
-  # end
 
   # GET /resource/edit
   # def edit

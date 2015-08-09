@@ -9,7 +9,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   ROLES = %w[admin cooperative_admin foreman no_role]
-  validates_inclusion_of :role, in: (ROLES - ['admin'] - ['no_role'])
+  COOPERATIVE_ROLES = ROLES - ['admin'] - ['no_role']
+  validates_inclusion_of :role, in: (COOPERATIVE_ROLES)
 
   def self.cooperative_roles
     ROLES - ['admin'] - ['no_role']

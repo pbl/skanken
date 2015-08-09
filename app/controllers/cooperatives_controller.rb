@@ -15,6 +15,7 @@ class CooperativesController < ApplicationController
 		end
 	end
 
+	# controller action from here down has not been looked through
 	def admin
 	end
 
@@ -31,7 +32,6 @@ class CooperativesController < ApplicationController
 
 	def clear
 		@cooperative.members.delete_all
-		flash[:success] = "All workers deleted. Helge vare gösta"
 		redirect_to table_table_path
 	end
 

@@ -1,4 +1,5 @@
 class Users::PasswordsController < Devise::PasswordsController
+  before_filter :no_access
   # GET /resource/password/new
   # def new
   #   super

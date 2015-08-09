@@ -1,8 +1,9 @@
 <h1><%= t('accounts.new') %></h1>
-<%= simple_form_for :account, url: cooperative_accounts_path(@cooperative) do |f| %>
+<%= simple_form_for @user, url: cooperative_accounts_path(@cooperative) do |f| %>
   <%= f.error_notification %>
   <%= f.input :email, required: true, autofocus: true, label: t('devise.forms.email') %>
   <%= f.input :password, required: true, hint: t('devise.forms.password_hint', length: 8), label: t('devise.forms.password') %>
+  <%= f.input :password_confirmation, required: true, label: t('devise.forms.password_confirmation') %>
   <%= f.input :role, as: :radio_buttons, collection: User.cooperative_roles, label_method: ->(role){ format_user_roles(role) }, label: t('accounts.role'), hint: t('accounts.role_hint') %>
   <%= f.button :submit, t('accounts.create')  %>
 <% end %>

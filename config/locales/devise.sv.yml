@@ -71,6 +71,8 @@ sv:
       send_paranoid_instructions: "Om ditt konto finns, kommer du att få ett email med instruktioner om hur du låser upp det inom några minuter."
       unlocked: "Ditt konto är upp låsts. Du kan nu logga in."
   errors:
+    forms:
+      no_role: välj en användartyp
     messages:
       already_confirmed: "är redan bekräftad, vänligen logga in igen"
       confirmation_period_expired: "needs to be confirmed within %{period}, please request a new one"

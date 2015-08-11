@@ -22,7 +22,8 @@ sv:
       hint: ingen annan än du kommer att kunna se den här kommentaren
       submit: Skapa
   table:
-    header: "Visar volentärer för aktiviteten: %{activity}"
+    choosen_activity: "Visar volentärer för aktiviteten: %{activity}"
+    header: Alla volentärer
     choose:
       header: Vilken aktivitet vill du har volentärer för?
       link: Byt aktivitet

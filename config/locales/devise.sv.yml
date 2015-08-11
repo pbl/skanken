@@ -12,7 +12,7 @@ sv:
       change_password: Byt ditt lösenord
     forms:
       password: Lösenord
-      remember_me: Kom ihåg inloggning
+      remember_me: Kom ihåg mig
       email: Epost
       password_hint: minst %{length} karaktärer
       password_confirmation: "Bekräfta lösenord"

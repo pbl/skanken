@@ -1,8 +1,9 @@
 <%= render 'shared/modal_job_form' %>
+<h1><%= t('table.header') %></h1>
 
-<h2>
-<%= t('table.header', activity: current_user.activities.first.name) %>
-</h2>
+<p class="text-muted">
+  <%= t('table.choosen_activity', activity: current_user.activities.first.name) %>
+</p>
 <br>
 <%= link_to t('table.choose.link'), table_choose_path, input_html = {class: 'pull-right btn btn-warning'} %>
 <%= render partial: 'table/form', locals: {url: table_table_path} %>

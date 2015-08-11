@@ -10,10 +10,11 @@ module ApplicationHelper
   end
 
   def admin_active_class
-    paths = [cooperative_accounts_path(@cooperative),
-    new_cooperative_account_path(@cooperative),
-    edit_cooperative_path(@cooperative),
-    cooperative_admin_path(@cooperative)]
+    paths = []
+    paths << cooperative_accounts_path(@cooperative)
+    paths << new_cooperative_account_path(@cooperative)
+    paths << edit_cooperative_path(@cooperative)
+    paths << cooperative_admin_path(@cooperative)
     paths.each do |path|
       return active_class(path) if active_class(path).eql? 'active'
     end

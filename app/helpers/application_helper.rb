@@ -9,6 +9,21 @@ module ApplicationHelper
     stat.name
   end
 
+  def admin_active_class
+    paths = [cooperative_accounts_path(@cooperative),
+    new_cooperative_account_path(@cooperative),
+    edit_cooperative_path(@cooperative),
+    cooperative_admin_path(@cooperative)]
+    paths.each do |path|
+      return active_class(path) if active_class(path).eql? 'active'
+    end
+    return ''
+  end
+
+  def active_class(link_path)
+    current_page?(link_path) ? 'active' : ''
+  end
+
   def table_creator(records, header_names, column_functions)
     header = ''
     header_names.each do |name|

@@ -1,8 +1,11 @@
 
 sv:
+  history:
+    name: Namn
   common:
     delete: Ta bort
     confirm_destroy: Är du säker?
+    created_at: Datum
   accounts:
     new: Nytt användarkonto
     role: Anvädartyp
@@ -69,6 +72,7 @@ sv:
     no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
     activated: Aktiverad
   header:
+    history: Historik
     website_name: Skånken
     about: Om oss
     new_member: Ny volontär

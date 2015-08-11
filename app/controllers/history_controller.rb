@@ -3,6 +3,6 @@ class HistoryController < ApplicationController
 
   def show
     page = params[:page].nil? ? 1 : params[:page]
-    @jobs = current_user.jobs.page(page)
+    @jobs = current_user.jobs.order(created_at: :desc).page(page)
   end
 end

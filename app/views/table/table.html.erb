@@ -5,6 +5,6 @@
 </h2>
 <br>
 <%= link_to t('table.choose.link'), table_choose_path, input_html = {class: 'pull-right btn btn-warning'} %>
-<%= render 'table/form' %>
+<%= render partial: 'table/form', locals: {url: table_table_path} %>
 
-<%= render :partial => 'members/table' %>
+<%= render partial: 'members/table' %>

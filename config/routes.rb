@@ -36,6 +36,8 @@ Rails.application.routes.draw do
   # get 'choose', to: 'table#choose'
   # get 'create', to: 'table#create'
 
+  get 'history', to: 'history#show'
+
   get 'pages/about'
   root 'pages#start'
 

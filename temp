@@ -1,20 +1,27 @@
-class AddActivitiesModel < ActiveRecord::Migration
-  def change
-    remove_column :cooperatives, :activities
-    remove_column :members, :activities
+<h3>Import workerlist from excel</h3>
+<p>The file need to be in csv format! Currently import only supports files simmilar to Sydskånskas Jobbarlista. The import may take a few seconds <strong> when the import has started wait until it is done </strong></p>
 
-    create_table :activites do |t|
-      t.string :name
-      t.references :cooperative, index: true
-      t.timestamps null: false
-    end
-    add_foreign_key :activities, :cooperatives
-  end
-end
+<%= simple_form_for @cooperative, url: cooperative_import_path, method: :post do |f| %>
+  <%= f.input :surname, required: true %>
+  <%= f.input :last_name, required: true %>
+  <%= f.input :mobile, required: true %>
+  <%= f.input :interested_in_working_with %>
+  <%= f.input :date_added %>
+  <%= f.input :email %>
+  <%= f.input :date_of_birth %>
+  <%= f.input :last_contacted %>
+  <%= f.input :comment %>
+  <%= f.input :file, as: :file %>
+  <%= f.button :submit %>
+<% end %>
 
-<td>
-        <%= member.nbr_contacteds %>
-        <span data-toggle="modal" data-target=".bs-contacted-modal-sm" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
-      </td>
+<br>
+<br>
+<br>
 
-      onclick="formActionValue(<%=member.id%>)"
+
+<br>
+<br>
+
+<h3>Delete all workers in the worker list</h3>
+<%= link_to 'Delete all workers', cooperative_clear_path, :class => 'btn btn-danger', data: {confirm: "Are you sure? This will delete all worker data"} %>

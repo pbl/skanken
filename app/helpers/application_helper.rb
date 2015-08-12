@@ -14,7 +14,6 @@ module ApplicationHelper
     paths << cooperative_accounts_path(@cooperative)
     paths << new_cooperative_account_path(@cooperative)
     paths << edit_cooperative_path(@cooperative)
-    paths << cooperative_admin_path(@cooperative)
     paths.each do |path|
       return active_class(path) if active_class(path).eql? 'active'
     end
@@ -25,14 +24,15 @@ module ApplicationHelper
     current_page?(link_path) ? 'active' : ''
   end
 
-  def table_creator(records, header_names, column_functions)
+  def table_creator(records, header_names, column_functions, opts = {})
+    tr_class_function = opts[:tr_class_function] || Proc.new {|record|}
     header = ''
     header_names.each do |name|
       header += "<th>#{name}</th>"
     end
     rows = ''
     records.each do |record|
-      row = '<tr>'
+      row = "<tr class='#{tr_class_function.call(record)}'>"
       columns = ''
       column_functions.each do |proc|
         columns += "<td>#{proc.call(record)}</td>"

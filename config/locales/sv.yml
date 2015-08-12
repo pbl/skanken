@@ -46,6 +46,8 @@ sv:
     created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".
     name: Föreningsnamn
     update: Updatera
+    edit_name: Ändra föreningens namn
+    import: Importera
   member:
     edit: Editera
     delete: Ta bort

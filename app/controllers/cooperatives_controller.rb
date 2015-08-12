@@ -1,7 +1,7 @@
 class CooperativesController < ApplicationController
 	prepend_before_filter :authenticate_user!
 	before_filter :ensure_cooperative_admin
-	before_action :set_cooperative, only: [:edit, :update, :admin, :update, :clear]
+	before_action :set_cooperative
 
 	def edit
 		@activities = @cooperative.activities.order(activated: :desc)
@@ -9,14 +9,10 @@ class CooperativesController < ApplicationController
 
 	def update
 		if @cooperative.update(cooperative_params)
-			redirect_to root_path
+			redirect_to edit_cooperative_path(@cooperative)
 		else
 			render nothing: true, status: 401
 		end
-	end
-
-	# controller action from here down has not been looked through
-	def admin
 	end
 
 	def import
@@ -28,11 +24,6 @@ class CooperativesController < ApplicationController
 			flash[:danger] = "No file or wrong file format. Helge vare gösta"
 			redirect_to cooperative_admin_path
 		end
-	end
-
-	def clear
-		@cooperative.members.delete_all
-		redirect_to table_table_path
 	end
 
 	private

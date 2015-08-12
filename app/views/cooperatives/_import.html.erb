@@ -1,0 +1,4 @@
+<%= form_tag cooperative_import_path(@cooperative), multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<% end %>

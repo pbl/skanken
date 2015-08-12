@@ -15,10 +15,8 @@ Rails.application.routes.draw do
   resources :cooperatives, only: [:edit, :update] do
     resources :accounts
 
-    get 'admin', to: 'cooperatives#admin'
     post 'import', to: 'cooperatives#import'
     get 'accounts', to: 'cooperatives#accounts'
-    get 'clear', to: 'cooperatives#clear'
 
   end
   resources :members, except: [:index] do

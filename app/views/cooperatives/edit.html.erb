@@ -1,31 +1,17 @@
-<%= simple_form_for @cooperative do |f| %>
-  <%= f.input :name, label: t('cooperative.name') %>
-  <%= f.button :submit, t('cooperative.update') %>
-<% end %>
-
-<h1><%= t('activities.header') %></h1>
-
-<table class='table'>
-  <thead>
-    <tr>
-      <th><%= t('activities.name') %></th>
-      <th><%= t('activities.activated') %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @activities.each do |activity| %>
-      <tr class='<%= activated_row_class(activity.activated) %>'>
-        <td><%= activity.name %></td>
-        <td><%= activity.activated %></td>
-        <td><%= link_to t('activities.edit'), edit_activity_path(activity) %></td>
-        <td><%= link_to deactivate_link(activity.activated), activity_deactivate_path(activity) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to t('activities.new'), new_activity_path, input_html = {class: 'btn btn-default'} %>
+<ul class='nav nav-tabs'>
+  <li class='active'><a href='#activities' data-toggle='tab'><%= t('form.activities') %></a></li>
+  <li><a href='#cooperative_edit' data-toggle='tab'><%= t('cooperative.edit_name') %></a></li>
+  <li><a href='#cooperative_import' data-toggle='tab'><%= t('cooperative.import') %></a></li>
+  </li>
+</ul>
+<div id='myTabContent' class='tab-content'>
+   <div class='tab-pane fade active in' id='activities'>
+    <p><%= render 'cooperatives/activities' %></p>
+  </div>
+  <div class='tab-pane fade' id='cooperative_edit'>
+    <p><%= render 'cooperatives/form' %></p>
+  </div>
+  <div class='tab-pane fade' id='cooperative_import'>
+    <p><%= render 'cooperatives/import' %></p>
+  </div>
+</div>

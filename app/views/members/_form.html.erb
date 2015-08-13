@@ -5,6 +5,5 @@
   <%= f.input :email, required: false, label: t('form.email') %>
   <%= f.input :date_of_birth, label: "Date of birth", required: false, label: t('form.date_of_birth') %>
   <%= f.input :activities, required: true, as: :check_boxes, collection: @activities, label: t('form.activities'), hint: activities_hint %>
-  <%= f.input :comment, label: 'Comment', required: false, as: :text, label: t('form.comment') %>
   <%= f.button :submit, form_button %>
 <% end %>

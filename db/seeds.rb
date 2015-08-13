@@ -24,8 +24,13 @@ class FakerCreator
     @members = TIMES_MEMBER
   end
 
-  def seed
+  def seed_demo
     cooperative
+  end
+
+  def seed_empty
+    cooperative = Cooperative.create(name: 'Skanken')
+    users(cooperative)
   end
 
   private
@@ -69,4 +74,6 @@ class FakerCreator
 end
 
 seeder = FakerCreator.new
-seeder.seed
+# seeder.seed_demo
+seeder.seed_empty
+

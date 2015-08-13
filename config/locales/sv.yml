@@ -1,5 +1,8 @@
 
 sv:
+  import:
+    no_activity: Ingen aktivitet
+    error: Något gick fel kontakta. Snäll kontakta ansvariga för hemsidan
   history:
     name: Namn
   common:
@@ -48,6 +51,7 @@ sv:
     update: Updatera
     edit_name: Ändra föreningens namn
     import: Importera
+    import_header: Importera jobbarlistan från excel i csv format
   member:
     edit: Editera
     delete: Ta bort

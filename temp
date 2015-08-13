@@ -25,3 +25,5 @@
 
 <h3>Delete all workers in the worker list</h3>
 <%= link_to 'Delete all workers', cooperative_clear_path, :class => 'btn btn-danger', data: {confirm: "Are you sure? This will delete all worker data"} %>
+
+ <li class="<%= active_class(pages_about_path)%>"><%= link_to t('header.about'), pages_about_path %></li>

@@ -36,7 +36,7 @@ Rails.application.routes.draw do
 
   get 'history', to: 'history#show'
 
-  get 'pages/about'
+  # get 'pages/about'
   root 'pages#start'
 
 end

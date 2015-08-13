@@ -19,3 +19,17 @@
   cursor: hand!important;
 }
 
+#startpage-image {
+    background: url(http://www.freeforcommercialuse.net/images/1.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 1277.5px;
+    /*width: 2044px;*/
+    /*top: -50px;*/
+    margin-top: -50px;
+    vertical-align: middle;
+    /*height: 1000px;*/
+    width: 100%;
+    /*backface-visibility: hidden;*/
+}
+

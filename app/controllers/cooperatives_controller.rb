@@ -19,11 +19,10 @@ class CooperativesController < ApplicationController
 		if !params[:file].nil? && params[:file].original_filename.end_with?(".csv")
 			import = Import.new(params[:file], current_user.cooperative)
 			import.import
-			# flash[:success] = "File uploaded. Helge vare gösta"
 			redirect_to table_table_path
 		else
-			# flash[:danger] = "No file or wrong file format. Helge vare gösta"
-			redirect_to cooperative_admin_path
+			flash[:danger] = t('import.error')
+			redirect_to edit_cooperative_path(@cooperative)
 		end
 	end
 

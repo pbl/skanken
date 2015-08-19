@@ -6,7 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# 1 cooperative
 # 500 members
 # 10 activities
 # no jobs no contacteds
@@ -14,31 +13,35 @@
 
 
 class FakerCreator
-  # TIMES_COOPERATIVE = 1
   TIMES_ACTIVITY    = 10
   TIMES_MEMBER      = 500
 
   def initialize
-    # @cooperatives = TIMES_COOPERATIVE
     @activities = TIMES_ACTIVITY
     @members = TIMES_MEMBER
   end
 
-  def seed_demo
+  def seed
     cooperative
-  end
-
-  def seed_empty
-    cooperative = Cooperative.create(name: 'Skanken')
-    users(cooperative)
   end
 
   private
 
   def cooperative
+    demo_cooperative
+    empty_cooperative
+  end
+
+  def demo_cooperative
     name = Faker::App.name
     cooperative = Cooperative.find_or_create_by!(name: name)
     activities(cooperative)
+    members(cooperative)
+    users(cooperative)
+  end
+
+  def empty_cooperative
+    cooperative = Cooperative.create(name: 'Skanken')
     users(cooperative)
   end
 
@@ -47,7 +50,6 @@ class FakerCreator
       name = Faker::Company.name
       cooperative.activities.find_or_create_by!(name: name)
     end
-    members(cooperative)
   end
 
   def members(cooperative)
@@ -68,12 +70,12 @@ class FakerCreator
   end
 
   def users(cooperative)
-    cooperative.users.create!({email: 'admin@admin.com', role: :cooperative_admin, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: 1 })
-    cooperative.users.create!({email: 'user@user.com', role: :foreman, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: 1 })
+    id = cooperative.id
+    cooperative.users.create!({email: "admin#{id}@admin.com", role: :cooperative_admin, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: id })
+    cooperative.users.create!({email: "user#{id}@user.com", role: :foreman, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: id })
   end
 end
 
 seeder = FakerCreator.new
-# seeder.seed_demo
-seeder.seed_empty
+seeder.seed
 

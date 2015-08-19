@@ -25,14 +25,14 @@ sv:
       hint: ingen annan än du kommer att kunna se den här kommentaren
       submit: Skapa
   table:
-    choosen_activity: "Visar volentärer för aktiviteten: %{activity}"
-    header: Alla volentärer
+    choosen_activity: "Visar volontärer för aktiviteten: %{activity}"
+    header: Alla volontärer
     choose:
-      header: Vilken aktivitet vill du har volentärer för?
+      header: Vilken aktivitet vill du har volontärer för?
       link: Byt aktivitet
     search:
       button: Sök
-      description: Sök volentär
+      description: Sök volontär
   form:
     activities_hint: "%{name} nuvarande aktiviteter är"
     name: Namn
@@ -41,9 +41,9 @@ sv:
     date_of_birth: Födelsedagsdatum
     activities: Aktiviteter
     comment: Kommentar
-    create: Ny volentär
-    update: Updatera volentär
-    error_no_activity: En volentär måste ha minst en aktivitet
+    create: Ny volontär
+    update: Updatera volontär
+    error_no_activity: En volontär måste ha minst en aktivitet
   cooperative:
     start_name: Ditt föreningsnamn
     created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".
@@ -53,7 +53,7 @@ sv:
     import: Importera
     import_header: Importera jobbarlistan från excel i csv format
   member:
-    edit: Editera
+    edit: Redigera
     delete: Ta bort
     created_at: Tillagd den
     contacted: Kontaktad
@@ -66,11 +66,11 @@ sv:
     last_contacted: Senast kontaktad
     not_contacted: Har aldrig kontaktats
   activities:
-    header: Volentär aktiviteter
-    member_count_header: Antalet volentärer
+    header: Volontär aktiviteter
+    member_count_header: Antalet volontärer
     new: Ny aktivitet
     name: Namn
-    edit: Editera
+    edit: Redigera
     deactivate: Deaktivera
     activate: Aktivera
     confirm_deactivation: Är du säker?
@@ -108,10 +108,10 @@ sv:
             mobile:
               blank: Måste anges
   welcome:
-    header: Skapa en ny lista med volentärer
+    header: Skapa en ny lista med volontärer
     info: Tryck här för att skapa en helt ny lista med volänterer.
     existing_info: Om du vill registrera dig för en redan existerande volänterlist kontakta den ansvariga för föreningssidan så att hen kan skapa ett användarkonto till dig. Logga in om du redan har ett konto.
-    button: Skapa en helt ny volentärlista
+    button: Skapa en helt ny volontärlista
 
   helpers:
     page_entries_info:

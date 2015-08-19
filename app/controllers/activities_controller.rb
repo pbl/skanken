@@ -1,19 +1,8 @@
 class ActivitiesController < ApplicationController
   prepend_before_filter :authenticate_user!, :set_cooperative
   before_filter :ensure_cooperative_admin
-  before_filter :set_activity, only: [:show, :edit, :update, :deactivate, :destroy]
+  before_filter :set_activity, only: [:edit, :update, :deactivate, :destroy]
   before_filter :ensure_no_members, only: [:destroy]
-
-  # GET /activities
-  # GET /activities.json
-  # def index
-  #   @activities = Activity.all
-  # end
-
-  # GET /activities/1
-  # GET /activities/1.json
-  # def show
-  # end
 
   # GET /activities/new
   def new
@@ -28,7 +17,6 @@ class ActivitiesController < ApplicationController
   # POST /activities.json
   def create
     ap = activity_params
-    ap[:name] = ap[:name].try(:downcase)
     ap = ap.merge(cooperative_id: @cooperative.id)
     @activity = Activity.new(ap)
     respond_to do |format|
@@ -79,18 +67,18 @@ class ActivitiesController < ApplicationController
 
   def ensure_no_members
     return true if @activity.members.empty?
-    render nothing: true, status: 401
+    render nothing: true, status: 403
   end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_activity
     id = params[:id] || params[:activity_id]
     @activity = @cooperative.activities.find_by_id(id)
-    return true unless @activity.nil?
-    render nothing: true, status: 401
+    record_exists?(@activity, 403)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def activity_params
-    params.require(:activity).permit(:name)
+    params.require(:activity).permit(:name).each_value {|name| name.downcase}
   end
 end

@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     @cooperative = current_user.cooperative
   end
 
-  def record_exists? record
+  def record_exists?(record, status = 401)
     return true unless record.nil?
-    render nothing: true, status: 401
+    render nothing: true, status: status
   end
 
   def ensure_cooperative_admin

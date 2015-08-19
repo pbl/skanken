@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   }
 
 
-  resources :activities, except: [:index, :show, :destroy] do
+  resources :activities, except: [:index, :show] do
     get 'deactivate', to: 'activities#deactivate'
   end
   # resources :users

@@ -1,4 +1,7 @@
 <h1><%= t('activities.header') %></h1>
+<p class="text-muted">
+  <%= t('activities.destroy_info', activity: current_user.activities.first.name) %>
+</p>
 <%
 header_names = []
 header_names << t('activities.name')
@@ -10,9 +13,9 @@ header_names << t('common.delete')
 column_functions = []
 column_functions << Proc.new {|record| record.name}
 column_functions << Proc.new {|record| link_to t('activities.edit'), edit_activity_path(record)}
-column_functions << Proc.new {|record| link_to deactivate_link(record.activated), activity_deactivate_path(record)}
-column_functions << Proc.new {|record| link_to t('common.delete'), activity_path(record),
-  method: :delete, data: { confirm: t('activities.confirm_destroy') } if record.members.empty?}
+column_functions << Proc.new {|record| link_to deactivate_link(record.activated),
+  activity_deactivate_path(record)}
+column_functions << Proc.new {|record| destroy_link(record)}
 %>
 <%
 tr_class_function = Proc.new {|record| activated_row_class(record.activated)}

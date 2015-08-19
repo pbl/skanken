@@ -16,8 +16,7 @@ class ActivitiesController < ApplicationController
   # POST /activities
   # POST /activities.json
   def create
-    ap = activity_params
-    ap = ap.merge(cooperative_id: @cooperative.id)
+    ap = activity_params.merge(cooperative_id: @cooperative.id)
     @activity = Activity.new(ap)
     respond_to do |format|
       if @activity.save

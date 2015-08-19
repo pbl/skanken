@@ -77,7 +77,8 @@ sv:
     back: tillbaka
     create: Skapa aktivitet
     no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
-    activated: Aktiverad
+    change_activation: Ändra aktivering
+    confirm_destroy: Varning! Det här kommer att ta bort all historik och kontaktinformation kopplat till den här aktiviteten.
   header:
     history: Historik
     website_name: Skånken

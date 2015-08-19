@@ -1,7 +1,8 @@
 class ActivitiesController < ApplicationController
   prepend_before_filter :authenticate_user!, :set_cooperative
   before_filter :ensure_cooperative_admin
-  before_filter :set_activity, only: [:show, :edit, :update, :deactivate]
+  before_filter :set_activity, only: [:show, :edit, :update, :deactivate, :destroy]
+  before_filter :ensure_no_members, only: [:destroy]
 
   # GET /activities
   # GET /activities.json
@@ -63,25 +64,33 @@ class ActivitiesController < ApplicationController
 
   # DELETE /activities/1
   # DELETE /activities/1.json
-  # def destroy
-  #   @activity.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully destroyed.' }
-  #     format.json { head :no_content }
-  #   end
-  # end
+  def destroy
+    @activity.users.each do |user|
+      user.activities.delete_all
+    end
+    @activity.destroy
+    respond_to do |format|
+      format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_activity
-      id = params[:id] || params[:activity_id]
-      @activity = @cooperative.activities.find_by_id(id)
-      return true unless @activity.nil?
-      render nothing: true, status: 401
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def activity_params
-      params.require(:activity).permit(:name)
-    end
+  def ensure_no_members
+    return true if @activity.members.empty?
+    render nothing: true, status: 401
+  end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_activity
+    id = params[:id] || params[:activity_id]
+    @activity = @cooperative.activities.find_by_id(id)
+    return true unless @activity.nil?
+    render nothing: true, status: 401
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def activity_params
+    params.require(:activity).permit(:name)
+  end
 end

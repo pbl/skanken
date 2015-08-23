@@ -47,3 +47,6 @@ group :development, :test do
 end
 # For heroku deployment
 ruby "2.2.2"
+
+gem 'chartkick', git: 'https://github.com/buren/chartkick'
+gem 'groupdate'

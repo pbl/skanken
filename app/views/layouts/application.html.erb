@@ -15,8 +15,19 @@
 <!-- DataTables -->
   <script src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/responsive/1.0.6/js/dataTables.responsive.js"></script>
-</head>
+  <script>
+    var Chartkick = {
+      language: 'sv',
+      lineChart: {
+        marker: {
+          maxPoints: 15
+        }
+      }
+    };
+  </script>
+  </head>
 <body>
+  <%= yield :page_js %>
   <header>
     <%= render :partial => 'header' %>
   </header>

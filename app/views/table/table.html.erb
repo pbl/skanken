@@ -8,4 +8,11 @@
 <%= link_to t('table.choose.link'), table_choose_path, input_html = {class: 'pull-right btn btn-warning'} %>
 <%= render partial: 'table/form', locals: {url: table_table_path} %>
 
+<div class="well">
+  <% content_for(:page_js) do %>
+    <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <% end %>
+  <%= line_chart charts_member_created_date_path, hAxisTitle: 'Skapad', vAxisTitle: 'Antal' %>
+</div>
+
 <%= render partial: 'members/table' %>

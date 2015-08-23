@@ -39,4 +39,7 @@ Rails.application.routes.draw do
   # get 'pages/about'
   root 'pages#start'
 
+  namespace :charts do
+    get 'member_created_date'
+  end
 end

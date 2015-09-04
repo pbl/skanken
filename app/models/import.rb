@@ -46,6 +46,7 @@ class Import
     activities = []
     member_activities.each do |activity_name|
       activity_name.downcase!
+      # pretty sure next 4 lines can be replaced by find__or_create_by(name: activity_name)
       activity = @cooperative.activities.find_by(name: activity_name)
       if activity.nil?
         activity = @cooperative.activities.create(name: activity_name)

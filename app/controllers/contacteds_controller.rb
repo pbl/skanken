@@ -6,7 +6,7 @@ class ContactedsController < ApplicationController
   def add
     @contacted = @member.contacteds.create(activity: @activity_name)
     update_member
-    redirect_to table_table_path
+    redirect_to table_all_path
   end
 
   def destroy
@@ -18,7 +18,7 @@ class ContactedsController < ApplicationController
   private
 
   def set_activity_name
-    @activity_name = current_user.activities.try(:first).try(:name)
+    @activity_name = current_user.activities.first.try(:name)
     return true unless @activity_name.nil?
     render nothing: true, status: 401
   end

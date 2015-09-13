@@ -1,8 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  activity_id: 
-  member_id: 
+  activity: with_members
+  member: one
 
 two:
   activity_id: 

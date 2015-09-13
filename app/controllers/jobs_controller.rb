@@ -9,7 +9,7 @@ class JobsController < ApplicationController
       current_user.jobs << job
       @activity.jobs << job
       update_member
-      redirect_to table_table_path
+      redirect_to table_all_path
     else
       render nothing: true, status: 401
     end

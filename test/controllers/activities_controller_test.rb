@@ -1,49 +1,41 @@
 require 'test_helper'
 
 class ActivitiesControllerTest < ActionController::TestCase
+
   setup do
-    @activity = activities(:one)
+    @user = users(:cooperative_admin_user)
+    sign_in @user
+    @empty = activities(:empty)
+    @with_members = activities(:with_members)
   end
 
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:activities)
+  teardown do
+    sign_out @user
   end
 
-  test "should get new" do
-    get :new
-    assert_response :success
-  end
+  # test "should get new" do
+  #   get :new
+  #   assert_response :success
+  # end
 
-  test "should create activity" do
-    assert_difference('Activity.count') do
-      post :create, activity: { cooperative_id: @activity.cooperative_id, name: @activity.name }
-    end
+  # test "should destroy activity" do
+  #   assert_difference('Activity.count', -1) do
+  #     delete :destroy, id: @activity
+  #   end
 
-    assert_redirected_to activity_path(assigns(:activity))
-  end
-
-  test "should show activity" do
-    get :show, id: @activity
-    assert_response :success
-  end
-
-  test "should get edit" do
-    get :edit, id: @activity
-    assert_response :success
-  end
-
-  test "should update activity" do
-    patch :update, id: @activity, activity: { cooperative_id: @activity.cooperative_id, name: @activity.name }
-    assert_redirected_to activity_path(assigns(:activity))
-  end
+  #   assert_redirected_to activities_path
+  # end
 
   test "should destroy activity" do
     assert_difference('Activity.count', -1) do
-      delete :destroy, id: @activity
+      delete :destroy, id: @empty
     end
-
-    assert_redirected_to activities_path
   end
+
+  test "should not destroy activity" do
+    assert_difference('Activity.count', 0) do
+      delete :destroy, id: @with_members
+    end
+  end
+
 end

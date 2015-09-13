@@ -53,6 +53,7 @@ sv:
     import: Importera
     import_header: Importera jobbarlistan från excel i csv format
   member:
+    view_all: alla medlemmar
     edit: Redigera
     delete: Ta bort
     created_at: Tillagd den
@@ -82,7 +83,7 @@ sv:
     confirm_destroy: Varning! Det här kommer att ta bort all historik och kontaktinformation kopplat till den här aktiviteten.
   header:
     history: Historik
-    website_name: Skånken
+    website_name: SSK
     about: Om oss
     new_member: Ny volontär
     admin: Adminstratör

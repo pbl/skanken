@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  personId: MyString
-  cooperative_id:
+  name: george
+  mobile: 123
+  cooperative: one
+  # activities: with_members
 
 two:
-  name: MyString
-  personId: MyString
-  cooperative_id:
+  name: harry
+  mobile: 123

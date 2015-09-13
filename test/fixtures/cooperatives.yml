@@ -5,5 +5,5 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
-  name: "Cooperative name"
-  activities: "Lunch, Svartklubben"
+  name: skanken
+  # activities: with members activity

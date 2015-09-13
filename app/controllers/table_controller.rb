@@ -15,7 +15,6 @@ class TableController < ApplicationController
   end
 
   def table
-    @activity_selection = current_user.activities.first
     page = params[:page] || 1
     @search_form    = SearchPresenter.new(params)
     query = @search_form.query || ''
@@ -27,8 +26,8 @@ class TableController < ApplicationController
 
   def user_activity
     @activity = current_user.activities.first
-    # return true unless @activity.nil?
-    # redirect_to table_choose_path
+    return true unless @activity.nil?
+    redirect_to table_choose_path
   end
 
   def set_activity_from_param

@@ -6,7 +6,7 @@ class ContactedsController < ApplicationController
   def add
     @contacted = @member.contacteds.create(activity: @activity_name)
     update_member
-    redirect_to table_table_path
+    redirect_to table_all_path
   end
 
   def destroy

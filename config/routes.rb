@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   namespace :table do
     get 'choose'
     get 'create'
-    get 'table'
+    get 'all'
   end
   # get 'choose', to: 'table#choose'
   # get 'create', to: 'table#create'

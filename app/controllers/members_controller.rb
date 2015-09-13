@@ -43,7 +43,7 @@ class MembersController < ApplicationController
 
 	def destroy
 	  @member.destroy
-		redirect_to table_table_path
+		redirect_to table_all_path
 	end
 
 	private

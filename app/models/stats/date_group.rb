@@ -1,5 +1,5 @@
 module Stats
-  class Date
+  class DateGroup
     class UnknownGroupByType < ArgumentError; end
 
     TYPES = %w(hour day week month year)

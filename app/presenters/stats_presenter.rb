@@ -1,7 +1,7 @@
 # Stats presenter class
 class StatsPresenter < BasePresenter
   # Search presenter attributes
-  ATTRIBUTES = [:model, :column, :group_by]
+  ATTRIBUTES = [:model, :column, :group_by, :from_date, :to_date]
   attr_accessor(*ATTRIBUTES)
 
   def initialize(params = {}, with: [])
@@ -14,7 +14,7 @@ class StatsPresenter < BasePresenter
   end
 
   def group_bys
-    Stats::Date::TYPES
+    Stats::DateGroup::TYPES
       .map { |m| [m.humanize, m] }
   end
 

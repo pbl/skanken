@@ -1,14 +1,16 @@
 <div class="well">
   <div class="row">
     <%= simple_form_for @stats_form, url: dashboard_overview_path(@cooperative), method: :get do |f| %>
-    <div class="col-sm-6">
-      <%= f.input :model, as: :select, collection: f.object.models %>
-      <%= f.input :column, as: :select, collection: f.object.columns %>
-      <%= f.input :group_by, as: :select, collection: f.object.group_bys %>
-    </div>
-    <div class="col-sm-6">
-      <%= f.submit 'Uppdatera', class: 'btn btn-primary' %>
-    </div>
+      <div class="col-sm-6">
+        <%= f.input :model, as: :select, collection: f.object.models %>
+        <%= f.input :column, as: :select, collection: f.object.columns %>
+        <%= f.input :group_by, as: :select, collection: f.object.group_bys %>
+      </div>
+      <div class="col-sm-6">
+        <%= f.input :from_date %>
+        <%= f.input :to_date %>
+        <%= f.submit 'Uppdatera', class: 'btn btn-primary' %>
+      </div>
     <% end %>
   </div>
   <div class="row">
@@ -20,5 +22,5 @@
 </div>
 
 <% content_for(:page_js) do %>
-  <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
+  <%= javascript_include_tag '//www.google.com/jsapi', 'chartkick' %>
 <% end %>

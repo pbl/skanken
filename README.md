@@ -8,7 +8,6 @@ Skanken is a worker list webapplication. It is basicly a table containing the in
 Looking for a feature to implement?
 
 * On the issues page, you can find features and other things that needs to be implemented.
-* In [postgresql](POSTGRESQL.md) you can see how to set up the database
 * In [contributing](CONTRIBUTING.md) for a guide of how to submit your contributions.
 
 ## Devloping

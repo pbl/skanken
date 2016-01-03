@@ -20,8 +20,10 @@
 }
 
 #body-startpage { 
-  background: url(forman.jpg) no-repeat center center fixed;
+  background-image: url(image-path('forman.jpg'));
   background-position: 0px -20px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;

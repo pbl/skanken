@@ -1,7 +1,7 @@
 # Search presenter class
 class SearchPresenter < BasePresenter
   # Search presenter attributes
-  ATTRIBUTES = [:query]
+  ATTRIBUTES = [:query, :activity_id]
   attr_accessor(*ATTRIBUTES)
 
   def initialize(params = {}, with: [])

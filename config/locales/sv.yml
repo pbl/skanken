@@ -25,7 +25,7 @@ sv:
       hint: ingen annan än du kommer att kunna se den här kommentaren
       submit: Skapa
   table:
-    choosen_activity: "Visar volontärer för aktiviteten: %{activity}"
+    filter_by_activity: Filtrera på aktivitet
     header: Alla volontärer
     choose:
       header: Vilken aktivitet vill du har volontärer för?

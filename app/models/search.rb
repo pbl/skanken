@@ -1,14 +1,14 @@
 class Search
-  # attr_reader :query
 
-  def initialize(cooperative, activity)
+  def initialize(cooperative)
     @cooperative = cooperative
-    @activity = activity
   end
 
   def search(opts)
     page = opts.fetch(:page)
     query = opts.fetch(:query)
-    @activity.members.has_name(query).order(name: :asc).page(page)
+    activity_id = opts.fetch(:activity_id)
+    records = @cooperative.activities.find_by_id(activity_id).try(:members) || @cooperative.members
+    records.has_name(query).order(name: :asc).page(page)
   end
 end

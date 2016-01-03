@@ -32,9 +32,11 @@
           <% end %>
         <% end %>
       </ul>
+        <% if user_signed_in? %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= render 'devise/menu/login_items' %></li>
         </ul>
+        <% end %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

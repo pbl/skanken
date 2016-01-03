@@ -19,13 +19,15 @@
   cursor: hand!important;
 }
 
-#startpage-image {
-    background: url(http://www.freeforcommercialuse.net/images/1.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 1277.5px;
-    margin-top: -50px;
-    vertical-align: middle;
-    width: 100%;
+#body-startpage { 
+  background: url(forman.jpg) no-repeat center center fixed;
+  background-position: 0px -20px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
+#jumbotron-start-page{
+  background-color: rgba(245, 245, 245, 0.8);
+}

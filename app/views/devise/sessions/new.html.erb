@@ -1,15 +1,17 @@
-<div class="col-md-6 col-md-offset-3">
-  <h2><%= t('devise.links.log_in') %></h2>
+<div class="col-md-9 col-md-offset-1">
+  <div class="jumbotron" id="jumbotron-start-page">
+    <h2><%= t('devise.links.log_in') %></h2>
 
-  <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <div class="form-inputs">
-      <%= f.input :email, label: t('devise.forms.email'), required: false, autofocus: true %>
-      <%= f.input :password, label: t('devise.forms.password'), required: false %>
-      <%= f.input :remember_me, label: t('devise.forms.remember_me'), as: :boolean if devise_mapping.rememberable? %>
-    </div>
-    <div class="form-actions">
-      <%= f.button :submit, t('devise.links.log_in') %>
-    </div>
-  <% end %>
+    <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-inputs">
+        <%= f.input :email, label: t('devise.forms.email'), required: false, autofocus: true %>
+        <%= f.input :password, label: t('devise.forms.password'), required: false %>
+        <%= f.input :remember_me, label: t('devise.forms.remember_me'), as: :boolean if devise_mapping.rememberable? %>
+      </div>
+      <div class="form-actions">
+        <%= f.button :submit, t('devise.links.log_in') %>
+      </div>
+    <% end %>
+  </div>
 </div>
 

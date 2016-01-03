@@ -22,7 +22,7 @@ sv:
     form:
       header: Arbetat
       comment: Kommentar
-      hint: ingen annan än du kommer att kunna se den här kommentaren
+      hint: enbart synlig för detta användarkonto
       submit: Skapa
   table:
     filter_by_activity: Filtrera på aktivitet
@@ -44,6 +44,8 @@ sv:
     create: Ny volontär
     update: Updatera volontär
     error_no_activity: En volontär måste ha minst en aktivitet
+  job_form:
+    error_no_activity: Du måste ange en aktivitet
   cooperative:
     start_name: Ditt föreningsnamn
     created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".

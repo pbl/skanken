@@ -1,18 +1,18 @@
 class JobsController < ApplicationController
   prepend_before_filter :authenticate_user!, :set_member
-  before_filter :ensure_user_has_activity, only: [:create]
   before_filter :set_job, only: [:destroy]
+  before_filter :set_cooperative, only: [:create]
 
   def create
     job = @member.jobs.new(job_params)
     if job.save
       current_user.jobs << job
-      @activity.jobs << job
+      @cooperative.activities.find_by_id(job_params['activity_id']).jobs << job
       update_member
-      redirect_to table_all_path
     else
-      render nothing: true, status: 401
+      flash[:warning] = t('job_form.error_no_activity')
     end
+    redirect_to table_all_path
   end
 
   def destroy
@@ -34,13 +34,7 @@ class JobsController < ApplicationController
     @member.save
   end
 
-  def ensure_user_has_activity
-    @activity = current_user.activities.first
-    return true unless @activity.nil?
-    render nothing: true, status: 401
-  end
-
   def job_params
-    params.require(:job).permit(:comment)
+    params.require(:job).permit(:comment, :activity_id)
   end
 end

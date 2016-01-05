@@ -1,11 +1,15 @@
 class ContactedsController < ApplicationController
-  prepend_before_filter :authenticate_user!, :set_member, only: [:add, :destroy]
+  prepend_before_filter :authenticate_user!, :set_member, only: [:create, :destroy]
   before_filter :set_contacted, only: [:destroy]
-  before_filter :set_activity_name, only: [:add]
 
-  def add
-    @contacted = @member.contacteds.create(activity: @activity_name)
-    update_member
+  def create
+    activity_name = Activity.find_by_id(contacted_params['activity_id']).try(:name)
+    @contacted = @member.contacteds.new(activity: activity_name)
+    if @contacted.save
+      update_member
+    else
+      flash[:warning] = t('contacted_form.error_no_activity')
+    end
     redirect_to table_all_path
   end
 
@@ -17,10 +21,8 @@ class ContactedsController < ApplicationController
 
   private
 
-  def set_activity_name
-    @activity_name = current_user.activities.first.try(:name)
-    return true unless @activity_name.nil?
-    render nothing: true, status: 401
+  def contacted_params
+    params.require(:contacted).permit(:activity_id)
   end
 
   def update_member

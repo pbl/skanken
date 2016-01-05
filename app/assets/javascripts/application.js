@@ -14,6 +14,6 @@
 //= require jquery_ujs
 //= require_tree .
 
-function formActionValue(member_id){
-  $('#modal_form_jobs').find('form').attr('action', '/members/' + member_id + '/jobs');
+function formActionValue(member_id, type){
+  $('#modal_form_' + type).find('form').attr('action', '/members/' + member_id + '/' + type);
 }

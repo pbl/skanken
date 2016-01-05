@@ -26,8 +26,7 @@ Rails.application.routes.draw do
 
   resources :members, except: [:index] do
     resources :jobs, only: [:create, :destroy]
-    resources :contacteds, only: [:destroy]
-    get 'add', to: 'contacteds#add'
+    resources :contacteds, only: [:create, :destroy]
   end
 
   namespace :table do

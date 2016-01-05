@@ -6,8 +6,8 @@ class TableController < ApplicationController
     page = params[:page] || 1
     @search_form = SearchPresenter.new(params)
     query = @search_form.query || ''
+    activity_id = @search_form.activity_id
     search = Search.new(@cooperative)
-    @members = search.search(page: page, query: query, activity_id: @search_form.activity_id)
+    @members = search.search(page: page, query: query, activity_id: activity_id)
   end
-
 end

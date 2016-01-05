@@ -1,4 +1,3 @@
-
 sv:
   import:
     no_activity: Ingen aktivitet
@@ -45,6 +44,8 @@ sv:
     update: Updatera volontär
     error_no_activity: En volontär måste ha minst en aktivitet
   job_form:
+    error_no_activity: Du måste ange en aktivitet
+  contacted_form:
     error_no_activity: Du måste ange en aktivitet
   cooperative:
     start_name: Ditt föreningsnamn

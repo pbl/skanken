@@ -25,14 +25,6 @@ class ContactedsController < ApplicationController
     params.require(:contacted).permit(:activity_id)
   end
 
-  def update_member
-    @member.nbr_contacteds = @member.contacteds.size
-    last_contacted = @member.contacteds.last
-    last_contacted = last_contacted.nil? ? nil : last_contacted.created_at
-    @member.last_contacted = last_contacted
-    @member.save
-  end
-
   def set_contacted
     @contacted = @member.contacteds.find_by_id(params[:id])
     return true unless @contacted.nil?

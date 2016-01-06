@@ -1,0 +1,4 @@
+<h2> <%= t('randomizer.choose.header') %></h2>
+<% @activities.each do |activity| %>
+  <%= link_to activity.name, randomizer_show_path( activity_id: activity.id), class: 'btn btn-default' %>
+<% end %>

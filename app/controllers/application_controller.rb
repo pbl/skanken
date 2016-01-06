@@ -7,6 +7,15 @@ class ApplicationController < ActionController::Base
     render nothing: true, status: 401
   end
 
+  def update_member
+    @member.nbr_contacteds = @member.contacteds.size
+    last_contacted = @member.contacteds.last
+    last_contacted = last_contacted.nil? ? nil : last_contacted.created_at
+    @member.last_contacted = last_contacted
+    @member.nbr_jobs = @member.jobs.size
+    @member.save
+  end
+
   def set_cooperative
     @cooperative = current_user.cooperative
   end

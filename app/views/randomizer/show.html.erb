@@ -1,0 +1,6 @@
+<h3><%= @member.name %></h3>
+<p><strong><%= t('randomizer.created_at') %> </strong><%= format_date(@member.created_at) %></p>
+<p>
+  <%= link_to t('randomizer.next'), randomizer_show_path( activity_id: @activity.id), class: 'btn btn-default' %>
+  <a href="tel:<%= @member.mobile %>" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= @member.mobile %></a> 
+</p>

@@ -29,11 +29,6 @@ class JobsController < ApplicationController
     render nothing: true, status: 401
   end
 
-  def update_member
-    @member.nbr_jobs = @member.jobs.size
-    @member.save
-  end
-
   def job_params
     params.require(:job).permit(:comment, :activity_id)
   end

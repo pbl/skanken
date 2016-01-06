@@ -58,6 +58,12 @@ sv:
     destroy_members_form: Ta bort alla volontärer innan ett visst datum
     submit_destroy_members: Ta bort alla volentärer innan detta datum
     edit_name: Ändra föreningsnamn
+  randomizer:
+    header: Tinder
+    next: Swipe left
+    created_at: 'Tillagd den:'
+    choose:
+      header: Välj din preferens
   member:
     view_all: alla medlemmar
     edit: Redigera

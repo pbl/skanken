@@ -19,6 +19,7 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
+          <li class="<%= active_class(randomizer_category_path) %>"><%= link_to t('randomizer.header'), randomizer_category_path %></li>
           <li class="<%= active_class(new_member_path) %>"><%= link_to t('header.new_member'), new_member_path %></li>
           <li class="<%= active_class(history_path) %>"><%= link_to t('header.history'), history_path %></li>
           <% if current_user.is?(:cooperative_admin) %>

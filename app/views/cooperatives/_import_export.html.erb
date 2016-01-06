@@ -1,0 +1,8 @@
+<h1><%= t('cooperative.import_header')%></h1>
+<%= form_tag cooperative_import_path(@cooperative), multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import" %>
+<% end %>
+<br> 
+<h1><%= t('cooperative.export_header')%></h1> 
+<%= link_to t('export.button'), "#{cooperative_export_path(@cooperative)}.csv", input_html = {class: 'btn btn-default'} %>

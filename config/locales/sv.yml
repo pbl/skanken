@@ -2,6 +2,8 @@ sv:
   import:
     no_activity: Ingen aktivitet
     error: Något gick fel kontakta. Snäll kontakta ansvariga för hemsidan
+  export:
+    button: Exportera till csv
   history:
     name: Namn
   common:
@@ -53,8 +55,9 @@ sv:
     name: Föreningsnamn
     update: Updatera
     other: Övrigt
-    import: Importera
+    import_export: Importera/exportera
     import_header: Importera jobbarlistan från excel i csv format
+    export_header: Exportera jobbarlistan till excel i csv format
     destroy_members_form: Ta bort alla volontärer innan ett visst datum
     submit_destroy_members: Ta bort alla volentärer innan detta datum
     edit_name: Ändra föreningsnamn

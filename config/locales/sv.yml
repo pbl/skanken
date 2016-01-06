@@ -58,6 +58,9 @@ sv:
     destroy_members_form: Ta bort alla volontärer innan ett visst datum
     submit_destroy_members: Ta bort alla volentärer innan detta datum
     edit_name: Ändra föreningsnamn
+  randomizer:
+    choose:
+      header: Vilken aktivitet vill du har volontärer för?
   member:
     view_all: alla medlemmar
     edit: Redigera

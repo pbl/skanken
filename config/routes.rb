@@ -37,4 +37,9 @@ Rails.application.routes.draw do
   end
 
   get 'history', to: 'history#show'
+
+  namespace :randomizer do
+    get 'show'
+    get 'category'
+  end
 end

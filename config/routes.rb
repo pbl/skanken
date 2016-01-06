@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   resources :cooperatives, only: [:edit, :update] do
     resources :accounts
     post 'import', to: 'cooperatives#import'
+    get 'destroy_old_members', to: 'cooperatives#destroy_old_members'
     get 'accounts', to: 'cooperatives#accounts'
   end
 

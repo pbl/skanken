@@ -52,9 +52,12 @@ sv:
     created: Välkommen. Ändra föreningens inställningar genom att gå till "Inställningar" under fliken "Adminstratör".
     name: Föreningsnamn
     update: Updatera
-    edit_name: Ändra föreningens namn
+    other: Övrigt
     import: Importera
     import_header: Importera jobbarlistan från excel i csv format
+    destroy_members_form: Ta bort alla volontärer innan ett visst datum
+    submit_destroy_members: Ta bort alla volentärer innan detta datum
+    edit_name: Ändra föreningsnamn
   member:
     view_all: alla medlemmar
     edit: Redigera

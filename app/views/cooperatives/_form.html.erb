@@ -1,4 +1,11 @@
+<h2><%= t('cooperative.edit_name') %></h2>
 <%= simple_form_for @cooperative do |f| %>
   <%= f.input :name, label: t('cooperative.name') %>
   <%= f.button :submit, t('cooperative.update') %>
+<% end %>
+
+<h2><%= t('cooperative.destroy_members_form') %></h2>
+<%= simple_form_for(@destroy_members_form, url: cooperative_destroy_old_members_path(@cooperative), method: :get) do |f| %>
+   <%= f.input :date, as: :date, end_year: Date.today.year, order: [:day, :month, :year], required: true %>
+  <%= f.button :submit, t('cooperative.submit_destroy_members') %>
 <% end %>

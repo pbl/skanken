@@ -35,6 +35,8 @@ gem 'rails_12factor', group: :production
 gem 'puma'
 gem "rack-timeout"
 
+gem 'rails-i18n'
+
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

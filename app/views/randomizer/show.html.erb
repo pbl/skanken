@@ -1,6 +1,26 @@
-<h3><%= @member.name %></h3>
+<div class='jumbotron'>
+<h1><%= @member.name %></h1>
 <p><strong><%= t('randomizer.created_at') %> </strong><%= format_date(@member.created_at) %></p>
 <p>
-  <%= link_to t('randomizer.next'), randomizer_show_path( activity_id: @activity.id), class: 'btn btn-default' %>
-  <a href="tel:<%= @member.mobile %>" class="btn btn-primary" role="button"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= @member.mobile %></a> 
+<p>
+  <%= 
+    [
+      'I stepped on a Cornflake, and now I am a cereal killer.',
+      'Nobody dies a virgin, because life fucks us all.',
+      "Future depends on your dreams. So go to sleep.",
+      "You all laugh because I'm different - I laugh because you're all the same.",
+      "Light travels faster than sound. This is why some people appear bright until you hear them speak.",
+      "Children in backseats cause accidents. Accidents in backseats cause children.",
+      "Banana error.",
+      "Llamas eat sexy paper clips",
+      "Everyday a grape licks a friendly cow",
+      "Opinions are like assholes; everybody's got one, and they're often full of shit.",
+      "When I die, I want to go peacefully like my grandfather did–in his sleep. Not yelling and screaming like the passengers in his car.",
+      "Friendship is like peeing on yourself: everyone can see it, but only you get the warm feeling that it brings."
+    ].sample
+  %>
 </p>
+  <%= link_to t('randomizer.next'), randomizer_show_path( activity_id: @activity.id), class: 'btn btn-lg btn-warning' %>
+  <a href="tel:<%= @member.mobile %>" class="btn btn-lg btn-primary" role="button"><span class="glyphicon glyphicon-earphone" aria-hidden="true"></span><%= @member.mobile %></a> 
+</p>
+</div>

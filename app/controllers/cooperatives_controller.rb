@@ -35,6 +35,14 @@ class CooperativesController < ApplicationController
 		end
 	end
 
+	def export
+		@members = Member.order(:name)
+		respond_to do |format|
+      format.html
+	    format.csv { send_data @members.as_csv }
+    end
+	end
+
 	private
 
 	def cooperative_params

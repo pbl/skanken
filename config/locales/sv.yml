@@ -63,7 +63,7 @@ sv:
     next: Swipe left
     created_at: 'Tillagd den:'
     choose:
-      header: Välj din preferens
+      header: Välj din aktivitet
   member:
     view_all: alla medlemmar
     edit: Redigera

@@ -19,6 +19,13 @@ sv:
     create: Skapa användare
     saved_user: Användaren %{email} har skapats
     destroyed_user: Användaren %{email} har tagits bort
+    search_description: Sök på email
+    table_header:
+      email: Email
+      role: Användarrättigheter
+      sign_in_count: Antal inloggningar
+      delete: Ta bort
+      confirm_delete: Är du säker?
   job:
     form:
       header: Arbetat

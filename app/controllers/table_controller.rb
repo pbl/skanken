@@ -8,6 +8,6 @@ class TableController < ApplicationController
     query = @search_form.query || ''
     activity_id = @search_form.activity_id
     search = Search.new(@cooperative)
-    @members = search.search(page: page, query: query, activity_id: activity_id)
+    @members = search.search_members(page: page, query: query, activity_id: activity_id)
   end
 end

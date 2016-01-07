@@ -4,7 +4,11 @@ class AccountsController < ApplicationController
   before_filter :set_user, only: [:destroy]
 
   def index
-		@users = @cooperative.users
+    page = params[:page] || 1
+    @search_form = SearchAccountsPresenter.new(params)
+    query = @search_form.query || ''
+    search = Search.new(@cooperative)
+    @users = search.search_accounts(page: page, query: query)
   end
 
   def new

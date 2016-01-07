@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   COOPERATIVE_ROLES = ROLES - ['admin'] - ['no_role']
   validates_inclusion_of :role, in: (COOPERATIVE_ROLES)
 
+  scope :has_email, -> (email) { where('lower(email) like :search', search: "%#{email.try(:downcase)}%")}
+
+
   def self.cooperative_roles
     ROLES - ['admin'] - ['no_role']
   end

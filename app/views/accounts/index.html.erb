@@ -1,18 +1,22 @@
-<!-- Jquery datatable code -->
-<script type="text/javascript">
-   $(document).ready(function() {
-    $('#accounts').dataTable();
-} );
-</script>        
+<%= simple_form_for(@search_form, url: cooperative_accounts_path(@cooperative), method: :get, html: { class: 'form-horizontal' }) do |f| %>
+  <%= f.error_notification %>
+  <div class="form-inputs">
+    <%= f.input :query, wrapper: :horizontal_input_group do %>
+      <%= f.input_field :query, placeholder: t('accounts.search_description'), class: 'form-control', onfocus: "initSearch(this, '#{{ search_presenter: { query: '' } }.to_param}')" %>
+      <span  class="input-group-btn">
+        <button class="btn btn-primary" type="submit"><%= t('table.search.button') %></button>
+      </span>
+    <% end %>
+  </div>
+<% end %>
 
-<table class="display" id="accounts">
+<table class="table">
   <thead>
     <tr>
-      <th>Email</th>
-      <th>User role</th>
-      <th>Sign in count</th>
-      <th>Cooperative id</th>
-      <th>Delete</th>
+      <th><%=t('accounts.table_header.email')%></th>
+      <th><%=t('accounts.table_header.role')%></th>
+      <th><%=t('accounts.table_header.sign_in_count')%></th>
+      <th><%=t('accounts.table_header.delete')%></th>
     </tr>
   </thead>
   <tbody>
@@ -21,11 +25,11 @@
       <td><%= user.email %></td>
       <td><%= user.role %></td>
       <td><%= user.sign_in_count %></td>
-      <td><%= user.cooperative_id %></td>
       <td> <%= link_to 'Delete', cooperative_account_path(@cooperative, user.id),
              method: :delete,
-             data: { confirm: 'Are you sure?' } %></td>
+             data: { confirm: t('accounts.table_header.confirm_delete') } %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+<%= paginate @users %>

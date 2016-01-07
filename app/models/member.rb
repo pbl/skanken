@@ -14,7 +14,7 @@ class Member < ActiveRecord::Base
     date2 = 5
     CSV.generate do |csv|
       column_names = ['name', 'mobile', 'email', 'date_of_birth', 'last_contacted', 'created_at']
-      csv << column_names + ['aktiviteter']
+      csv << column_names + ['activities']
       all.each do |member|
         member_activities = member.activities.pluck(:name).join(", ")
         member_columns = member.attributes.values_at(*column_names)

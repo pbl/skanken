@@ -52,9 +52,6 @@ class ActivitiesController < ApplicationController
   # DELETE /activities/1
   # DELETE /activities/1.json
   def destroy
-    @activity.users.each do |user|
-      user.activities.delete_all
-    end
     @activity.destroy
     respond_to do |format|
       format.html { redirect_to edit_cooperative_path(@cooperative), notice: 'Activity was successfully destroyed.' }

@@ -3,24 +3,25 @@ require 'csv'
 class Import
 
   def initialize(file, cooperative)
-    @memberList = CSV.read(file.path, headers: true)
+    @csv_file = CSV.read(file.path, headers: true)
     @cooperative = cooperative
   end
 
   def import
-    @memberList.each_with_index do |row, index|
-      name          = parse_name(row['Namn'], row['Efternamn'])
-      mobile        = parse_mobile(row['Telefonnummer'])
-      email         = parse_email(row['Email'])
-      date_of_birth = parse_date_of_birth(row['Personnummer'])
-      created_at    = parse_created_at(row['x'])
-      member = @cooperative.members.create(name: name, mobile: mobile, email: email, date_of_birth: date_of_birth, created_at: created_at)
-      member.activities = add_activities(row['Vill Jobba'])
-      # begin
-      #   @contacted = member.contacteds.new(:date => Date.parse(row['Senast kontaktad'].to_s), :activity => 'Unknown', :comment => row['Kommentarer'].to_s)
-      #   @contacted.save
-      # rescue
+    failed_imports = []
+    @csv_file.each_with_index do |row, index|
+      name = parse_name(row['name'])
+      mobile = parse_mobile(row['mobile'])
+      email = parse_email(row['email'])
+      date_of_birth = parse_date_of_birth(row['date_of_birth'])
+      created_at = parse_created_at(row['created_at'])
+      activities = row['activities']
+      # asd
+      # if !(activities.nil? || name.nil? || mobile.nil?)
+      # else
       # end
+      member = @cooperative.members.create(name: name, mobile: mobile, email: email, date_of_birth: date_of_birth, created_at: created_at)
+      member.activities = add_activities(activities)
     end
   end
 
@@ -36,12 +37,13 @@ class Import
     ''
   end
 
-  def parse_name(name, surname)
-    "#{name} #{surname}".strip
+  def parse_name(name)
+    return name.strip unless !name.is_a?(String)
+    ''
   end
 
   def add_activities name_activities
-    member_activities = name_activities.try(:split, ",") || [I18n.t('import.no_activity')]
+    member_activities = name_activities.try(:split, ",")
     member_activities.map! {|name| name.strip}
     activities = []
     member_activities.each do |activity_name|

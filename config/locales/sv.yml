@@ -63,7 +63,8 @@ sv:
     update: Updatera
     other: Övrigt
     import_export: Importera/exportera
-    import_header: Importera jobbarlistan från excel i csv format
+    import_header: Importera jobbarlistan från kalkylblad 
+    import_help: För att importen ska fungera måste följande kritierium vara uppfyllda.
     export_header: Exportera jobbarlistan till excel i csv format
     destroy_members_form: Ta bort alla volontärer innan ett visst datum
     submit_destroy_members: Ta bort alla volentärer innan detta datum

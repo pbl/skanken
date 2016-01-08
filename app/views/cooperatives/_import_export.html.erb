@@ -1,4 +1,27 @@
 <h1><%= t('cooperative.import_header')%></h1>
+
+<div class="panel panel-default">
+  <div class="panel-heading">För att importen ska fungera läs nedanstående beskrivning.</div>
+  <div class="panel-body">
+    <ul>
+      <li>Kalkylbladet måste vara sparat i csv format.</li>
+      <li>Första raden i kalkylbladet ska innehålla rubrikerna skrivna i listan nedan. Rubrikerna måste vara skrivna exakt som markerat inom citatteckena.
+      <ul>
+        <li>"name" (obligatorisk)</li>
+        <li>"mobile" (obligatorisk)</li>
+        <li>"activities" (obligatorisk)</li>
+        <li>"email" (valfri)</li>
+        <li>"date_of_birth" (valfri)</li>
+        <li>"last_contacted" (valfri)</li>
+        <li>"created_at" (valfri)</li>
+      </ul>
+      <li>Varje rad i dokumentet motsvaras av en volentär (förutom första raden).</li>
+      <li>Varje volentär måste ha ett ifyllt namn, mobilnummer och aktivitet.</li>
+      <li>En volentär kan ha en eller flera aktivititer inskrivna. Flera aktiviteter separeras genom ett kommatecken. </li>
+    </ul>
+  </div>
+</div>
+
 <%= form_tag cooperative_import_path(@cooperative), multipart: true do %>
     <%= file_field_tag :file %>
     <%= submit_tag "Import" %>

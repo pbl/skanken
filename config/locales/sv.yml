@@ -1,7 +1,9 @@
 sv:
   import:
     no_activity: Ingen aktivitet
-    error: Något gick fel kontakta. Snäll kontakta ansvariga för hemsidan
+    no_file: Du måste välja en fil.
+    not_csv: Filen måste vara i csv format. 
+    failed_members: "Importen misslyckades. Det fanns en eller flera rader med ogilitiga värden. Titta på rad: %{row}"
   export:
     button: Exportera till csv
   history:

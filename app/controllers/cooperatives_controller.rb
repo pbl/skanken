@@ -27,12 +27,13 @@ class CooperativesController < ApplicationController
 	def import
 		if !params[:file].nil? && params[:file].original_filename.end_with?(".csv")
 			import = Import.new(params[:file], current_user.cooperative)
-			import.import
-			redirect_to table_all_path
+			failed_imports = import.import
+			flash[:warning] = t('import.failed_members', row: failed_imports.join(", ")) unless failed_imports.empty?
 		else
-			flash[:danger] = t('import.error')
-			redirect_to edit_cooperative_path(@cooperative)
+			flash[:danger] = t('import.no_file') if params[:file].nil?
+			flash[:danger] = t('import.not_csv') if !params[:file].nil? && !params[:file].original_filename.end_with?(".csv")
 		end
+		redirect_to edit_cooperative_path(@cooperative)
 	end
 
 	def export

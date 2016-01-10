@@ -9,23 +9,53 @@ class Import
 
   def import
     failed_imports = []
+    members = []
     @csv_file.each_with_index do |row, index|
-      name = parse_name(row['name'])
-      mobile = parse_mobile(row['mobile'])
-      email = parse_email(row['email'])
-      date_of_birth = parse_date_of_birth(row['date_of_birth'])
-      created_at = parse_created_at(row['created_at'])
-      activities = row['activities']
-      # asd
-      # if !(activities.nil? || name.nil? || mobile.nil?)
-      # else
-      # end
-      member = @cooperative.members.create(name: name, mobile: mobile, email: email, date_of_birth: date_of_birth, created_at: created_at)
-      member.activities = add_activities(activities)
+      @name = parse_name(row['name'])
+      @mobile = parse_mobile(row['mobile'])
+      @email = parse_email(row['email'])
+      @date_of_birth = parse_date_of_birth(row['date_of_birth'])
+      @created_at = parse_created_at(row['created_at'])
+      @member_activities = parse_activities(row['activities']) #todo fix so that new activities aren't added
+      if valid_values?
+        members << new_member
+      else
+        failed_imports << (index + 2)
+      end
     end
+    if failed_imports.empty?
+      save_members(members)
+    end
+    failed_imports
   end
 
   private
+
+  def save_members(members)
+    members.map {|member_arr| 
+      member = member_arr.first
+      member.save
+      member.activities = find_or_create_activities(member_arr.second)
+    }
+  end
+
+  def new_member
+    member = []
+    member << @cooperative.members.new(name: @name, mobile: @mobile, email: @email, 
+      date_of_birth: @date_of_birth, created_at: @created_at)  
+    member << @member_activities
+    member
+  end
+
+  def valid_values?
+    !(@member_activities.empty? || @name.empty? || @mobile.empty?)
+  end
+
+   def find_or_create_activities(activities_name)
+    activities = []
+    activities_name.map {|activity_name| activities << @cooperative.activities.find_or_create_by!(name: activity_name) }
+    activities
+  end
 
   def parse_date_of_birth date_of_birth
     return date_of_birth unless date_of_birth.nil?
@@ -38,23 +68,16 @@ class Import
   end
 
   def parse_name(name)
-    return name.strip unless !name.is_a?(String)
+    return name.strip unless name.nil?
     ''
   end
 
-  def add_activities name_activities
-    member_activities = name_activities.try(:split, ",")
-    member_activities.map! {|name| name.strip}
-    activities = []
-    member_activities.each do |activity_name|
-      activity_name.downcase!
-      # pretty sure next 4 lines can be replaced by find__or_create_by(name: activity_name)
-      activity = @cooperative.activities.find_by(name: activity_name)
-      if activity.nil?
-        activity = @cooperative.activities.create(name: activity_name)
-      end
-      activities << activity
-    end
+  def parse_activities(activities)
+    return [] unless !activities.nil?
+    activities = activities.split(",")
+    activities = activities.reject{ |e| e.empty? }
+    activities = activities.map {|e| e.strip}
+    activities = activities.map {|e| e.downcase}
     activities
   end
 
@@ -71,5 +94,4 @@ class Import
     mobile = mobile.insert(3, '-') if mobile.length > 3
     mobile
   end
-
 end

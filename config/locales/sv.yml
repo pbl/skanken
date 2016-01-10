@@ -4,6 +4,8 @@ sv:
     no_file: Du måste välja en fil.
     not_csv: Filen måste vara i csv format. 
     failed_members: "Importen misslyckades. Det fanns en eller flera rader med ogilitiga värden. Titta på rad: %{row}"
+    success: Importen lyckades
+    wrong_headers: "Du måste ha rubrikerna \"name\", \"mobile\" och \"activities\""
   export:
     button: Exportera till csv
   history:

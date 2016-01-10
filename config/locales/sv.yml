@@ -1,7 +1,11 @@
 sv:
   import:
     no_activity: Ingen aktivitet
-    error: Något gick fel kontakta. Snäll kontakta ansvariga för hemsidan
+    no_file: Du måste välja en fil.
+    not_csv: Filen måste vara i csv format. 
+    failed_members: "Importen misslyckades. Det fanns en eller flera rader med ogilitiga värden. Titta på rad: %{row}"
+    success: Importen lyckades
+    wrong_headers: "Du måste ha rubrikerna \"name\", \"mobile\" och \"activities\""
   export:
     button: Exportera till csv
   history:
@@ -63,7 +67,8 @@ sv:
     update: Updatera
     other: Övrigt
     import_export: Importera/exportera
-    import_header: Importera jobbarlistan från excel i csv format
+    import_header: Importera jobbarlistan från kalkylblad 
+    import_help: För att importen ska fungera måste följande kritierium vara uppfyllda.
     export_header: Exportera jobbarlistan till excel i csv format
     destroy_members_form: Ta bort alla volontärer innan ett visst datum
     submit_destroy_members: Ta bort alla volentärer innan detta datum

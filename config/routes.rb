@@ -34,6 +34,11 @@ Rails.application.routes.draw do
     get 'all'
   end
 
+  resources :personal_list, only: [:index, :destroy] do
+    get 'add'
+  end
+
+
   namespace :randomizer do
     get 'show'
     get 'category'

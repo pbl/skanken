@@ -15,11 +15,16 @@ class ApplicationController < ActionController::Base
     @member.save
   end
 
+  def set_activity_from_param
+    @activity = current_user.cooperative.activities.find_by_id(params[:activity_id])
+    record_exists?(@activity)
+  end
+
   def set_cooperative
     @cooperative = current_user.cooperative
   end
 
-  def record_exists?(record, status = 401)
+  def record_exists?(record, status = 403)
     return true unless record.nil?
     render nothing: true, status: status
   end

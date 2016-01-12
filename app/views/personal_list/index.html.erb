@@ -1,0 +1,24 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('form.name') %></th>
+      <th><%= t('form.mobile') %></th>
+      <th><%= t('member.date') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td>
+        <%= member.mobile %>
+      </td>
+      <td>
+      <%= date(@user_members.find_by(member_id: @members.first.id).created_at) %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @members %>

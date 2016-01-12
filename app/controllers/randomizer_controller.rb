@@ -1,6 +1,6 @@
 class RandomizerController < ApplicationController
   prepend_before_filter :authenticate_user!
-  before_filter :set_activity_from_param, only: [:show]
+  before_action :set_activity_from_param, only: [:show]
   before_filter :set_cooperative
 
   def category

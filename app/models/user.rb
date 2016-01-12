@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   belongs_to :cooperative
+  has_many :user_members
+  has_many :members, through: :user_members
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   ROLES = %w[admin cooperative_admin foreman no_role]

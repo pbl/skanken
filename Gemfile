@@ -2,12 +2,10 @@ source 'https://rubygems.org'
 # Auth
 gem 'devise'
 gem 'i18n-tasks'
+# Gem for pagination
 gem 'kaminari'
-gem 'faker'
 # Gem for forms on the web application
 gem 'simple_form'
-# Simplifiy the user role access managemnet
-gem 'cancancan'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use SCSS for stylesheets
@@ -35,9 +33,12 @@ gem 'rails_12factor', group: :production
 gem 'puma'
 gem "rack-timeout"
 
+# Gem for locales with simple form in other lang then en
 gem 'rails-i18n'
 
 group :development, :test do
+  # for faking values in seed.rb
+  gem 'faker'
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   # A pretty and awesome error page

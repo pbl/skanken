@@ -99,14 +99,11 @@ sv:
     new: Ny aktivitet
     name: Namn
     edit: Redigera
-    deactivate: Deaktivera
-    activate: Aktivera
     confirm_deactivation: Är du säker?
     back: tillbaka
     create: Skapa aktivitet
     destroy_info: Du kan ta bort en aktiviet enbart då inga volentärer är kopplade till aktiviteten
     no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
-    change_activation: Ändra aktivering
     confirm_destroy: Varning! Det här kommer att ta bort all historik och kontaktinformation kopplat till den här aktiviteten.
   header:
     history: Historik

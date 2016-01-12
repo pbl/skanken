@@ -14,9 +14,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :activities, except: [:index, :show] do
-    get 'deactivate', to: 'activities#deactivate'
-  end
+  resources :activities, except: [:index, :show]
 
   resources :cooperatives, only: [:edit, :update] do
     resources :accounts

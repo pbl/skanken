@@ -4,7 +4,7 @@ class CooperativesController < ApplicationController
 	before_action :set_cooperative
 
 	def edit
-		@activities = @cooperative.activities.order(activated: :desc)
+		@activities = @cooperative.activities.order(name: :asc)
 		@destroy_members_form = DestroyMembersPresenter.new
 	end
 

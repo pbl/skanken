@@ -25,7 +25,6 @@ Rails.application.routes.draw do
   end
 
   resources :members, except: [:index] do
-    resources :jobs, only: [:create, :destroy]
     resources :contacteds, only: [:create, :destroy]
   end
 
@@ -34,8 +33,6 @@ Rails.application.routes.draw do
     get 'create'
     get 'all'
   end
-
-  get 'history', to: 'history#show'
 
   namespace :randomizer do
     get 'show'

@@ -6,20 +6,14 @@
 header_names = []
 header_names << t('activities.name')
 header_names << t('activities.edit')
-header_names << t('activities.change_activation')
 header_names << t('common.delete')
 %>
 <%
 column_functions = []
 column_functions << Proc.new {|record| record.name}
 column_functions << Proc.new {|record| link_to t('activities.edit'), edit_activity_path(record)}
-column_functions << Proc.new {|record| link_to deactivate_link(record.activated),
-  activity_deactivate_path(record)}
 column_functions << Proc.new {|record| destroy_link(record)}
 %>
-<%
-tr_class_function = Proc.new {|record| activated_row_class(record.activated)}
-%>
-<%= table_creator(@activities, header_names, column_functions, tr_class_function: tr_class_function) %>
+<%= table_creator(@activities, header_names, column_functions) %>
 
 <%= link_to t('activities.new'), new_activity_path, input_html = {class: 'btn btn-default'} %>

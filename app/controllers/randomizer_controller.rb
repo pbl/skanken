@@ -4,7 +4,7 @@ class RandomizerController < ApplicationController
   before_filter :set_cooperative
 
   def category
-    @activities = @cooperative.activities.reject {|activity| !activity.activated}
+    @activities = @cooperative.activities
   end
 
   def show

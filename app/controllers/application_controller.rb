@@ -12,7 +12,6 @@ class ApplicationController < ActionController::Base
     last_contacted = @member.contacteds.last
     last_contacted = last_contacted.nil? ? nil : last_contacted.created_at
     @member.last_contacted = last_contacted
-    @member.nbr_jobs = @member.jobs.size
     @member.save
   end
 

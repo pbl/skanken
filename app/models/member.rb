@@ -1,6 +1,5 @@
 class Member < ActiveRecord::Base
   has_many :contacteds, dependent: :destroy
-  has_many :jobs, dependent: :destroy
   has_many :activities, through: :member_activities
   has_many :member_activities
   belongs_to :cooperative

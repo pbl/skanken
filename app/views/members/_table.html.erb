@@ -3,7 +3,6 @@
     <tr>
       <th><%= t('form.name') %></th>
       <th><%= t('form.mobile') %></th>
-      <th><%= t('member.job') %></th>
       <th><%= t('member.contacted') %></th>
       <th><%= t('member.last_contacted') %></th>
       <th><%= t('member.profile') %></th>
@@ -15,10 +14,6 @@
       <td><%= member.name %></td>
       <td>
         <%= member.mobile %>
-      </td>
-      <td>
-        <%= member.nbr_jobs %>
-        <span data-toggle="modal" data-target="#jobFormModel" onclick="formActionValue(<%=member.id%>, 'jobs')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
       </td>
       <td>
         <%= member.nbr_contacteds %>

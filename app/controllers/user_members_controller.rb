@@ -2,6 +2,7 @@ class UserMembersController < ApplicationController
   prepend_before_filter :authenticate_user!
   before_filter :set_cooperative
   before_action :set_member, :set_activity_from_param, only: [:create]
+  before_action :set_user_member, only: [:destroy]
 
   def index
     page = params[:page] || 1
@@ -22,10 +23,16 @@ class UserMembersController < ApplicationController
   end
 
   def destroy
-    # todo
+    @user_member.destroy
+    redirect_to user_members_path
   end
 
   private 
+
+  def set_user_member
+    @user_member = current_user.user_members.find_by_id(params[:id])
+    record_exists?(@user_member)
+  end
 
   def user_member_params
     params.require(:user_member).permit(:comment, :member_id)

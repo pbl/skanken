@@ -21,7 +21,7 @@
         <% if user_signed_in? %>
           <li class="<%= active_class(randomizer_category_path) %>"><%= link_to t('randomizer.header'), randomizer_category_path %></li>
           <li class="<%= active_class(new_member_path) %>"><%= link_to t('header.new_member'), new_member_path %></li>
-          <li class="<%= active_class(personal_list_index_path) %>"><%= link_to t('header.personal_list'), personal_list_index_path %></li>
+          <li class="<%= active_class(user_members_path) %>"><%= link_to t('header.user_member'), user_members_path %></li>
           <% if current_user.is?(:cooperative_admin) %>
             <li class="dropdown  <%= admin_active_class %>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= t('header.admin') %><span class="caret"></span></a>

@@ -34,10 +34,7 @@ Rails.application.routes.draw do
     get 'all'
   end
 
-  resources :personal_list, only: [:index, :destroy] do
-    get 'add'
-  end
-
+  resources :user_members, only: [:index, :destroy, :create]
 
   namespace :randomizer do
     get 'show'

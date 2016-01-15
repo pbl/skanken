@@ -1,6 +1,8 @@
 sv:
-  personal_list:
+  user_member:
     added: "Volentären %{name} har lagts till i din jobbarlista."
+    form_header: Lägg till i personlig lista
+    submit: Lägg till
   import:
     no_activity: Ingen aktivitet
     no_file: Du måste välja en fil.
@@ -79,7 +81,7 @@ sv:
     header: Jag behöver jobbare
     next: Swipe left
     created_at: 'Tillagd den:'
-    add_to_personal_list: Lägg till i jobbarlista
+    user_member: Lägg till i jobbarlista
     choose:
       header: Välj din aktivitet
   member:
@@ -109,7 +111,7 @@ sv:
     no_activities: Du måste skapa en aktivitet för att kunna lägga till en volontär. Är du föreningens adminstratör gör du det genom att gå till "Inställningar" under fliken "Adminstratör".
     confirm_destroy: Varning! Det här kommer att ta bort all historik och kontaktinformation kopplat till den här aktiviteten.
   header:
-    personal_list: Jobbarlista
+    user_member: Jobbarlista
     history: Historik
     website_name: SSK
     about: Om oss

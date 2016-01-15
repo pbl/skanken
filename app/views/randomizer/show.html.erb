@@ -1,6 +1,7 @@
+<%= render 'user_members/user_member_form' %>
 <div class='jumbotron'>
 <h1><%= @member.name %></h1>
-<p><strong><%= t('form.mobile') %>: </strong><a href="tel:<%= @member.mobile %>"></span><span class="glyphicon glyphicon-earphone" aria-hidden="true"><%= @member.mobile %></a></p>
+<p><strong><%= t('form.mobile') %>: </strong><span class="glyphicon glyphicon-earphone" aria-hidden="true"><%= @member.mobile %></p>
 <p><strong><%= t('randomizer.created_at') %> </strong><%= format_date(@member.created_at) %></p>
 <p>
 <p>
@@ -13,8 +14,8 @@
       "Light travels faster than sound. This is why some people appear bright until you hear them speak.",
       "Children in backseats cause accidents. Accidents in backseats cause children.",
       "Banana error.",
-      "Llamas eat sexy paper clips",
-      "Everyday a grape licks a friendly cow",
+      "Llamas eat sexy paper clips.",
+      "Everyday a grape licks a friendly cow.",
       "Opinions are like assholes; everybody's got one, and they're often full of shit.",
       "When I die, I want to go peacefully like my grandfather did–in his sleep. Not yelling and screaming like the passengers in his car.",
       "Friendship is like peeing on yourself: everyone can see it, but only you get the warm feeling that it brings.",
@@ -26,6 +27,6 @@
   %>
 </p>
   <%= link_to t('randomizer.next'), randomizer_show_path( activity_id: @activity.id), class: 'btn btn-lg btn-warning' %>
-   <a href=<%= personal_list_add_path(personal_list_id: @member, member_id: @member, activity_id: @activity.id) %> class="btn btn-lg btn-success" role="button"><%= t('randomizer.add_to_personal_list') %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a> 
+   <a data-toggle="modal" data-target="#userMemberFormModel" class="btn btn-lg btn-success" role="button"><%= t('randomizer.user_member') %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>  
 </p>
 </div>

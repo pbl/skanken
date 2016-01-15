@@ -8,6 +8,7 @@ class RandomizerController < ApplicationController
   end
 
   def show
+    @user_member = UserMember.new
     i = 1
     while @member.nil?
       i += 1

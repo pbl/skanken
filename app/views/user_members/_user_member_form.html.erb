@@ -1,0 +1,19 @@
+<div id="userMemberFormModel" class="modal fade bs-job-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title"><%= t('user_member.form_header') %></h4>
+      </div>
+      <div class="modal-body">
+        <div id="modal_form_user_member">
+          <%= simple_form_for(@user_member, url: user_members_path(@user_member, activity_id: @activity.id))  do |f| %>
+            <%= f.input :comment, label: t('form.comment'), as: :text %>
+            <%= f.input :member_id, as: :hidden, input_html: { value: @member.id } %>
+            <%= f.button :submit, t('user_member.submit')  %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

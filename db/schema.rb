@@ -67,9 +67,9 @@ ActiveRecord::Schema.define(version: 20160112145539) do
   create_table "user_members", force: :cascade do |t|
     t.integer  "member_id"
     t.integer  "user_id"
-    t.datetime "added_date"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.text     "comment",    default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "user_members", ["member_id"], name: "index_user_members_on_member_id", using: :btree

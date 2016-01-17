@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_scope :user do
     authenticated :user do
-      root 'table#all', as: :authenticated_root
+      root 'page#start', as: :authenticated_root
     end
 
     unauthenticated do
@@ -29,9 +29,11 @@ Rails.application.routes.draw do
   end
 
   namespace :table do
-    get 'choose'
-    get 'create'
     get 'all'
+  end
+
+  namespace :page do
+    get 'start'
   end
 
   resources :user_members, only: [:index, :destroy, :create]

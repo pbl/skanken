@@ -7,9 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/yeti/bootstrap.min.css" rel="stylesheet">
   <link href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet">
-
   <%= csrf_meta_tags %>
 </head>
 <!-- if log-in page give body id for background image -->
@@ -25,7 +23,7 @@
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>"><%= value %></div>
     <% end %>
-    <div class='col-md-8 col-md-offset-2'>
+    <div class='col-md-10 col-md-offset-1'>
       <%= yield %>
     </div>
   </div>

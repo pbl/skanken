@@ -1,17 +1,6 @@
 class ContactedsController < ApplicationController
-  prepend_before_filter :authenticate_user!, :set_member, only: [:create, :destroy]
-  before_filter :set_contacted, only: [:destroy]
-
-  def create
-    activity_name = Activity.find_by_id(contacted_params['activity_id']).try(:name)
-    @contacted = @member.contacteds.new(activity: activity_name)
-    if @contacted.save
-      update_member
-    else
-      flash[:warning] = t('contacted_form.error_no_activity')
-    end
-    redirect_to table_all_path
-  end
+  prepend_before_filter :authenticate_user!, :set_member
+  before_filter :set_contacted
 
   def destroy
     @contacted.destroy

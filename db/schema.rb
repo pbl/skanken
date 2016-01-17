@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160112132941) do
+ActiveRecord::Schema.define(version: 20160112145539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,19 +40,6 @@ ActiveRecord::Schema.define(version: 20160112132941) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "jobs", force: :cascade do |t|
-    t.text     "comment"
-    t.integer  "user_id"
-    t.integer  "member_id"
-    t.integer  "activity_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-  end
-
-  add_index "jobs", ["activity_id"], name: "index_jobs_on_activity_id", using: :btree
-  add_index "jobs", ["member_id"], name: "index_jobs_on_member_id", using: :btree
-  add_index "jobs", ["user_id"], name: "index_jobs_on_user_id", using: :btree
-
   create_table "member_activities", force: :cascade do |t|
     t.integer  "activity_id"
     t.integer  "member_id"
@@ -72,11 +59,21 @@ ActiveRecord::Schema.define(version: 20160112132941) do
     t.integer  "cooperative_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
-    t.integer  "nbr_jobs",       default: 0
     t.integer  "nbr_contacteds", default: 0
   end
 
   add_index "members", ["cooperative_id"], name: "index_members_on_cooperative_id", using: :btree
+
+  create_table "user_members", force: :cascade do |t|
+    t.integer  "member_id"
+    t.integer  "user_id"
+    t.text     "comment",    default: ""
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "user_members", ["member_id"], name: "index_user_members_on_member_id", using: :btree
+  add_index "user_members", ["user_id"], name: "index_user_members_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",        null: false
@@ -101,9 +98,6 @@ ActiveRecord::Schema.define(version: 20160112132941) do
 
   add_foreign_key "activities", "cooperatives"
   add_foreign_key "contacteds", "members"
-  add_foreign_key "jobs", "activities"
-  add_foreign_key "jobs", "members"
-  add_foreign_key "jobs", "users"
   add_foreign_key "members", "cooperatives"
   add_foreign_key "users", "cooperatives"
 end

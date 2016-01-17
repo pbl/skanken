@@ -8,7 +8,7 @@
 
 # 500 members
 # 10 activities
-# no jobs no contacteds
+# no contacteds
 # admin user and foreman user on the same site
 
 

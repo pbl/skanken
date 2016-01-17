@@ -3,6 +3,7 @@ class TableController < ApplicationController
   before_filter :set_cooperative
 
   def all
+    @user_member = UserMember.new
     page = params[:page] || 1
     @search_form = SearchPresenter.new(params)
     query = @search_form.query || ''

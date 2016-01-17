@@ -16,7 +16,11 @@ class UserMembersController < ApplicationController
     user_member.member = @member
     if user_member.save
       flash[:success] = t('user_member.added', name: @member.name)
-      redirect_to randomizer_show_path(activity_id: @activity.id)
+      if @activity_id.nil?
+        redirect_to table_all_path
+      else
+        redirect_to randomizer_show_path(activity_id: @activity_id)
+      end
     else
       render nothing: true, status: 403
     end
@@ -44,7 +48,6 @@ class UserMembersController < ApplicationController
   end
 
   def set_activity_from_param
-    @activity = current_user.cooperative.activities.find_by_id(params[:activity_id])
-    record_exists?(@activity)
+    @activity_id = current_user.cooperative.activities.find_by_id(params[:activity_id]).try(:id)
   end
 end

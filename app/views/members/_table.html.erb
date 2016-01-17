@@ -1,10 +1,10 @@
+<%= render 'user_members/user_member_form' %>
 <table class="table">
   <thead>
     <tr>
       <th><%= t('form.name') %></th>
-      <th><%= t('form.mobile') %></th>
-      <th><%= t('member.contacted') %></th>
-      <th><%= t('member.last_contacted') %></th>
+      <th><%= t('member.created_at') %></th>
+      <th><%= t('header.user_member') %></th>
       <th><%= t('member.profile') %></th>
     </tr>
   </thead>
@@ -12,17 +12,13 @@
     <% @members.each do |member| %>
     <tr>
       <td><%= member.name %></td>
+      <td><%= date(member.created_at) %></td>
       <td>
-        <%= member.mobile %>
+         <a data-toggle="modal" data-target="#userMemberFormModel" onclick="set_form_member_id(<%= member.id %>)"class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= t('randomizer.user_member') %></a> 
       </td>
-      <td>
-        <%= member.nbr_contacteds %>
-         <span data-toggle="modal" data-target="#contactedFormModel" onclick="formActionValue(<%=member.id%>, 'contacteds')" class="glyphicon glyphicon-plus clickable" aria-hidden="true"></span>
-      </td>
-      <td><%= format_date(member.last_contacted) %></td>
       <td>
         <%= link_to member_path(member) do %>
-        <button type="button" class="btn btn-default btn-default">
+        <button type="button" class="btn btn-default">
           <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= t('member.profile') %>
         </button>
         <% end %>

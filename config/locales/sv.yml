@@ -1,4 +1,9 @@
 sv:
+  start_page:
+    choose_task: Vad vill du göra?
+    user_member: Se din personliga jobbarlista
+    table: Se jobbarlistan
+    randomizer: Hitta jobbare
   user_member:
     added: "Volentären %{name} har lagts till i din jobbarlista."
     form_header: Lägg till i personlig lista
@@ -83,6 +88,7 @@ sv:
     next: Swipe left
     created_at: 'Tillagd den:'
     user_member: Lägg till i jobbarlista
+    find: Hitta jobbare
     choose:
       header: Välj din aktivitet
   member:

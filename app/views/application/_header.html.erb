@@ -10,7 +10,7 @@
       </button>
       <% @cooperative = Cooperative.find_by_id(current_user.try(:cooperative_id)) %>
       <% if user_signed_in? %>
-        <%= link_to current_user.cooperative.name, table_all_path, html_options = {class: 'navbar-brand'} %>
+        <%= link_to current_user.cooperative.name, page_start_path, html_options = {class: 'navbar-brand'} %>
       <% else %>
         <%= link_to t('header.website_name'), '#', html_options = {class: 'navbar-brand'} %>
       <% end %>
@@ -20,8 +20,9 @@
       <ul class="nav navbar-nav">
         <% if user_signed_in? %>
           <li class="<%= active_class(randomizer_category_path) %>"><%= link_to t('randomizer.header'), randomizer_category_path %></li>
-          <li class="<%= active_class(new_member_path) %>"><%= link_to t('header.new_member'), new_member_path %></li>
           <li class="<%= active_class(user_members_path) %>"><%= link_to t('header.user_member'), user_members_path %></li>
+        <li class="<%= active_class(table_all_path) %>"><%= link_to t('start_page.table'), table_all_path %></li>
+          <li class="<%= active_class(new_member_path) %>"><%= link_to t('header.new_member'), new_member_path %></li>
           <% if current_user.is?(:cooperative_admin) %>
             <li class="dropdown  <%= admin_active_class %>">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= t('header.admin') %><span class="caret"></span></a>

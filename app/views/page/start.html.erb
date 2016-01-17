@@ -1,0 +1,10 @@
+<br><br><br><br><br><br>
+<div class="jumbotron">
+  <h1><%= @cooperative.name %></h1>
+  <p><%= t('start_page.choose_task') %></p>
+  <p>
+    <%= link_to t('start_page.randomizer'), randomizer_category_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to t('start_page.user_member'), user_members_path, class: 'btn btn-primary btn-lg btn-block' %>
+    <%= link_to t('start_page.table'), table_all_path, class: 'btn btn-primary btn-lg btn-block' %>
+  </p>
+</div>

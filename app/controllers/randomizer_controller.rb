@@ -1,6 +1,6 @@
 class RandomizerController < ApplicationController
   prepend_before_filter :authenticate_user!
-  before_filter :set_activity_from_param, only: [:show]
+  before_action :set_activity_from_param, only: [:show]
   before_filter :set_cooperative
 
   def category
@@ -8,6 +8,7 @@ class RandomizerController < ApplicationController
   end
 
   def show
+    @user_member = UserMember.new
     i = 1
     while @member.nil?
       i += 1

@@ -34,6 +34,8 @@ Rails.application.routes.draw do
     get 'all'
   end
 
+  resources :user_members, only: [:index, :destroy, :create]
+
   namespace :randomizer do
     get 'show'
     get 'category'

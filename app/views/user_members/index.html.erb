@@ -1,0 +1,34 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= t('form.name') %></th>
+      <th><%= t('form.mobile') %></th>
+      <th><%= t('user_member.table_date') %></th>
+      <th><%= t('form.comment') %></th>
+      <th><%= t('common.delete') %></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @members.each do |member| %>
+    <tr>
+      <td><%= member.name %></td>
+      <td>
+        <%= member.mobile %>
+      </td>
+      <td>
+      <%= date(@user_members.find_by(member_id: member.id).created_at) %>
+      </td>
+      <td>
+        <%= @user_members.find_by(member_id: member.id).comment %>
+      </td>
+      <td>
+        <%= link_to t('common.delete'), user_member_path(@user_members.find_by(member_id: member)),
+             method: :delete,
+             data: { confirm: t('accounts.table_header.confirm_delete') } %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @members %>

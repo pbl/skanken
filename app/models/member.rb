@@ -1,7 +1,9 @@
 class Member < ActiveRecord::Base
   has_many :contacteds, dependent: :destroy
-  has_many :activities, through: :member_activities
   has_many :member_activities
+  has_many :activities, through: :member_activities
+  has_many :user_members
+  has_many :users, through: :user_members
   belongs_to :cooperative
 
   validates_presence_of :name, :mobile

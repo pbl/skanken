@@ -16,7 +16,7 @@
 
 <ul class="list-group">
   <li class="list-group-item"> <strong><%= t('form.mobile') %>: </strong> <%= @member.mobile %></li>
-  <li class="list-group-item"> <strong><%= t('form.activities') %>: </strong> <%= member_activities %></li>
+  <li class="list-group-item"> <strong><%= t('form.activities') %>: </strong> <%= member_activities(@member) %></li>
   <li class="list-group-item"> <strong><%= t('form.email') %>: </strong> <%= @member.email %></li>
   <li class="list-group-item"> <strong><%= t('member.created_at') %>: </strong> <%= format_date(@member.created_at) %></li>
   <li class="list-group-item"> <strong><%= t('form.date_of_birth') %>: </strong> <%= @member.date_of_birth %></li>

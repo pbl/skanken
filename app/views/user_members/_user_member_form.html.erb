@@ -7,9 +7,12 @@
       </div>
       <div class="modal-body">
         <div id="modal_form_user_member">
-          <%= simple_form_for(@user_member, url: user_members_path(@user_member, activity_id: @activity.id))  do |f| %>
+          <% activity_id = @activity.try(:id) || '' %>
+          <% member_id = @member.try(:id) || '' %>
+          <%  %>
+          <%= simple_form_for(@user_member, url: user_members_path(@user_member, activity_id: activity_id))  do |f| %>
             <%= f.input :comment, label: t('form.comment'), as: :text %>
-            <%= f.input :member_id, as: :hidden, input_html: { value: @member.id } %>
+            <%= f.input :member_id, as: :hidden, input_html: { value: member_id, id: "member_id" } %>
             <%= f.button :submit, t('user_member.submit')  %>
           <% end %>
         </div>

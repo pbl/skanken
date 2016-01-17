@@ -27,6 +27,6 @@
   %>
 </p>
   <%= link_to t('randomizer.next'), randomizer_show_path( activity_id: @activity.id), class: 'btn btn-lg btn-warning' %>
-   <a data-toggle="modal" data-target="#userMemberFormModel" class="btn btn-lg btn-success" role="button"><%= t('randomizer.user_member') %><span class="glyphicon glyphicon-heart" aria-hidden="true"></span></a>  
+   <a data-toggle="modal" data-target="#userMemberFormModel" class="btn btn-lg btn-success" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= t('randomizer.user_member') %></a>  
 </p>
 </div>

@@ -1,7 +1,7 @@
 module MembersHelper
 
-  def member_activities
-    activity_names = @member.activities.map {|activity| activity.name}
+  def member_activities(member)
+    activity_names = member.activities.map {|activity| activity.name}
     activity_names.join(', ')
   end
 
@@ -10,10 +10,10 @@ module MembersHelper
     date.strftime("%d %b. %Y")
   end
 
-  def activities_hint
-    return '' unless !member_activities.empty?
-    str = I18n.translate('form.activities_hint', name: @member.name)
-    "#{str}: #{member_activities} "
+  def activities_hint(member)
+    return '' unless !member_activities(member).empty?
+    str = I18n.translate('form.activities_hint', name: member.name)
+    "#{str}: #{member_activities(member)} "
   end
 
   def form_button

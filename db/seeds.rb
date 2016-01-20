@@ -70,10 +70,10 @@ class FakerCreator
   end
 
   def users(cooperative)
-    id = cooperative.id
-    cooperative.users.create!({email: "admin#{id}@admin.com", role: :cooperative_admin, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: id })
+    cooperative_id = cooperative.id
+    cooperative.users.create!({email: "admin#{cooperative_id}@admin.com", role: :cooperative_admin, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: cooperative_id })
     50.times do |i|
-      cooperative.users.create!({email: "user#{id}.#{i}@user.com", role: :foreman, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: id })
+      cooperative.users.create!({email: "user#{cooperative_id}.#{i}@user.com", role: :foreman, password: 'asdfasdf', password_confirmation: 'asdfasdf', cooperative_id: cooperative_id })
     end
   end
 end

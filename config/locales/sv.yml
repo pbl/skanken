@@ -84,6 +84,7 @@ sv:
     submit_destroy_members: Ta bort alla volentärer innan detta datum
     edit_name: Ändra föreningsnamn
   randomizer:
+    no_member_in_category: Aktiviteten, %{activity}, har inga jobbare kopplade till sig.
     header: Jag behöver jobbare
     next: Swipe left
     created_at: 'Tillagd den:'

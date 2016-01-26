@@ -14,7 +14,7 @@
       <td><%= member.name %></td>
       <td><%= date(member.created_at) %></td>
       <td>
-         <a data-toggle="modal" data-target="#userMemberFormModel" onclick="set_form_member_id(<%= member.id %>)"class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span><%= t('randomizer.user_member') %></a> 
+         <a data-toggle="modal" data-target="#userMemberFormModel" onclick="set_form_member_id(<%= member.id %>)"class="btn btn-default" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= t('randomizer.user_member') %></a> 
       </td>
       <td>
         <%= link_to member_path(member) do %>

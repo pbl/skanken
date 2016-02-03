@@ -1,20 +1,23 @@
 <h1><%= t('header.user_member') %></h1>
 <% @members.each do |member| %>
-<div class="panel panel-default">
-  <div class="panel-body">
-    <h5>
-    <%= member.name %>, <%= member.mobile %>, <%= date(@user_members.find_by(member_id: member.id).created_at) %>, 
-    <%= link_to user_member_path(@user_members.find_by(member_id: member)),
-      method: :delete,
-      data: { confirm: t('accounts.table_header.confirm_delete') }  do %>
-      <div style="font-size: 1.1em; display:inline-block">
-        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-      </div>
-    <% end %>
-    </h5>
-    <%= @user_members.find_by(member_id: member.id).comment %>
+  <% user_member = @user_members.find_by(member_id: member.id) %>
+  <%= render 'user_members/update_user_member', user_member: user_member, member: member %>
+  <div class="panel panel-defauuser_memberlt">
+    <div class="panel-body">
+      <h5>
+      <%= member.name %>, <%= member.mobile %>, <%= date(user_member.created_at) %>,
+      <a data-toggle="modal" data-target="#userMemberFormModel<%= member.id %>" onclick="set_form_member_id(<%= member.id %>)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>,
+      <%= link_to(user_member_path(user_member),
+        method: :delete,
+        data: { confirm: t('accounts.table_header.confirm_delete') }) do %>
+        <div style="font-size: 1.1em; display:inline-block">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </div>
+      <% end %>
+      </h5>
+      <%= user_member.comment %>
+    </div>
   </div>
-</div>
 <% end %>
 
 <%= paginate @members %>

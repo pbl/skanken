@@ -16,11 +16,10 @@ class UserMembersController < ApplicationController
     user_member.member = @member
     if user_member.save
       flash[:success] = t('user_member.added', name: @member.name)
-      if @activity_id.nil?
-        redirect_to table_all_path
-      else
-        redirect_to randomizer_show_path(activity_id: @activity_id)
-      end
+      redirect_to request.referer
+    elsif user_member.errors.any? # user_member must have an unique member_id and user_id
+      flash[:warning] = t('user_member.not_unique', name: @member.name)
+      redirect_to request.referer
     else
       render nothing: true, status: 403
     end

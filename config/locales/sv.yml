@@ -9,6 +9,7 @@ sv:
     form_header: Lägg till i personlig lista
     submit: Lägg till
     table_date: Tillagd den
+    not_unique: "%{name} är redan tillagd i din personliga lista."
   import:
     no_activity: Ingen aktivitet
     no_file: Du måste välja en fil.

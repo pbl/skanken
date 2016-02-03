@@ -36,7 +36,7 @@ Rails.application.routes.draw do
     get 'start'
   end
 
-  resources :user_members, only: [:index, :destroy, :create]
+  resources :user_members, only: [:index, :destroy, :create, :update]
 
   namespace :randomizer do
     get 'show'

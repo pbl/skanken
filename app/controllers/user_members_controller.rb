@@ -2,7 +2,7 @@ class UserMembersController < ApplicationController
   prepend_before_filter :authenticate_user!
   before_filter :set_cooperative
   before_action :set_member, :set_activity_from_param, only: [:create]
-  before_action :set_user_member, only: [:destroy]
+  before_action :set_user_member, only: [:destroy, :update]
 
   def index
     page = params[:page] || 1
@@ -26,6 +26,11 @@ class UserMembersController < ApplicationController
     end
   end
 
+  def update
+    @user_member.update(update_user_member_params)
+    redirect_to user_members_path
+  end
+
   def destroy
     @user_member.destroy
     redirect_to user_members_path
@@ -36,6 +41,10 @@ class UserMembersController < ApplicationController
   def set_user_member
     @user_member = current_user.user_members.find_by_id(params[:id])
     record_exists?(@user_member)
+  end
+
+  def update_user_member_params
+    params.require(:user_member).permit(:comment)
   end
 
   def user_member_params

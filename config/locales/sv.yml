@@ -89,6 +89,7 @@ sv:
     header: Jag behöver jobbare
     next: Swipe left
     created_at: 'Tillagd den:'
+    contacted_table: Kontakthistorik
     user_member: Lägg till i jobbarlista
     find: Hitta jobbare
     choose:

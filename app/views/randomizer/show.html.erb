@@ -33,3 +33,6 @@
    <a data-toggle="modal" data-target="#userMemberFormModel" class="btn btn-lg btn-success" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= t('randomizer.user_member') %></a>  
 </p>
 </div>
+
+<h3><%= t('randomizer.contacted_table') %></h3>
+<%= render :partial => 'shared/member_statistics_table', locals: {statistics: @member.contacteds}  %>

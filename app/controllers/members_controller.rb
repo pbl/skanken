@@ -27,7 +27,6 @@ class MembersController < ApplicationController
   def edit
 	end
 
-
 	def update
 		if !@member_activities.empty? && @member.update(member_params)
 			@member.activities.delete_all

@@ -4,7 +4,6 @@ class ContactedsController < ApplicationController
 
   def destroy
     @contacted.destroy
-    update_member
     redirect_to member_path(@member)
   end
 

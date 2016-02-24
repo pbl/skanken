@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224111404) do
+ActiveRecord::Schema.define(version: 20160224121325) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,11 +56,9 @@ ActiveRecord::Schema.define(version: 20160224111404) do
     t.string   "mobile"
     t.string   "email"
     t.string   "date_of_birth"
-    t.datetime "last_contacted"
     t.integer  "cooperative_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
-    t.integer  "nbr_contacteds", default: 0
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   add_index "members", ["cooperative_id"], name: "index_members_on_cooperative_id", using: :btree

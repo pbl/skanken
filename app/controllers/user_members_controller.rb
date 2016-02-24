@@ -6,8 +6,8 @@ class UserMembersController < ApplicationController
 
   def index
     page = params[:page] || 1
-    @user_members = current_user.user_members
-    @members = current_user.members.order(name: :asc).page(page)
+    @user_members = current_user.user_members.order(created_at: :desc).page(page)
+    @members = current_user.members
   end
 
   def create

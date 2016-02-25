@@ -41,5 +41,7 @@ Rails.application.routes.draw do
   namespace :randomizer do
     get 'show'
     get 'category'
+    get 'no_answer'
+    post 'next_time'
   end
 end

@@ -1,4 +1,5 @@
 <%= render 'user_members/user_member_form' %>
+<%= render 'shared/modal_table_form' %>
 <div class='jumbotron'>
 <h1><%= @member.name %></h1>
 <p><strong><%= t('form.mobile') %>: </strong><span class="glyphicon glyphicon-earphone" aria-hidden="true"><%= @member.mobile %></p>
@@ -29,7 +30,8 @@
     ].sample
   %>
 </p>
-  <%= link_to t('randomizer.next'), randomizer_show_path( activity_id: @activity.id), class: 'btn btn-lg btn-warning' %>
+  <%= link_to t('randomizer.no_answer'), randomizer_no_answer_path(activity_id: @activity.id, member_id: @member.id), class: 'btn btn-lg btn-warning' %>
+  <a data-toggle="modal" data-target="#contactedFormModel" class="btn btn-lg btn-info" role="button"><%= t('randomizer.next_time') %></a> 
    <a data-toggle="modal" data-target="#userMemberFormModel" class="btn btn-lg btn-success" role="button"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= t('randomizer.user_member') %></a>  
 </p>
 </div>
@@ -39,5 +41,5 @@
 <% if @member.contacteds.empty? %>
   <p><%= t('randomizer.never_contacted') %></p>
 <% else %>
-  <%= render :partial => 'shared/member_statistics_table', locals: {statistics: @member.contacteds}  %>
+  <%= render :partial => 'shared/contacteds_table', locals: {contacteds: @member.contacteds}  %>
 <% end %>

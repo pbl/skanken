@@ -13,7 +13,7 @@ sv:
   import:
     no_activity: Ingen aktivitet
     no_file: Du måste välja en fil.
-    not_csv: Filen måste vara i csv format. 
+    not_csv: Filen måste vara i csv format.
     failed_members: "Importen misslyckades. Det fanns en eller flera rader med ogilitiga värden. Titta på rad: %{row}"
     success: Importen lyckades
     wrong_headers: "Du måste ha rubrikerna \"name\", \"mobile\" och \"activities\""
@@ -22,6 +22,7 @@ sv:
   history:
     name: Namn
   common:
+    comment: Kommentar
     delete: Ta bort
     confirm_destroy: Är du säker?
     created_at: Datum
@@ -78,7 +79,7 @@ sv:
     update: Updatera
     other: Övrigt
     import_export: Importera/exportera
-    import_header: Importera jobbarlistan från kalkylblad 
+    import_header: Importera jobbarlistan från kalkylblad
     import_help: För att importen ska fungera måste följande kritierium vara uppfyllda.
     export_header: Exportera jobbarlistan till excel i csv format
     destroy_members_form: Ta bort alla volontärer innan ett visst datum
@@ -87,9 +88,14 @@ sv:
   randomizer:
     no_member_in_category: Aktiviteten, %{activity}, har inga jobbare kopplade till sig.
     header: Jag behöver jobbare
-    next: Swipe left
+    next_time: Nästa gång
+    no_answer: Svara ej
+    no_answer_comment: Svarade ej
+    next_time_form_header: Lämna kommentar
+    default_next_time_comment: Nästa gång
     created_at: 'Tillagd den:'
     contacted_table: Kontakthistorik
+    never_contacted: Denna person har aldrig blivit kontaktad innan.
     user_member: Lägg till i jobbarlista
     find: Hitta jobbare
     choose:

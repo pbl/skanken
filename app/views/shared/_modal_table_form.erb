@@ -3,12 +3,13 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title"><%= t('member.contacted') %></h4>
+        <h4 class="modal-title"><%= t('randomizer.next_time_form_header') %></h4>
       </div>
       <div class="modal-body">
         <div id="modal_form_contacteds">
-          <%= simple_form_for :contacted do |f| %>
-            <%= f.input :activity_id, label: t('member.activity'), required: true, collection: @cooperative.activities %>
+          <%= simple_form_for @contacted, url: randomizer_next_time_path(@member, @contacted) do |f| %>
+            <%= f.input :comment, label: t('common.comment') %>
+            <%= f.input :activity, as: :hidden, input_html: { value: @activity.id, id: 'activity_id' } %>
             <%= f.button :submit, t('job.form.submit')  %>
           <% end %>
         </div>

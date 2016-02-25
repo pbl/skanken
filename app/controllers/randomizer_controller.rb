@@ -9,8 +9,10 @@ class RandomizerController < ApplicationController
 
   def show
     @user_member = UserMember.new
-    if activity_has_members
-      @member = get_least_contacted_member(@activity.members)
+    # only show members who are not in the current_user user_member list
+    members = @activity.members - current_user.members
+    if(members.count > 0)
+      @member = get_least_contacted_member(members)
       @member.contacteds.create(activity: @activity.name)
     else
       flash[:warning] = t('randomizer.no_member_in_category', activity: @activity.name)
@@ -19,10 +21,6 @@ class RandomizerController < ApplicationController
   end
 
   private
-
-  def activity_has_members
-    @activity.members.count > 0
-  end
 
   def get_least_contacted_member(members)
     member = members.sample

@@ -34,5 +34,10 @@
 </p>
 </div>
 
+
 <h3><%= t('randomizer.contacted_table') %></h3>
-<%= render :partial => 'shared/member_statistics_table', locals: {statistics: @member.contacteds}  %>
+<% if @member.contacteds.empty? %>
+  <p><%= t('randomizer.never_contacted') %></p>
+<% else %>
+  <%= render :partial => 'shared/member_statistics_table', locals: {statistics: @member.contacteds}  %>
+<% end %>

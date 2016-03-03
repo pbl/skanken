@@ -10,7 +10,7 @@ class RandomizerController < ApplicationController
   end
 
   def no_answer
-    @member.contacteds.create(activity: @activity.name, comment: @comment)
+    @member.contacteds.create(activity: @activity.name, comment: t('randomizer.no_answer_comment'))
     redirect_to request.referer
   end
 

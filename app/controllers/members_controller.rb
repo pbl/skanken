@@ -2,6 +2,7 @@ class MembersController < ApplicationController
 	prepend_before_filter :authenticate_user!, :set_cooperative
 	before_filter :set_member, only: [:show, :edit, :update, :destroy]
 	before_filter :get_activities_from_param, only: [:create, :update]
+	before_filter :ensure_cooperative_admin, except: [:show]
 	before_action :set_cooperative_activities, only: [:new, :create, :edit, :update]
 
 	def create

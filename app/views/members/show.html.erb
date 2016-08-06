@@ -1,17 +1,19 @@
 <h3 style="display: inline; margin-"><%= @member.name %></h3>
 
-<%= link_to edit_member_path(@member) do %>
-<div style="font-size: 1.1em; display:inline-block">
-<span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= t('member.edit') %>
-</div>
-<% end %>
+<% if current_user.is?(:cooperative_admin) %>
+  <%= link_to edit_member_path(@member) do %>
+  <div style="font-size: 1.1em; display:inline-block">
+  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span><%= t('member.edit') %>
+  </div>
+  <% end %>
 
-<%= link_to member_path(@member),
-        method: :delete,
-        data: { confirm: t('member.confirm_destroy') }  do %>
-        <div style="font-size: 1.1em; display:inline-block">
-<span class="glyphicon glyphicon-trash" aria-hidden="true"></span><%= t('member.delete') %>
-        </div>
+  <%= link_to member_path(@member),
+          method: :delete,
+          data: { confirm: t('member.confirm_destroy') }  do %>
+          <div style="font-size: 1.1em; display:inline-block">
+  <span class="glyphicon glyphicon-trash" aria-hidden="true"></span><%= t('member.delete') %>
+          </div>
+  <% end %>
 <% end %>
 
 <ul class="list-group">

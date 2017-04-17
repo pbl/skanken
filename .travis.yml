@@ -1,10 +1,14 @@
 language: ruby
 rvm:
-  - 2.0.0
+  - 2.2.2
 
 before_script:
   - cp config/database.yml.travis config/database.yml
   - psql -c 'create database travis_ci_test;' -U postgres
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+bundler_args: --without production
+cache: bundler
 
 notifications:
   email: false
